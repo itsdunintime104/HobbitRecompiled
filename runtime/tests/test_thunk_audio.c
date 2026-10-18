@@ -409,6 +409,27 @@ static void test_device(void)
     CHECK(call(imp__AudioDeviceGetPropertyInfo, (uint32_t[]){1, 0, 0, 0x6F647666, size_slot, 0}, 6) ==
               0x77686F3Fu,
           "AudioDeviceGetPropertyInfo other");
+
+    /* The preferred channel layout of the default output device reaches the host: the game
+     * mixes for 8 speakers when this fails. */
+    AudioDeviceID dev = 0;
+    UInt32 dev_size = sizeof dev;
+    AudioObjectPropertyAddress a = {kAudioHardwarePropertyDefaultOutputDevice,
+                                    kAudioObjectPropertyScopeGlobal, kAudioObjectPropertyElementMain};
+    if (AudioObjectGetPropertyData(kAudioObjectSystemObject, &a, 0, NULL, &dev_size, &dev) != noErr ||
+        dev == 0)
+        return;
+    const uint32_t srnd = ('s' << 24) | ('r' << 16) | ('n' << 8) | 'd', layout = SCRATCH + 0x1000;
+    MEM32(size_slot) = 0;
+    CHECK(call(imp__AudioDeviceGetPropertyInfo, (uint32_t[]){dev, 0, 0, srnd, size_slot, 0}, 6) == 0,
+          "AudioDeviceGetPropertyInfo srnd");
+    uint32_t n = MEM32(size_slot);
+    CHECK(n >= 12 && n <= 0x1000, "srnd size %u", n);
+    if (n < 12 || n > 0x1000)
+        return;
+    CHECK(call(imp__AudioDeviceGetProperty, (uint32_t[]){dev, 0, 0, srnd, size_slot, layout}, 6) == 0,
+          "AudioDeviceGetProperty srnd");
+    CHECK(MEM32(layout) != 0 || MEM32(layout + 8) > 0, "srnd layout is empty");
 }
 
 int main(void)

@@ -94,7 +94,7 @@ static void trace_audio(const char *fmt, ...)
 #define PROP_SET_RENDER_CALLBACK 23u
 #define PROP_CURRENT_DEVICE 2000u
 
-#define DEV_PROP_PREFERRED_LAYOUT 0x7372646Eu /* 'srnd' */
+#define DEV_PROP_PREFERRED_LAYOUT 0x73726E64u /* 'srnd' */
 #define DEV_PROP_NOMINAL_RATE 0x6E737274u /* 'nsrt' */
 #define DEV_PROP_BUFFER_SIZE 0x6273697Au /* 'bsiz' */
 
@@ -968,6 +968,14 @@ void imp__AudioUnitSetProperty(void)
         RET(kAudioUnitErr_InvalidPropertyValue);
         return;
     }
+    if (id == PROP_STREAM_FORMAT) {
+        const AudioStreamBasicDescription *f = guest_ptr(data);
+        trace_audio("unit %#x format scope %u: %.0f Hz %.4s flags %#x %u ch %u bit", ARG(0),
+                    (unsigned)scope, f->mSampleRate,
+                    (const char *)&(uint32_t){__builtin_bswap32(f->mFormatID)},
+                    (unsigned)f->mFormatFlags, (unsigned)f->mChannelsPerFrame,
+                    (unsigned)f->mBitsPerChannel);
+    }
     RET(AudioUnitSetProperty(unit, id, scope, element, guest_ptr(data), size));
 }
 
@@ -1032,6 +1040,36 @@ static void param_note_first(AudioUnit unit, uint32_t id, uint32_t scope, uint32
     pthread_mutex_unlock(&g_graph_lock);
 }
 
+/* Trace a parameter set only when its value changed since the last set. */
+static void trace_param(uint32_t unit, uint32_t id, uint32_t scope, uint32_t el, float value)
+{
+    static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+    static struct {
+        uint32_t unit, id, scope, el;
+        float value;
+    } last[512];
+    static unsigned n;
+    pthread_mutex_lock(&lock);
+    unsigned i = 0;
+    while (i < n && !(last[i].unit == unit && last[i].id == id && last[i].scope == scope &&
+                      last[i].el == el))
+        i++;
+    int changed = i == n || last[i].value != value;
+    if (i == n && n < 512)
+        n++;
+    if (i < 512) {
+        last[i].unit = unit;
+        last[i].id = id;
+        last[i].scope = scope;
+        last[i].el = el;
+        last[i].value = value;
+    }
+    pthread_mutex_unlock(&lock);
+    if (changed)
+        trace_audio("unit %#x param %u scope %u element %u = %g", unit, (unsigned)id, (unsigned)scope,
+                    (unsigned)el, (double)value);
+}
+
 void imp__AudioUnitSetParameter(void)
 {
     AudioUnit unit = host_obj(ARG(0));
@@ -1043,6 +1081,8 @@ void imp__AudioUnitSetParameter(void)
     Float32 value;
     memcpy(&value, &bits, sizeof value);
     param_note_first(unit, ARG(1), ARG(2), ARG(3));
+    if (trace_audio_on())
+        trace_param(ARG(0), ARG(1), ARG(2), ARG(3), value);
     RET(AudioUnitSetParameter(unit, ARG(1), ARG(2), ARG(3), value, ARG(5)));
 }
 
@@ -1056,6 +1096,9 @@ static int device_property_ok(uint32_t id)
 void imp__AudioDeviceGetProperty(void)
 {
     uint32_t id = ARG(3), size_ptr = ARG(4);
+    trace_audio("AudioDeviceGetProperty device %u channel %u input %#x property %.4s size %u", ARG(0),
+                ARG(1), ARG(2), (const char *)&(uint32_t){__builtin_bswap32(id)},
+                size_ptr != 0 ? MEM32(size_ptr) : 0);
     if (!device_property_ok(id) || size_ptr == 0 || ARG(5) == 0) {
         RET(K_AUDIO_HARDWARE_UNKNOWN_PROPERTY_ERROR);
         return;
@@ -1070,6 +1113,8 @@ void imp__AudioDeviceGetProperty(void)
 void imp__AudioDeviceGetPropertyInfo(void)
 {
     uint32_t id = ARG(3);
+    trace_audio("AudioDeviceGetPropertyInfo device %u channel %u input %#x property %.4s", ARG(0), ARG(1),
+                ARG(2), (const char *)&(uint32_t){__builtin_bswap32(id)});
     if (!device_property_ok(id)) {
         RET(K_AUDIO_HARDWARE_UNKNOWN_PROPERTY_ERROR);
         return;
