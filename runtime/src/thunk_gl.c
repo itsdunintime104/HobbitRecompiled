@@ -27,6 +27,7 @@
 #include <string.h>
 #include <time.h>
 
+#include "diag.h"
 #include "gl_bind.h"
 #include "guest_heap.h"
 #include "guest_mem.h"
@@ -62,7 +63,9 @@ static int bind_slot(uint32_t target)
     case GL_ELEMENT_ARRAY_BUFFER: return GL_BIND_ELEMENT;
     case GL_PIXEL_PACK_BUFFER: return GL_BIND_PACK;
     case GL_PIXEL_UNPACK_BUFFER: return GL_BIND_UNPACK;
-    default: return -1;
+    default:
+        THUNK_UNSUPPORTED("buffer target 0x%x", target);
+        return -1;
     }
 }
 
@@ -121,7 +124,9 @@ static void t_VertexAttribPointer(void)
 static void t_GetVertexAttribPointerv(void)
 {
     uint32_t idx = U(0);
-    if (U(1) == GL_VERTEX_ATTRIB_ARRAY_POINTER && idx < MAX_ATTRIBS && ARG(2) != 0)
+    if (U(1) != GL_VERTEX_ATTRIB_ARRAY_POINTER)
+        THUNK_UNSUPPORTED("pname 0x%x", U(1));
+    else if (idx < MAX_ATTRIBS && ARG(2) != 0)
         MEM32(ARG(2)) = g_attrib_ptr[idx];
     g_esp += 4;
 }
@@ -179,7 +184,9 @@ static uint32_t pixel_bytes(uint32_t format, uint32_t type)
     case GL_BGR: comps = 3; break;
     case GL_RGBA:
     case GL_BGRA: comps = 4; break;
-    default: return 0;
+    default:
+        THUNK_UNSUPPORTED("pixel format 0x%x", format);
+        return 0;
     }
     switch (type) {
     case GL_UNSIGNED_BYTE:
@@ -199,7 +206,9 @@ static uint32_t pixel_bytes(uint32_t format, uint32_t type)
     case GL_UNSIGNED_SHORT_4_4_4_4_REV:
     case GL_UNSIGNED_SHORT_1_5_5_5_REV:
     case GL_UNSIGNED_SHORT_5_5_5_1: return 2;
-    default: return 0;
+    default:
+        THUNK_UNSUPPORTED("pixel type 0x%x", type);
+        return 0;
     }
 }
 

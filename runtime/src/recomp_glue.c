@@ -2,6 +2,9 @@
  * not define: register globals, dispatch lookups and the missing-import hook.
  * M2 only links; nothing here runs guest code. */
 #define RECOMP_GENERATED_CODE
+#include <pthread.h>
+#include <stdarg.h>
+#include <stdatomic.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -61,6 +64,58 @@ static void recomp_caller_log(void)
         memcpy(&ret, guest_ptr(g_esp), sizeof ret);
     recomp_icall_tail(tail, sizeof tail, 8);
     fprintf(stderr, "RECOMP: caller=0x%08X esp=0x%08X icalls=[%s]\n", ret, g_esp, tail);
+}
+
+int diag_caches_off(void)
+{
+    static atomic_int state = -1; /* -1 = unread */
+    int v = atomic_load(&state);
+    if (v < 0) {
+        const char *e = getenv("RECOMP_NO_CACHE");
+        v = e != NULL && strcmp(e, "1") == 0;
+        atomic_store(&state, v);
+    }
+    return v;
+}
+
+/* Open-addressed set of FNV-1a hashes of "func\0message"; 0 marks an empty
+ * slot. When the set is full every call prints. */
+void diag_unsupported(const char *func, uint32_t guest_ret, const char *fmt, ...)
+{
+    enum { SEEN_SLOTS = 1024 };
+    static uint64_t seen[SEEN_SLOTS];
+    static pthread_mutex_t seen_lock = PTHREAD_MUTEX_INITIALIZER;
+    char msg[256];
+    va_list ap;
+    va_start(ap, fmt);
+    vsnprintf(msg, sizeof msg, fmt, ap);
+    va_end(ap);
+
+    uint64_t h = 14695981039346656037ull;
+    for (const char *p = func; *p; p++)
+        h = (h ^ (uint8_t)*p) * 1099511628211ull;
+    h *= 1099511628211ull; /* the 0 separator byte: xor with 0 is a no-op */
+    for (const char *p = msg; *p; p++)
+        h = (h ^ (uint8_t)*p) * 1099511628211ull;
+    if (h == 0)
+        h = 1;
+
+    int first = 1;
+    pthread_mutex_lock(&seen_lock);
+    for (unsigned i = 0; i < SEEN_SLOTS; i++) {
+        uint64_t *slot = &seen[(h + i) % SEEN_SLOTS];
+        if (*slot == h) {
+            first = 0;
+            break;
+        }
+        if (*slot == 0) {
+            *slot = h;
+            break;
+        }
+    }
+    pthread_mutex_unlock(&seen_lock);
+    if (first)
+        fprintf(stderr, "UNSUPPORTED %s: %s (guest return 0x%08X)\n", func, msg, guest_ret);
 }
 
 void recomp_missing_import(const char *name)

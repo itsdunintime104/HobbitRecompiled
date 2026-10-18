@@ -10,11 +10,13 @@
  * cdecl arguments at g_esp+4, return address at g_esp; it returns in g_eax and
  * pops the return address. */
 #define RECOMP_GENERATED_CODE
+#include <IOKit/hid/IOHIDUsageTables.h>
 #include <SDL.h>
 #include <pthread.h>
 #include <stdint.h>
 #include <string.h>
 
+#include "diag.h"
 #include "guest_heap.h"
 #include "guest_mem.h"
 #include "recomp_types.h"
@@ -87,6 +89,8 @@ static int pad_event_watch(void *ud, SDL_Event *e)
         s_evq[s_evq_n].add = e->type == SDL_CONTROLLERDEVICEADDED;
         s_evq[s_evq_n].which = e->cdevice.which;
         s_evq_n++;
+    } else {
+        diag_unsupported(__func__, 0, "hot-plug queue full");
     }
     pthread_mutex_unlock(&s_lock);
     return 0;
@@ -108,6 +112,7 @@ static void pad_add(int index)
             free_slot = i; /* a gone pad keeps its slot until the game releases it */
     }
     if (free_slot < 0) {
+        diag_unsupported(__func__, 0, "pad slots full");
         SDL_GameControllerClose(gc);
         return;
     }
@@ -118,8 +123,8 @@ static void pad_add(int index)
     const char *name = SDL_GameControllerName(gc);
     if (name)
         strncpy((char *)guest_ptr(r + DEV_NAME), name, 0x3F);
-    MEM32(r + DEV_USAGE) = 5;       /* generic desktop: game pad */
-    MEM32(r + DEV_USAGE_PAGE) = 1;
+    MEM32(r + DEV_USAGE) = kHIDUsage_GD_GamePad;
+    MEM32(r + DEV_USAGE_PAGE) = kHIDPage_GenericDesktop;
     MEM32(r + DEV_N_AXES) = 6;
     MEM32(r + DEV_N_BUTTONS) = (uint32_t)N_BUTTONS;
     MEM32(r + DEV_N_HATS) = 1;

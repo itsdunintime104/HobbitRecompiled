@@ -2,6 +2,7 @@
 #include <ctype.h>
 #include <fcntl.h>
 #include <mach/mach.h>
+#include <mach-o/loader.h>
 #include <pthread.h>
 #include <runetype.h>
 #include <servers/bootstrap.h>
@@ -19,13 +20,6 @@
 
 /* Defined by the generated import_stubs.c. */
 int import_func_is_placeholder(recomp_func_t fn);
-
-/* Mach-O constants for the i386 image. */
-#define LC_SEGMENT_ 0x1u
-#define LC_SYMTAB_ 0x2u
-#define LC_DYSYMTAB_ 0xBu
-#define INDIRECT_SYMBOL_LOCAL_ 0x80000000u
-#define INDIRECT_SYMBOL_ABS_ 0x40000000u
 
 /* i386 Darwin _RuneLocale, probed with clang -target i386-apple-macosx10.9
  * and offsetof: __runetype[256] at 52, __maplower[256] at 1076, __mapupper[256]
@@ -158,7 +152,7 @@ static int find_section(const uint8_t *hdr, const char *name, uint32_t *addr, ui
     uint32_t ncmds = rd32(hdr + 16), off = 28;
     for (uint32_t i = 0; i < ncmds && off + 8 <= GUEST_HEADER_SIZE; i++) {
         uint32_t cmd = rd32(hdr + off), cmdsize = rd32(hdr + off + 4);
-        if (cmd == LC_SEGMENT_) {
+        if (cmd == LC_SEGMENT) {
             uint32_t nsects = rd32(hdr + off + 48);
             const uint8_t *s = hdr + off + 56;
             for (uint32_t k = 0; k < nsects; k++, s += 68) {
@@ -219,7 +213,7 @@ static int in_data_segment(const uint8_t *hdr, uint32_t addr)
 {
     uint32_t ncmds = rd32(hdr + 16), off = 28;
     for (uint32_t i = 0; i < ncmds && off + 8 <= GUEST_HEADER_SIZE; i++) {
-        if (rd32(hdr + off) == LC_SEGMENT_ &&
+        if (rd32(hdr + off) == LC_SEGMENT &&
             strncmp((const char *)hdr + off + 8, "__DATA", 16) == 0) {
             uint32_t vmaddr = rd32(hdr + off + 24), vmsize = rd32(hdr + off + 28);
             return addr >= vmaddr && addr - vmaddr <= vmsize - 4;
@@ -285,7 +279,7 @@ static void bind_external_relocs(const uint8_t *hdr, const uint8_t *dy, int fd,
  * Returns the number of unbound indirect slots. */
 int data_imports_bind_image(const uint8_t *hdr, const char *path)
 {
-    const uint8_t *st = find_cmd(hdr, LC_SYMTAB_), *dy = find_cmd(hdr, LC_DYSYMTAB_);
+    const uint8_t *st = find_cmd(hdr, LC_SYMTAB), *dy = find_cmd(hdr, LC_DYSYMTAB);
     if (st == NULL || dy == NULL) {
         fprintf(stderr, "data_imports: no LC_SYMTAB or LC_DYSYMTAB\n");
         exit(1);
@@ -310,7 +304,7 @@ int data_imports_bind_image(const uint8_t *hdr, const char *path)
             continue;
         for (uint32_t i = 0; i < size / 4 && first + i < nind; i++) {
             uint32_t idx = ind[first + i];
-            if (idx & (INDIRECT_SYMBOL_LOCAL_ | INDIRECT_SYMBOL_ABS_) || idx >= nsyms)
+            if (idx & (INDIRECT_SYMBOL_LOCAL | INDIRECT_SYMBOL_ABS) || idx >= nsyms)
                 continue;
             const char *name = strs + rd32(syms + idx * 12);
             uint32_t slot = addr + 4 * i, value = resolve_symbol(name);
