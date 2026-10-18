@@ -1,0 +1,22 @@
+[project]
+name = "hobbit-recomp"
+version = "0.0.0"
+requires-python = ">=3.11"
+dependencies = ["capstone"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.pyright]
+include = ["tools", "tests"]
+# Vendored upstream xboxrecomp files (MIT, see tools/xrecomp/UPSTREAM.md) are not ours to retype.
+# Our own files in tools/xrecomp (run.py) stay checked.
+exclude = [
+    "tools/xrecomp/lifter.py",
+    "tools/xrecomp/translator.py",
+    "tools/xrecomp/disasm.py",
+    "tools/xrecomp/config.py",
+]
+pythonVersion = "3.11"
+typeCheckingMode = "standard"

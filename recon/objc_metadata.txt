@@ -1,0 +1,603 @@
+hobbit_i386:
+Objective-C segment
+Module 0x19a97b8
+    version 7
+       size 16
+       name 
+     symtab 0x019a9784
+	sel_ref_cnt 0
+	refs 0x00000000 (not in an __OBJC section)
+	cls_def_cnt 2
+	cat_def_cnt 0
+	Class Definitions
+	defs[0] 0x019a9514
+		      isa 0x019a920c
+	      super_class 0x01199f18 NSWindow
+		     name 0x01199f21 NSFullScreenWindow
+		  version 0x00000000
+		     info 0x00020001 CLS_CLASS
+	    instance_size 0x00000084
+		    ivars 0x00000000 (not in an __OBJC section)
+		  methods 0x019a92cc
+		         obsolete 0x00000000
+		     method_count 2
+		      method_name 0x01199ef1 canBecomeKeyWindow
+		     method_types 0x01199e1c c8@0:4
+		       method_imp 0x003dbde0 
+		      method_name 0x01199f04 canBecomeMainWindow
+		     method_types 0x01199e1c c8@0:4
+		       method_imp 0x003dbe00 
+		    cache 0x00000000
+		protocols 0x019a91ec
+		         next 0x00000000
+		        count 1
+		      list[0] 0x019a91c8
+		              isa 0x0161b380
+		    protocol_name 0x01199d3a NSApplicationDelegate
+		    protocol_list 0x019a91dc
+		             next 0x00000000
+		            count 1
+		          list[0] 0x019a91b4
+		                  isa 0x0161b3f0
+		        protocol_name 0x01199ee8 NSObject
+		        protocol_list 0x00000000 (not in an __OBJC section)
+		     instance_methods 0x019a9118
+		            count 19
+		            list[0]
+		                 name 0x01199d50 isEqual:
+		                types 0x011997c1 c12@0:4@8
+		            list[1]
+		                 name 0x01199d59 hash
+		                types 0x01199d5e I8@0:4
+		            list[2]
+		                 name 0x01199d65 superclass
+		                types 0x01199d70 #8@0:4
+		            list[3]
+		                 name 0x011c08b5 class
+		                types 0x01199d70 #8@0:4
+		            list[4]
+		                 name 0x01199d77 self
+		                types 0x01199d7c @8@0:4
+		            list[5]
+		                 name 0x01199d83 zone
+		                types 0x01199d88 ^{_NSZone=}8@0:4
+		            list[6]
+		                 name 0x01199d99 performSelector:
+		                types 0x01199daa @12@0:4:8
+		            list[7]
+		                 name 0x01199db4 performSelector:withObject:
+		                types 0x01199dd0 @16@0:4:8@12
+		            list[8]
+		                 name 0x01199ddd performSelector:withObject:withObject:
+		                types 0x01199e04 @20@0:4:8@12@16
+		            list[9]
+		                 name 0x01199e14 isProxy
+		                types 0x01199e1c c8@0:4
+		            list[10]
+		                 name 0x01199e23 isKindOfClass:
+		                types 0x01199e32 c12@0:4#8
+		            list[11]
+		                 name 0x01199e3c isMemberOfClass:
+		                types 0x01199e32 c12@0:4#8
+		            list[12]
+		                 name 0x01199e4d conformsToProtocol:
+		                types 0x011997c1 c12@0:4@8
+		            list[13]
+		                 name 0x01199e75 respondsToSelector:
+		                types 0x01199e89 c12@0:4:8
+		            list[14]
+		                 name 0x01199e93 retain
+		                types 0x01199d7c @8@0:4
+		            list[15]
+		                 name 0x011a49d2 release
+		                types 0x01199e9a Vv8@0:4
+		            list[16]
+		                 name 0x01199ea2 autorelease
+		                types 0x01199d7c @8@0:4
+		            list[17]
+		                 name 0x01199eae retainCount
+		                types 0x01199d5e I8@0:4
+		            list[18]
+		                 name 0x01199eba description
+		                types 0x01199d7c @8@0:4
+		        class_methods 0x00000000 (not in an __OBJC section)
+		 instance_methods 0x00000000 (not in an __OBJC section)
+		    class_methods 0x00000000 (not in an __OBJC section)
+	Meta Class
+		      isa 0x01199ee8 NSObject
+	      super_class 0x01199f18 NSWindow
+		     name 0x01199f21 NSFullScreenWindow
+		  version 0x00000000
+		     info 0x00020002 CLS_META
+	    instance_size 0x00000030
+		    ivars 0x00000000 (not in an __OBJC section)
+		  methods 0x00000000 (not in an __OBJC section)
+		    cache 0x00000000
+		protocols 0x019a91ec
+		         next 0x00000000
+		        count 1
+		      list[0] 0x019a91c8
+		              isa 0x0161b380
+		    protocol_name 0x01199d3a NSApplicationDelegate
+		    protocol_list 0x019a91dc
+		             next 0x00000000
+		            count 1
+		          list[0] 0x019a91b4
+		                  isa 0x0161b3f0
+		        protocol_name 0x01199ee8 NSObject
+		        protocol_list 0x00000000 (not in an __OBJC section)
+		     instance_methods 0x019a9118
+		            count 19
+		            list[0]
+		                 name 0x01199d50 isEqual:
+		                types 0x011997c1 c12@0:4@8
+		            list[1]
+		                 name 0x01199d59 hash
+		                types 0x01199d5e I8@0:4
+		            list[2]
+		                 name 0x01199d65 superclass
+		                types 0x01199d70 #8@0:4
+		            list[3]
+		                 name 0x011c08b5 class
+		                types 0x01199d70 #8@0:4
+		            list[4]
+		                 name 0x01199d77 self
+		                types 0x01199d7c @8@0:4
+		            list[5]
+		                 name 0x01199d83 zone
+		                types 0x01199d88 ^{_NSZone=}8@0:4
+		            list[6]
+		                 name 0x01199d99 performSelector:
+		                types 0x01199daa @12@0:4:8
+		            list[7]
+		                 name 0x01199db4 performSelector:withObject:
+		                types 0x01199dd0 @16@0:4:8@12
+		            list[8]
+		                 name 0x01199ddd performSelector:withObject:withObject:
+		                types 0x01199e04 @20@0:4:8@12@16
+		            list[9]
+		                 name 0x01199e14 isProxy
+		                types 0x01199e1c c8@0:4
+		            list[10]
+		                 name 0x01199e23 isKindOfClass:
+		                types 0x01199e32 c12@0:4#8
+		            list[11]
+		                 name 0x01199e3c isMemberOfClass:
+		                types 0x01199e32 c12@0:4#8
+		            list[12]
+		                 name 0x01199e4d conformsToProtocol:
+		                types 0x011997c1 c12@0:4@8
+		            list[13]
+		                 name 0x01199e75 respondsToSelector:
+		                types 0x01199e89 c12@0:4:8
+		            list[14]
+		                 name 0x01199e93 retain
+		                types 0x01199d7c @8@0:4
+		            list[15]
+		                 name 0x011a49d2 release
+		                types 0x01199e9a Vv8@0:4
+		            list[16]
+		                 name 0x01199ea2 autorelease
+		                types 0x01199d7c @8@0:4
+		            list[17]
+		                 name 0x01199eae retainCount
+		                types 0x01199d5e I8@0:4
+		            list[18]
+		                 name 0x01199eba description
+		                types 0x01199d7c @8@0:4
+		        class_methods 0x00000000 (not in an __OBJC section)
+		 instance_methods 0x00000000 (not in an __OBJC section)
+		    class_methods 0x00000000 (not in an __OBJC section)
+	defs[1] 0x019a9544
+		      isa 0x019a923c
+	      super_class 0x01199ee8 NSObject
+		     name 0x01199f34 NuMacApplicationDelegate
+		  version 0x00000000
+		     info 0x00020001 CLS_CLASS
+	    instance_size 0x00000004
+		    ivars 0x00000000 (not in an __OBJC section)
+		  methods 0x019a92ec
+		         obsolete 0x00000000
+		     method_count 4
+		      method_name 0x011996b3 applicationShouldTerminate:
+		     method_types 0x011996cf I12@0:4@8
+		       method_imp 0x003dbe20 
+		      method_name 0x01199cd6 applicationWillTerminate:
+		     method_types 0x01199b9e v12@0:4@8
+		       method_imp 0x003dbe60 
+		      method_name 0x01199be1 applicationWillHide:
+		     method_types 0x01199b9e v12@0:4@8
+		       method_imp 0x003dbe80 
+		      method_name 0x01199c0a applicationWillUnhide:
+		     method_types 0x01199b9e v12@0:4@8
+		       method_imp 0x003dbea0 
+		    cache 0x00000000
+		protocols 0x019a91fc
+		         next 0x00000000
+		        count 1
+		      list[0] 0x019a91c8
+		              isa 0x0161b380
+		    protocol_name 0x01199d3a NSApplicationDelegate
+		    protocol_list 0x019a91dc
+		             next 0x00000000
+		            count 1
+		          list[0] 0x019a91b4
+		                  isa 0x0161b3f0
+		        protocol_name 0x01199ee8 NSObject
+		        protocol_list 0x00000000 (not in an __OBJC section)
+		     instance_methods 0x019a9118
+		            count 19
+		            list[0]
+		                 name 0x01199d50 isEqual:
+		                types 0x011997c1 c12@0:4@8
+		            list[1]
+		                 name 0x01199d59 hash
+		                types 0x01199d5e I8@0:4
+		            list[2]
+		                 name 0x01199d65 superclass
+		                types 0x01199d70 #8@0:4
+		            list[3]
+		                 name 0x011c08b5 class
+		                types 0x01199d70 #8@0:4
+		            list[4]
+		                 name 0x01199d77 self
+		                types 0x01199d7c @8@0:4
+		            list[5]
+		                 name 0x01199d83 zone
+		                types 0x01199d88 ^{_NSZone=}8@0:4
+		            list[6]
+		                 name 0x01199d99 performSelector:
+		                types 0x01199daa @12@0:4:8
+		            list[7]
+		                 name 0x01199db4 performSelector:withObject:
+		                types 0x01199dd0 @16@0:4:8@12
+		            list[8]
+		                 name 0x01199ddd performSelector:withObject:withObject:
+		                types 0x01199e04 @20@0:4:8@12@16
+		            list[9]
+		                 name 0x01199e14 isProxy
+		                types 0x01199e1c c8@0:4
+		            list[10]
+		                 name 0x01199e23 isKindOfClass:
+		                types 0x01199e32 c12@0:4#8
+		            list[11]
+		                 name 0x01199e3c isMemberOfClass:
+		                types 0x01199e32 c12@0:4#8
+		            list[12]
+		                 name 0x01199e4d conformsToProtocol:
+		                types 0x011997c1 c12@0:4@8
+		            list[13]
+		                 name 0x01199e75 respondsToSelector:
+		                types 0x01199e89 c12@0:4:8
+		            list[14]
+		                 name 0x01199e93 retain
+		                types 0x01199d7c @8@0:4
+		            list[15]
+		                 name 0x011a49d2 release
+		                types 0x01199e9a Vv8@0:4
+		            list[16]
+		                 name 0x01199ea2 autorelease
+		                types 0x01199d7c @8@0:4
+		            list[17]
+		                 name 0x01199eae retainCount
+		                types 0x01199d5e I8@0:4
+		            list[18]
+		                 name 0x01199eba description
+		                types 0x01199d7c @8@0:4
+		        class_methods 0x00000000 (not in an __OBJC section)
+		 instance_methods 0x00000000 (not in an __OBJC section)
+		    class_methods 0x00000000 (not in an __OBJC section)
+	Meta Class
+		      isa 0x01199ee8 NSObject
+	      super_class 0x01199ee8 NSObject
+		     name 0x01199f34 NuMacApplicationDelegate
+		  version 0x00000000
+		     info 0x00020002 CLS_META
+	    instance_size 0x00000030
+		    ivars 0x00000000 (not in an __OBJC section)
+		  methods 0x00000000 (not in an __OBJC section)
+		    cache 0x00000000
+		protocols 0x019a91fc
+		         next 0x00000000
+		        count 1
+		      list[0] 0x019a91c8
+		              isa 0x0161b380
+		    protocol_name 0x01199d3a NSApplicationDelegate
+		    protocol_list 0x019a91dc
+		             next 0x00000000
+		            count 1
+		          list[0] 0x019a91b4
+		                  isa 0x0161b3f0
+		        protocol_name 0x01199ee8 NSObject
+		        protocol_list 0x00000000 (not in an __OBJC section)
+		     instance_methods 0x019a9118
+		            count 19
+		            list[0]
+		                 name 0x01199d50 isEqual:
+		                types 0x011997c1 c12@0:4@8
+		            list[1]
+		                 name 0x01199d59 hash
+		                types 0x01199d5e I8@0:4
+		            list[2]
+		                 name 0x01199d65 superclass
+		                types 0x01199d70 #8@0:4
+		            list[3]
+		                 name 0x011c08b5 class
+		                types 0x01199d70 #8@0:4
+		            list[4]
+		                 name 0x01199d77 self
+		                types 0x01199d7c @8@0:4
+		            list[5]
+		                 name 0x01199d83 zone
+		                types 0x01199d88 ^{_NSZone=}8@0:4
+		            list[6]
+		                 name 0x01199d99 performSelector:
+		                types 0x01199daa @12@0:4:8
+		            list[7]
+		                 name 0x01199db4 performSelector:withObject:
+		                types 0x01199dd0 @16@0:4:8@12
+		            list[8]
+		                 name 0x01199ddd performSelector:withObject:withObject:
+		                types 0x01199e04 @20@0:4:8@12@16
+		            list[9]
+		                 name 0x01199e14 isProxy
+		                types 0x01199e1c c8@0:4
+		            list[10]
+		                 name 0x01199e23 isKindOfClass:
+		                types 0x01199e32 c12@0:4#8
+		            list[11]
+		                 name 0x01199e3c isMemberOfClass:
+		                types 0x01199e32 c12@0:4#8
+		            list[12]
+		                 name 0x01199e4d conformsToProtocol:
+		                types 0x011997c1 c12@0:4@8
+		            list[13]
+		                 name 0x01199e75 respondsToSelector:
+		                types 0x01199e89 c12@0:4:8
+		            list[14]
+		                 name 0x01199e93 retain
+		                types 0x01199d7c @8@0:4
+		            list[15]
+		                 name 0x011a49d2 release
+		                types 0x01199e9a Vv8@0:4
+		            list[16]
+		                 name 0x01199ea2 autorelease
+		                types 0x01199d7c @8@0:4
+		            list[17]
+		                 name 0x01199eae retainCount
+		                types 0x01199d5e I8@0:4
+		            list[18]
+		                 name 0x01199eba description
+		                types 0x01199d7c @8@0:4
+		        class_methods 0x00000000 (not in an __OBJC section)
+		 instance_methods 0x00000000 (not in an __OBJC section)
+		    class_methods 0x00000000 (not in an __OBJC section)
+Module 0x19a97c8
+    version 7
+       size 16
+       name 
+     symtab 0x019a9798
+	sel_ref_cnt 0
+	refs 0x00000000 (not in an __OBJC section)
+	cls_def_cnt 1
+	cat_def_cnt 0
+	Class Definitions
+	defs[0] 0x019a9574
+		      isa 0x019a926c
+	      super_class 0x0119a609 NSView
+		     name 0x0119a143 OpenGLView
+		  version 0x00000000
+		     info 0x00020001 CLS_CLASS
+	    instance_size 0x00000068
+		    ivars 0x019a97e8
+		       ivar_count 6
+			ivar_name 0x01199fee openGLContext
+			ivar_type 0x0119a840 @"NSOpenGLContext"
+		      ivar_offset 0x00000050
+			ivar_name 0x0119a778 pixelFormat
+			ivar_type 0x0119a853 @"NSOpenGLPixelFormat"
+		      ivar_offset 0x00000054
+			ivar_name 0x0119a86a m_sampleBufferCount
+			ivar_type 0x01194c94 i
+		      ivar_offset 0x00000058
+			ivar_name 0x0119a87e m_sampleCount
+			ivar_type 0x01194c94 i
+		      ivar_offset 0x0000005c
+			ivar_name 0x0119a88c m_isFullscreen
+			ivar_type 0x011d784f c
+		      ivar_offset 0x00000060
+			ivar_name 0x0119a89b m_displayMask
+			ivar_type 0x01198f32 I
+		      ivar_offset 0x00000064
+		  methods 0x019a9324
+		         obsolete 0x00000000
+		     method_count 29
+		      method_name 0x0119a688 acceptsFirstResponder
+		     method_types 0x01199e1c c8@0:4
+		       method_imp 0x003e0160 
+		      method_name 0x0119a4f3 becomeFirstResponder
+		     method_types 0x01199e1c c8@0:4
+		       method_imp 0x003e0180 
+		      method_name 0x0119a69e resignFirstResponder
+		     method_types 0x01199e1c c8@0:4
+		       method_imp 0x003e01a0 
+		      method_name 0x0119a6b3 acceptsFirstMouse:
+		     method_types 0x011997c1 c12@0:4@8
+		       method_imp 0x003e01c0 
+		      method_name 0x0119a553 mouseMoved:
+		     method_types 0x01199b9e v12@0:4@8
+		       method_imp 0x003e01f0 
+		      method_name 0x0119a6c6 mouseDragged:
+		     method_types 0x01199b9e v12@0:4@8
+		       method_imp 0x003e02a0 
+		      method_name 0x0119a6d4 rightMouseDragged:
+		     method_types 0x01199b9e v12@0:4@8
+		       method_imp 0x003e02f0 
+		      method_name 0x0119a6e7 otherMouseDragged:
+		     method_types 0x01199b9e v12@0:4@8
+		       method_imp 0x003e0340 
+		      method_name 0x0119a6fa mouseDown:
+		     method_types 0x01199b9e v12@0:4@8
+		       method_imp 0x003e0390 
+		      method_name 0x0119a705 mouseUp:
+		     method_types 0x01199b9e v12@0:4@8
+		       method_imp 0x003e03d0 
+		      method_name 0x0119a70e rightMouseDown:
+		     method_types 0x01199b9e v12@0:4@8
+		       method_imp 0x003e0410 
+		      method_name 0x0119a71e rightMouseUp:
+		     method_types 0x01199b9e v12@0:4@8
+		       method_imp 0x003e0450 
+		      method_name 0x0119a72c otherMouseDown:
+		     method_types 0x01199b9e v12@0:4@8
+		       method_imp 0x003e0490 
+		      method_name 0x0119a73c otherMouseUp:
+		     method_types 0x01199b9e v12@0:4@8
+		       method_imp 0x003e04d0 
+		      method_name 0x0119a74a scrollWheel:
+		     method_types 0x01199b9e v12@0:4@8
+		       method_imp 0x003e0510 
+		      method_name 0x0119a757 keyDown:
+		     method_types 0x01199b9e v12@0:4@8
+		       method_imp 0x003e0570 
+		      method_name 0x0119a760 keyUp:
+		     method_types 0x01199b9e v12@0:4@8
+		       method_imp 0x003e0590 
+		      method_name 0x0119a767 canBecomeKeyView
+		     method_types 0x01199e1c c8@0:4
+		       method_imp 0x003e05b0 
+		      method_name 0x01199fee openGLContext
+		     method_types 0x01199d7c @8@0:4
+		       method_imp 0x003e05d0 
+		      method_name 0x0119a778 pixelFormat
+		     method_types 0x01199d7c @8@0:4
+		       method_imp 0x003e05f0 
+		      method_name 0x0119a14e initFullscreen:openGLDisplayMask:sampleBuffers:samples:
+		     method_types 0x0119a784 @36@0:4{_NSRect={_NSPoint=ff}{_NSSize=ff}}8I24i28i32
+		       method_imp 0x003e0610 
+		      method_name 0x0119a090 updateMSAASettings::
+		     method_types 0x0119a7b9 i16@0:4i8i12
+		       method_imp 0x003e0ac0 
+		      method_name 0x0119a2fe initWithFrame:shareContext:openGLDisplayMask:sampleBuffers:samples:
+		     method_types 0x0119a7c6 @40@0:4{_NSRect={_NSPoint=ff}{_NSSize=ff}}8@24I28i32i36
+		       method_imp 0x003e0de0 
+		      method_name 0x0119a5d2 initWithFrame:
+		     method_types 0x0119a7fe @24@0:4{_NSRect={_NSPoint=ff}{_NSSize=ff}}8
+		       method_imp 0x003e10c0 
+		      method_name 0x0119a665 lockFocus
+		     method_types 0x0119a8fa v8@0:4
+		       method_imp 0x003e1130 
+		      method_name 0x0119a66f reshape
+		     method_types 0x0119a8fa v8@0:4
+		       method_imp 0x003e11f0 
+		      method_name 0x0119a3b2 makeContextCurrent
+		     method_types 0x0119a8fa v8@0:4
+		       method_imp 0x003e12b0 
+		      method_name 0x0119a3c5 swapBuffers
+		     method_types 0x0119a8fa v8@0:4
+		       method_imp 0x003e1300 
+		      method_name 0x0119a82a performKeyEquivalent:
+		     method_types 0x011997c1 c12@0:4@8
+		       method_imp 0x003e1380 
+		    cache 0x00000000
+		protocols 0x00000000 (not in an __OBJC section)
+	Meta Class
+		      isa 0x01199ee8 NSObject
+	      super_class 0x0119a609 NSView
+		     name 0x0119a143 OpenGLView
+		  version 0x00000000
+		     info 0x00020002 CLS_META
+	    instance_size 0x00000030
+		    ivars 0x00000000 (not in an __OBJC section)
+		  methods 0x00000000 (not in an __OBJC section)
+		    cache 0x00000000
+		protocols 0x00000000 (not in an __OBJC section)
+Module 0x19a97d8
+    version 7
+       size 16
+       name 
+     symtab 0x019a97a8
+	sel_ref_cnt 0
+	refs 0x00000000 (not in an __OBJC section)
+	cls_def_cnt 1
+	cat_def_cnt 0
+	Class Definitions
+	defs[0] 0x019a95a4
+		      isa 0x019a929c
+	      super_class 0x01199ee8 NSObject
+		     name 0x0119a115 GameWindow
+		  version 0x00000000
+		     info 0x00020001 CLS_CLASS
+	    instance_size 0x00000018
+		    ivars 0x019a9834
+		       ivar_count 6
+			ivar_name 0x0119a901 m_fullScreenWindow
+			ivar_type 0x0119a914 @"NSWindow"
+		      ivar_offset 0x00000004
+			ivar_name 0x0119a920 m_fullScreenOpenGLView
+			ivar_type 0x0119a937 @"OpenGLView"
+		      ivar_offset 0x00000008
+			ivar_name 0x0119a945 m_window
+			ivar_type 0x0119a914 @"NSWindow"
+		      ivar_offset 0x0000000c
+			ivar_name 0x0119a94e m_openGLView
+			ivar_type 0x0119a937 @"OpenGLView"
+		      ivar_offset 0x00000010
+			ivar_name 0x0119a95b m_isFullScreen
+			ivar_type 0x011d784f c
+		      ivar_offset 0x00000014
+			ivar_name 0x0119a96a m_isClosing
+			ivar_type 0x011d784f c
+		      ivar_offset 0x00000015
+		  methods 0x019a9488
+		         obsolete 0x00000000
+		     method_count 11
+		      method_name 0x0119a8e9 windowWillClose:
+		     method_types 0x01199b9e v12@0:4@8
+		       method_imp 0x003e14b0 
+		      method_name 0x0119a370 initWithWindowedView:openGLView:
+		     method_types 0x011999b8 @16@0:4@8@12
+		       method_imp 0x003e14d0 
+		      method_name 0x0119a25e initWithFullscreenView:openGLView:
+		     method_types 0x011999b8 @16@0:4@8@12
+		       method_imp 0x003e1560 
+		      method_name 0x0119a2a4 close
+		     method_types 0x0119a8fa v8@0:4
+		       method_imp 0x003e15f0 
+		      method_name 0x0119a391 isFullScreen
+		     method_types 0x01199e1c c8@0:4
+		       method_imp 0x003e1680 
+		      method_name 0x0119a3de goWindowed
+		     method_types 0x0119a8fa v8@0:4
+		       method_imp 0x003e16a0 
+		      method_name 0x0119a3d1 goFullScreen
+		     method_types 0x0119a8fa v8@0:4
+		       method_imp 0x003e1790 
+		      method_name 0x0119a00a getActiveWindow
+		     method_types 0x01199d7c @8@0:4
+		       method_imp 0x003e1ca0 
+		      method_name 0x01199fda getActiveOpenGLView
+		     method_types 0x01199d7c @8@0:4
+		       method_imp 0x003e1d00 
+		      method_name 0x0119a8cc dealloc
+		     method_types 0x0119a8fa v8@0:4
+		       method_imp 0x003e1d60 
+		      method_name 0x0119a48a hasFocus
+		     method_types 0x01199e1c c8@0:4
+		       method_imp 0x003e1e80 
+		    cache 0x00000000
+		protocols 0x00000000 (not in an __OBJC section)
+	Meta Class
+		      isa 0x01199ee8 NSObject
+	      super_class 0x01199ee8 NSObject
+		     name 0x0119a115 GameWindow
+		  version 0x00000000
+		     info 0x00020002 CLS_META
+	    instance_size 0x00000030
+		    ivars 0x00000000 (not in an __OBJC section)
+		  methods 0x00000000 (not in an __OBJC section)
+		    cache 0x00000000
+		protocols 0x00000000 (not in an __OBJC section)
+Contents of (__OBJC,__image_info) section
+  version 0
+    flags 0x0 RR

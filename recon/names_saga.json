@@ -1,0 +1,1265 @@
+{
+ "0x179D90": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x17B6E0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x17F6C0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x17FFA0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x1A8560": {
+  "file": "nu2api/nucore/NuMemoryManager.cpp",
+  "line": 1562,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x1AC9D0": {
+  "file": "nu2api/nucore/NuMemory.cpp",
+  "line": 471,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x1ACBE0": {
+  "file": "nu2api/nucore/NuMemory.cpp",
+  "line": 487,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x1ACE90": {
+  "file": "nu2api/nucore/NuMemory.cpp",
+  "line": 501,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x1AD030": {
+  "file": "nu2api/nucore/NuMemory.cpp",
+  "line": 509,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x1AF310": {
+  "file": "nu2api/nucore/NuConstStringManager.cpp",
+  "line": 177,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x1BA2C0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 299,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x1C52D0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x1E1130": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 299,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x1EC7E0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x1F29E0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x204D10": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x204E60": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x28B2F0": {
+  "file": "nu2api/nu3d/nurenderpipe.cpp",
+  "line": 1120,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x28CA00": {
+  "file": "nu2api/nu3d/nurenderpipe.cpp",
+  "line": 1824,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x39A140": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 299,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x3A16C0": {
+  "file": "nu2api/nusound/nusound.cpp",
+  "line": 99,
+  "name": "NuSoundSystem::Initialise(int)",
+  "confidence": "name"
+ },
+ "0x3A2C30": {
+  "file": "nu2api/nusound/nusound.cpp",
+  "line": 271,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x3A4320": {
+  "file": "nu2api/nusound/nusound.cpp",
+  "line": 976,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x3A4BC0": {
+  "file": "nu2api/nusound/nusound.cpp",
+  "line": 714,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x3A5670": {
+  "file": "nu2api/nusound/nusound.cpp",
+  "line": 812,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x3A58B0": {
+  "file": "nu2api/nusound/nusound.cpp",
+  "line": 851,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x3A6750": {
+  "file": "nu2api/nusound/nusound_buffer.cpp",
+  "line": 53,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x3B1350": {
+  "file": "nu2api/nusound/mac/nusound_mac.cpp",
+  "line": 234,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x3B1890": {
+  "file": "nu2api/nusound/mac/nusound_mac.cpp",
+  "line": 304,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x3B2C40": {
+  "file": "nu2api/nusound/nusound_loader_wav.cpp",
+  "line": 82,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x3B3350": {
+  "file": "nu2api/nusound/nusound_loader_caf.cpp",
+  "line": 41,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x3B5170": {
+  "file": "nu2api/nusound/nusound_loader_ogg.cpp",
+  "line": 30,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x3B56C0": {
+  "file": "nu2api/nusound/nusound_loader_ogg.cpp",
+  "line": 207,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x3B66E0": {
+  "file": "nu2api/nusound/nusound_loader_cbx.cpp",
+  "line": 19,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x3F6700": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x3FCBD0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x4263B0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x435960": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x43F9E0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x441C60": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x44F300": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x44F9E0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x44FB20": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x44FC60": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x44FDA0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x44FEE0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x450010": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x46BFA0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x472C70": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x4F7E60": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x4F8140": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x4FB940": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x501040": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x509F60": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x50AAB0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x50AEF0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x50B0C0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x556DE0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x567710": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x590630": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 299,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x5906D0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 299,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x592EE0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x5936F0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x5A3ED0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 299,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x5A92D0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x5A9F20": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x5AD750": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x5AF030": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x5AFCA0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x5B1790": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x5B3B40": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x5B7F20": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x5BAC90": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x5BAE60": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x5F2A90": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x5F6540": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x5F6810": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x604800": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x605A20": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x6071F0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x610620": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x644030": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x6D9BE0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x6DFA90": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x6E0450": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x704BB0": {
+  "file": "gameapi/gameframework/LevelContainer.cpp",
+  "line": 23,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x718DB0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 299,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x71E860": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x72A370": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x72A970": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x72AF10": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x72B440": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x73EC60": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x7432F0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x7440D0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x744600": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x744F90": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x747A60": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x747F20": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x7482E0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x7487F0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x748A90": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x749410": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 299,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x7497E0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 299,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x7499B0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 299,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x770840": {
+  "file": "gameapi/SplitScreen/NewSplitScreenManager.cpp",
+  "line": 6416,
+  "name": null,
+  "confidence": "file"
+ },
+ "0x822080": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x823480": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x823CC0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x823E40": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x823EF0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x824060": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x824280": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x824680": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x831180": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x831340": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x831490": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x835F90": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x8375F0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 299,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x84B950": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x8573F0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 299,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x8A0180": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x958B30": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 299,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x95BD50": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x95C3B0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x95E080": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x9655A0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x965880": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xA9D740": {
+  "file": "mechanicsApi/mechanics/PlayBubble/MechPlayBubbleRenderer.cpp",
+  "line": 108,
+  "name": null,
+  "confidence": "file"
+ },
+ "0xB40040": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xB5F420": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 299,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xB68EC0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xC15E40": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xC2CE00": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xC57C00": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xC75770": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 299,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xC78530": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xC954E0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xC961B0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xC96FC0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xC97210": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xC98E10": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xCA8350": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xCA8750": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xCA8CD0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xCA9910": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xCAA100": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xCD9B60": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xD70CA0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xE14CD0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xE291F0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xE299D0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xE30B50": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xE32B60": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xE52E30": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xE80CE0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xE82A80": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xE8F0E0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xE9C5F0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xE9C690": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xE9C730": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xE9C7D0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xE9CB70": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xE9CC10": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xE9CCE0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xE9CD80": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xE9D110": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xEA62E0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xEDDA10": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xEF1350": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xF56830": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xF56990": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xF70B40": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xFA5440": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xFA5520": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xFA79B0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xFAE390": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xFAE4B0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xFB1740": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xFB1CE0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0xFC7330": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x1120DE0": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x1121B00": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 311,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ },
+ "0x1126B30": {
+  "file": "nu2api/nucore/NuMemory.h",
+  "line": 304,
+  "name": null,
+  "confidence": "file",
+  "inlined_from_header": true
+ }
+}

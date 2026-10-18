@@ -1,0 +1,14 @@
+# Game files from the user's own copy: never commit or publish
+orig.nosync/
+*.dat
+*.DAT
+# Generated code and builds (derived from the game binary; large; kept out of iCloud via .nosync)
+generated.nosync/
+build.nosync/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+ghidra.nosync/
+# Ghidra pseudocode export (tools/ghidra/ExportHobbit.java): derived from the game binary
+docs/research/pseudocode/

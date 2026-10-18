@@ -1,0 +1,9066 @@
+{
+ "imports": [
+  {
+   "name": ".objc_class_name_NSApplication",
+   "dylib": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "Objective-C class reference symbol (data)"
+  },
+  {
+   "name": ".objc_class_name_NSAutoreleasePool",
+   "dylib": "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "Objective-C class reference symbol (data)"
+  },
+  {
+   "name": ".objc_class_name_NSColor",
+   "dylib": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "Objective-C class reference symbol (data)"
+  },
+  {
+   "name": ".objc_class_name_NSCursor",
+   "dylib": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "Objective-C class reference symbol (data)"
+  },
+  {
+   "name": ".objc_class_name_NSDate",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "Objective-C class reference symbol (data)"
+  },
+  {
+   "name": ".objc_class_name_NSNotificationCenter",
+   "dylib": "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "Objective-C class reference symbol (data)"
+  },
+  {
+   "name": ".objc_class_name_NSObject",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "Objective-C class reference symbol (data)"
+  },
+  {
+   "name": ".objc_class_name_NSOpenGLContext",
+   "dylib": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "Objective-C class reference symbol (data)"
+  },
+  {
+   "name": ".objc_class_name_NSOpenGLPixelFormat",
+   "dylib": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "Objective-C class reference symbol (data)"
+  },
+  {
+   "name": ".objc_class_name_NSScreen",
+   "dylib": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "Objective-C class reference symbol (data)"
+  },
+  {
+   "name": ".objc_class_name_NSString",
+   "dylib": "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "Objective-C class reference symbol (data)"
+  },
+  {
+   "name": ".objc_class_name_NSView",
+   "dylib": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "Objective-C class reference symbol (data)"
+  },
+  {
+   "name": ".objc_class_name_NSWindow",
+   "dylib": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "Objective-C class reference symbol (data)"
+  },
+  {
+   "name": "_AUGraphAddNode",
+   "dylib": "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox",
+   "status": "resolved",
+   "ret": {
+    "type": "OSStatus",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "AUGraph",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "AudioComponentDescription *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "AUNode *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_AUGraphAddRenderNotify",
+   "dylib": "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox",
+   "status": "resolved",
+   "ret": {
+    "type": "OSStatus",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "AUGraph",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "AURenderCallback",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_AUGraphClose",
+   "dylib": "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox",
+   "status": "resolved",
+   "ret": {
+    "type": "OSStatus",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "AUGraph",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_AUGraphConnectNodeInput",
+   "dylib": "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox",
+   "status": "resolved",
+   "ret": {
+    "type": "OSStatus",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "AUGraph",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "AUNode",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt32",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "AUNode",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt32",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_AUGraphInitialize",
+   "dylib": "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox",
+   "status": "resolved",
+   "ret": {
+    "type": "OSStatus",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "AUGraph",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_AUGraphNodeInfo",
+   "dylib": "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox",
+   "status": "resolved",
+   "ret": {
+    "type": "OSStatus",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "AUGraph",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "AUNode",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "AudioComponentDescription *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "AudioUnit *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_AUGraphOpen",
+   "dylib": "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox",
+   "status": "resolved",
+   "ret": {
+    "type": "OSStatus",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "AUGraph",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_AUGraphSetNodeInputCallback",
+   "dylib": "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox",
+   "status": "resolved",
+   "ret": {
+    "type": "OSStatus",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "AUGraph",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "AUNode",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt32",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "AURenderCallbackStruct *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_AUGraphStart",
+   "dylib": "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox",
+   "status": "resolved",
+   "ret": {
+    "type": "OSStatus",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "AUGraph",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_AUGraphStop",
+   "dylib": "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox",
+   "status": "resolved",
+   "ret": {
+    "type": "OSStatus",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "AUGraph",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_AUGraphUninitialize",
+   "dylib": "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox",
+   "status": "resolved",
+   "ret": {
+    "type": "OSStatus",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "AUGraph",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_AudioDeviceGetProperty",
+   "dylib": "/System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio",
+   "status": "resolved",
+   "ret": {
+    "type": "OSStatus",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "AudioDeviceID",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt32",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "Boolean",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "AudioDevicePropertyID",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt32 *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_AudioDeviceGetPropertyInfo",
+   "dylib": "/System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio",
+   "status": "resolved",
+   "ret": {
+    "type": "OSStatus",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "AudioDeviceID",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt32",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "Boolean",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "AudioDevicePropertyID",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt32 *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "Boolean *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_AudioUnitGetProperty",
+   "dylib": "/System/Library/Frameworks/AudioUnit.framework/Versions/A/AudioUnit",
+   "status": "resolved",
+   "ret": {
+    "type": "OSStatus",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "AudioUnit",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "AudioUnitPropertyID",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "AudioUnitScope",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "AudioUnitElement",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt32 *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_AudioUnitSetParameter",
+   "dylib": "/System/Library/Frameworks/AudioUnit.framework/Versions/A/AudioUnit",
+   "status": "resolved",
+   "ret": {
+    "type": "OSStatus",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "AudioUnit",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "AudioUnitParameterID",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "AudioUnitScope",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "AudioUnitElement",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "AudioUnitParameterValue",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt32",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_AudioUnitSetProperty",
+   "dylib": "/System/Library/Frameworks/AudioUnit.framework/Versions/A/AudioUnit",
+   "status": "resolved",
+   "ret": {
+    "type": "OSStatus",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "AudioUnit",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "AudioUnitPropertyID",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "AudioUnitScope",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "AudioUnitElement",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt32",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFAbsoluteTimeGetCurrent",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFAbsoluteTime",
+    "kind": "f64",
+    "size": 8
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFArrayApplyFunction",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "CFArrayRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFRange",
+     "kind": "struct",
+     "size": 8,
+     "stack_size": 8
+    },
+    {
+     "type": "CFArrayApplierFunction",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFArrayGetCount",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFIndex",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFArrayRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFArrayGetTypeID",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFTypeID",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFArrayGetValueAtIndex",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFArrayRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFIndex",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFBooleanGetValue",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "Boolean",
+    "kind": "u32",
+    "size": 1
+   },
+   "params": [
+    {
+     "type": "CFBooleanRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFBundleCopyBuiltInPlugInsURL",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFURLRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFBundleRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFBundleCopyLocalizedString",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFStringRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFBundleRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFStringRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFStringRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFStringRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFBundleCopyResourceURL",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFURLRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFBundleRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFStringRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFStringRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFStringRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFBundleCopyResourcesDirectoryURL",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFURLRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFBundleRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFBundleCreate",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFBundleRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFAllocatorRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFURLRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFBundleGetFunctionPointerForName",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFBundleRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFStringRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFBundleGetMainBundle",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFBundleRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFDataGetBytePtr",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "UInt8 *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFDataRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFDataGetTypeID",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFTypeID",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFDictionaryCreateMutable",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFMutableDictionaryRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFAllocatorRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFIndex",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFDictionaryKeyCallBacks *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFDictionaryValueCallBacks *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFDictionaryGetTypeID",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFTypeID",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFDictionaryGetValue",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFDictionaryRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFDictionaryGetValueIfPresent",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "Boolean",
+    "kind": "u32",
+    "size": 1
+   },
+   "params": [
+    {
+     "type": "CFDictionaryRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void **",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFDictionarySetValue",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "CFMutableDictionaryRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFGetTypeID",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFTypeID",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFTypeRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFLocaleCopyCurrent",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFLocaleRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFLocaleCopyPreferredLanguages",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFArrayRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFLocaleCreate",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFLocaleRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFAllocatorRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFLocaleIdentifier",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFLocaleGetIdentifier",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFLocaleIdentifier",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFLocaleRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFLocaleGetValue",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFTypeRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFLocaleRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFLocaleKey",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFNumberCreate",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFNumberRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFAllocatorRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFNumberType",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFNumberGetValue",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "Boolean",
+    "kind": "u32",
+    "size": 1
+   },
+   "params": [
+    {
+     "type": "CFNumberRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFNumberType",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFPropertyListCreateFromXMLData",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFPropertyListRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFAllocatorRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFDataRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFOptionFlags",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFStringRef *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFRelease",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "CFTypeRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFRetain",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFTypeRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFTypeRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFRunLoopAddSource",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "CFRunLoopRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFRunLoopSourceRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFRunLoopMode",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFRunLoopContainsSource",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "Boolean",
+    "kind": "u32",
+    "size": 1
+   },
+   "params": [
+    {
+     "type": "CFRunLoopRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFRunLoopSourceRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFRunLoopMode",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFRunLoopGetCurrent",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFRunLoopRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFRunLoopRemoveSource",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "CFRunLoopRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFRunLoopSourceRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFRunLoopMode",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFShow",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "CFTypeRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFStringCompare",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFComparisonResult",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFStringRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFStringRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFStringCompareFlags",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFStringCreateWithFormat",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFStringRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFAllocatorRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFDictionaryRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFStringRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": true,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFStringFind",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFRange",
+    "kind": "struct",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "CFStringRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFStringRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFStringCompareFlags",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFStringGetCString",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "Boolean",
+    "kind": "u32",
+    "size": 1
+   },
+   "params": [
+    {
+     "type": "CFStringRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFIndex",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFStringEncoding",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFStringGetCharacterAtIndex",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "UniChar",
+    "kind": "u32",
+    "size": 2
+   },
+   "params": [
+    {
+     "type": "CFStringRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFIndex",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFStringGetLength",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFIndex",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFStringRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFStringGetSystemEncoding",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFStringEncoding",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFURLCopyFileSystemPath",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFStringRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFURLRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFURLPathStyle",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFURLCreateCopyAppendingPathComponent",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFURLRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFAllocatorRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFURLRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFStringRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "Boolean",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFURLCreateDataAndPropertiesFromResource",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "Boolean",
+    "kind": "u32",
+    "size": 1
+   },
+   "params": [
+    {
+     "type": "CFAllocatorRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFURLRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFDataRef *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFDictionaryRef *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFArrayRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "SInt32 *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFURLGetFileSystemRepresentation",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "Boolean",
+    "kind": "u32",
+    "size": 1
+   },
+   "params": [
+    {
+     "type": "CFURLRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "Boolean",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt8 *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFIndex",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFUUIDGetConstantUUIDWithBytes",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFUUIDRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFAllocatorRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt8",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt8",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt8",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt8",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt8",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt8",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt8",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt8",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt8",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt8",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt8",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt8",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt8",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt8",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt8",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt8",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CFUUIDGetUUIDBytes",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "resolved",
+   "ret": {
+    "type": "CFUUIDBytes",
+    "kind": "struct",
+    "size": 16
+   },
+   "params": [
+    {
+     "type": "CFUUIDRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "x87 long double not modeled"
+  },
+  {
+   "name": "_CGAcquireDisplayFadeReservation",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "CGError",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGDisplayReservationInterval",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CGDisplayFadeReservationToken *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGDisplayCapture",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "CGError",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGDirectDisplayID",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGDisplayCopyAllDisplayModes",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "CFArrayRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGDirectDisplayID",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFDictionaryRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGDisplayCopyDisplayMode",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "CGDisplayModeRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGDirectDisplayID",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGDisplayFade",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "CGError",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGDisplayFadeReservationToken",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CGDisplayFadeInterval",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CGDisplayBlendFraction",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CGDisplayBlendFraction",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "float",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "float",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "float",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "boolean_t",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGDisplayHideCursor",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "CGError",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGDirectDisplayID",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGDisplayIDToOpenGLDisplayMask",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "CGOpenGLDisplayMask",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGDirectDisplayID",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGDisplayIOServicePort",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "io_service_t",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGDirectDisplayID",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGDisplayIsCaptured",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "boolean_t",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGDirectDisplayID",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGDisplayModeCopyPixelEncoding",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "CFStringRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGDisplayModeRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGDisplayModeGetHeight",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "size_t",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGDisplayModeRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGDisplayModeGetRefreshRate",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "double",
+    "kind": "f64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "CGDisplayModeRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGDisplayModeGetWidth",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "size_t",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGDisplayModeRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGDisplayModeRelease",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "CGDisplayModeRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGDisplayRelease",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "CGError",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGDirectDisplayID",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGDisplaySetDisplayMode",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "CGError",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGDirectDisplayID",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CGDisplayModeRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFDictionaryRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGDisplayShowCursor",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "CGError",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGDirectDisplayID",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGLChoosePixelFormat",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "CGLError",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGLPixelFormatAttribute *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CGLPixelFormatObj *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLint *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGLCreateContext",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "CGLError",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGLPixelFormatObj",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CGLContextObj",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CGLContextObj *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGLDescribeRenderer",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "CGLError",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGLRendererInfoObj",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLint",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CGLRendererProperty",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLint *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGLDestroyContext",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "CGLError",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGLContextObj",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGLDestroyPixelFormat",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "CGLError",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGLPixelFormatObj",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGLFlushDrawable",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "CGLError",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGLContextObj",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGLGetCurrentContext",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "CGLContextObj",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGLLockContext",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "CGLError",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGLContextObj",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGLQueryRendererInfo",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "CGLError",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "GLuint",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CGLRendererInfoObj *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLint *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGLSetCurrentContext",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "CGLError",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGLContextObj",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGLSetFullScreen",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "CGLError",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGLContextObj",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGLSetParameter",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "CGLError",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGLContextObj",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CGLContextParameter",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLint *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGLUnlockContext",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "CGLError",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGLContextObj",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGMainDisplayID",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "CGDirectDisplayID",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGReleaseDisplayFadeReservation",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "CGError",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGDisplayFadeReservationToken",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGShieldingWindowLevel",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "CGWindowLevel",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_CGWindowLevelForKey",
+   "dylib": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+   "status": "resolved",
+   "ret": {
+    "type": "CGWindowLevel",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CGWindowLevelKey",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_DisposeAUGraph",
+   "dylib": "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox",
+   "status": "resolved",
+   "ret": {
+    "type": "OSStatus",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "AUGraph",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_IOCreatePlugInInterfaceForService",
+   "dylib": "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+   "status": "resolved",
+   "ret": {
+    "type": "kern_return_t",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "io_service_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFUUIDRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFUUIDRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "IOCFPlugInInterface ***",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "SInt32 *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_IODestroyPlugInInterface",
+   "dylib": "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+   "status": "resolved",
+   "ret": {
+    "type": "kern_return_t",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "IOCFPlugInInterface **",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_IOIteratorNext",
+   "dylib": "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+   "status": "resolved",
+   "ret": {
+    "type": "io_object_t",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "io_iterator_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_IOMasterPort",
+   "dylib": "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+   "status": "resolved",
+   "ret": {
+    "type": "kern_return_t",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "mach_port_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "mach_port_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_IONotificationPortCreate",
+   "dylib": "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+   "status": "resolved",
+   "ret": {
+    "type": "IONotificationPortRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "mach_port_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_IONotificationPortGetRunLoopSource",
+   "dylib": "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+   "status": "resolved",
+   "ret": {
+    "type": "CFRunLoopSourceRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "IONotificationPortRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_IOObjectRelease",
+   "dylib": "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+   "status": "resolved",
+   "ret": {
+    "type": "kern_return_t",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "io_object_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_IOPMAssertionCreateWithName",
+   "dylib": "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+   "status": "resolved",
+   "ret": {
+    "type": "IOReturn",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "CFStringRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "IOPMAssertionLevel",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFStringRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "IOPMAssertionID *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_IORegistryEntryCreateCFProperties",
+   "dylib": "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+   "status": "resolved",
+   "ret": {
+    "type": "kern_return_t",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "io_registry_entry_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFMutableDictionaryRef *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFAllocatorRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "IOOptionBits",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_IORegistryEntryGetParentEntry",
+   "dylib": "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+   "status": "resolved",
+   "ret": {
+    "type": "kern_return_t",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "io_registry_entry_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "io_registry_entry_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_IORegistryEntrySearchCFProperty",
+   "dylib": "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+   "status": "resolved",
+   "ret": {
+    "type": "CFTypeRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "io_registry_entry_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFStringRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFAllocatorRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "IOOptionBits",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_IOServiceAddInterestNotification",
+   "dylib": "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+   "status": "resolved",
+   "ret": {
+    "type": "kern_return_t",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "IONotificationPortRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "io_service_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "IOServiceInterestCallback",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "io_object_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_IOServiceAddMatchingNotification",
+   "dylib": "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+   "status": "resolved",
+   "ret": {
+    "type": "kern_return_t",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "IONotificationPortRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFDictionaryRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "IOServiceMatchingCallback",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "io_iterator_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_IOServiceMatching",
+   "dylib": "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+   "status": "resolved",
+   "ret": {
+    "type": "CFMutableDictionaryRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_LMGetKbdType",
+   "dylib": "/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon",
+   "status": "resolved",
+   "ret": {
+    "type": "UInt8",
+    "kind": "u32",
+    "size": 1
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_NSApp",
+   "dylib": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+   "status": "manual",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "data symbol: NSApplication *"
+  },
+  {
+   "name": "_NSDefaultRunLoopMode",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "manual",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "data symbol: NSString *"
+  },
+  {
+   "name": "_NSHomeDirectory",
+   "dylib": "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation",
+   "status": "manual",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "NSString *NSHomeDirectory(void)"
+  },
+  {
+   "name": "_NSLog",
+   "dylib": "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation",
+   "status": "manual",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": true,
+   "abi_source": "i386",
+   "note": "NSLog(NSString *format, ...)"
+  },
+  {
+   "name": "_NSRunAlertPanel",
+   "dylib": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+   "status": "manual",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": true,
+   "abi_source": "i386",
+   "note": "title, msg, defaultButton, alternateButton, otherButton, ..."
+  },
+  {
+   "name": "_NSViewGlobalFrameDidChangeNotification",
+   "dylib": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+   "status": "manual",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "data symbol: NSString *"
+  },
+  {
+   "name": "_NSWindowWillCloseNotification",
+   "dylib": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+   "status": "manual",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "data symbol: NSString *"
+  },
+  {
+   "name": "_NewAUGraph",
+   "dylib": "/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox",
+   "status": "resolved",
+   "ret": {
+    "type": "OSStatus",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "AUGraph *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_OSAtomicAdd32Barrier",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int32_t",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "int32_t",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int32_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_OSAtomicCompareAndSwap32Barrier",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "bool",
+    "kind": "u32",
+    "size": 1
+   },
+   "params": [
+    {
+     "type": "int32_t",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int32_t",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int32_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_OSAtomicCompareAndSwapPtrBarrier",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "bool",
+    "kind": "u32",
+    "size": 1
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void * *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_SteamAPI_Init",
+   "dylib": "@executable_path/../Frameworks/Vapor.framework/Versions/A/Vapor",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_SteamAPI_RegisterCallback",
+   "dylib": "@executable_path/../Frameworks/Vapor.framework/Versions/A/Vapor",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_SteamAPI_RestartAppIfNecessary",
+   "dylib": "@executable_path/../Frameworks/Vapor.framework/Versions/A/Vapor",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_SteamAPI_RunCallbacks",
+   "dylib": "@executable_path/../Frameworks/Vapor.framework/Versions/A/Vapor",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_SteamAPI_UnregisterCallback",
+   "dylib": "@executable_path/../Frameworks/Vapor.framework/Versions/A/Vapor",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_SteamApps",
+   "dylib": "@executable_path/../Frameworks/Vapor.framework/Versions/A/Vapor",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_SteamRemoteStorage",
+   "dylib": "@executable_path/../Frameworks/Vapor.framework/Versions/A/Vapor",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_SteamUser",
+   "dylib": "@executable_path/../Frameworks/Vapor.framework/Versions/A/Vapor",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_SteamUserStats",
+   "dylib": "@executable_path/../Frameworks/Vapor.framework/Versions/A/Vapor",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_SteamUtils",
+   "dylib": "@executable_path/../Frameworks/Vapor.framework/Versions/A/Vapor",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_TISCopyCurrentKeyboardInputSource",
+   "dylib": "/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon",
+   "status": "resolved",
+   "ret": {
+    "type": "TISInputSourceRef",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_TISGetInputSourceProperty",
+   "dylib": "/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon",
+   "status": "resolved",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "TISInputSourceRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "CFStringRef",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_UCKeyTranslate",
+   "dylib": "/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices",
+   "status": "resolved",
+   "ret": {
+    "type": "OSStatus",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "UCKeyboardLayout *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt16",
+     "kind": "u32",
+     "size": 2,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt16",
+     "kind": "u32",
+     "size": 2,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt32",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt32",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "OptionBits",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "UInt32 *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "UniCharCount",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "UniCharCount *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "UniChar *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "__DefaultRuneLocale",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "data symbol of type _RuneLocale"
+  },
+  {
+   "name": "__Unwind_Resume",
+   "dylib": "/usr/lib/libgcc_s.1.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "exception unwinder entry"
+  },
+  {
+   "name": "__ZNSt8ios_base4InitC1Ev",
+   "dylib": "/usr/lib/libstdc++.6.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "std::ios_base::Init::Init(); this"
+  },
+  {
+   "name": "__ZNSt8ios_base4InitD1Ev",
+   "dylib": "/usr/lib/libstdc++.6.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "std::ios_base::Init::~Init(); this"
+  },
+  {
+   "name": "__ZdaPv",
+   "dylib": "/usr/lib/libstdc++.6.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "operator delete[](void*)"
+  },
+  {
+   "name": "__ZdlPv",
+   "dylib": "/usr/lib/libstdc++.6.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "operator delete(void*)"
+  },
+  {
+   "name": "__Znam",
+   "dylib": "/usr/lib/libstdc++.6.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "unsigned int",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "operator new[](unsigned long)"
+  },
+  {
+   "name": "__Znwm",
+   "dylib": "/usr/lib/libstdc++.6.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "unsigned int",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "operator new(unsigned long); size_t is 4 bytes"
+  },
+  {
+   "name": "___CFConstantStringClassReference",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "data symbol: class object for constant CFStrings; not in SDK headers"
+  },
+  {
+   "name": "___cxa_atexit",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "C++ ABI; func, arg, dso_handle"
+  },
+  {
+   "name": "___cxa_guard_abort",
+   "dylib": "/usr/lib/libstdc++.6.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "C++ static-init guard"
+  },
+  {
+   "name": "___cxa_guard_acquire",
+   "dylib": "/usr/lib/libstdc++.6.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "C++ static-init guard"
+  },
+  {
+   "name": "___cxa_guard_release",
+   "dylib": "/usr/lib/libstdc++.6.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "C++ static-init guard"
+  },
+  {
+   "name": "___cxa_pure_virtual",
+   "dylib": "/usr/lib/libstdc++.6.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "C++ runtime; aborts"
+  },
+  {
+   "name": "___divdi3",
+   "dylib": "/usr/lib/libgcc_s.1.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "long long",
+    "kind": "i64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "long long",
+     "kind": "i64",
+     "size": 8,
+     "stack_size": 8
+    },
+    {
+     "type": "long long",
+     "kind": "i64",
+     "size": 8,
+     "stack_size": 8
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "libgcc 64-bit signed divide"
+  },
+  {
+   "name": "___error",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "___fixunsdfdi",
+   "dylib": "/usr/lib/libgcc_s.1.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "unsigned long long",
+    "kind": "u64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "double",
+     "kind": "f64",
+     "size": 8,
+     "stack_size": 8
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "libgcc double to u64"
+  },
+  {
+   "name": "___fixunssfdi",
+   "dylib": "/usr/lib/libgcc_s.1.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "unsigned long long",
+    "kind": "u64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "float",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "libgcc float to u64"
+  },
+  {
+   "name": "___gxx_personality_v0",
+   "dylib": "/usr/lib/libstdc++.6.dylib",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "C++ personality routine; called by the unwinder, not by guest code"
+  },
+  {
+   "name": "___moddi3",
+   "dylib": "/usr/lib/libgcc_s.1.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "long long",
+    "kind": "i64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "long long",
+     "kind": "i64",
+     "size": 8,
+     "stack_size": 8
+    },
+    {
+     "type": "long long",
+     "kind": "i64",
+     "size": 8,
+     "stack_size": 8
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "libgcc 64-bit signed remainder"
+  },
+  {
+   "name": "___stack_chk_fail",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "stack protector failure; aborts"
+  },
+  {
+   "name": "___stack_chk_guard",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "unsigned int",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "data symbol: stack protector canary"
+  },
+  {
+   "name": "___stderrp",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "data symbol of type FILE *"
+  },
+  {
+   "name": "___stdinp",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "data symbol of type FILE *"
+  },
+  {
+   "name": "___stdoutp",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "data symbol of type FILE *"
+  },
+  {
+   "name": "___tolower",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "__darwin_ct_rune_t",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "__darwin_ct_rune_t",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "___toupper",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "__darwin_ct_rune_t",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "__darwin_ct_rune_t",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "___udivdi3",
+   "dylib": "/usr/lib/libgcc_s.1.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "unsigned long long",
+    "kind": "u64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "unsigned long long",
+     "kind": "u64",
+     "size": 8,
+     "stack_size": 8
+    },
+    {
+     "type": "unsigned long long",
+     "kind": "u64",
+     "size": 8,
+     "stack_size": 8
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "libgcc 64-bit unsigned divide"
+  },
+  {
+   "name": "___umoddi3",
+   "dylib": "/usr/lib/libgcc_s.1.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "unsigned long long",
+    "kind": "u64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "unsigned long long",
+     "kind": "u64",
+     "size": 8,
+     "stack_size": 8
+    },
+    {
+     "type": "unsigned long long",
+     "kind": "u64",
+     "size": 8,
+     "stack_size": 8
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "libgcc 64-bit unsigned remainder"
+  },
+  {
+   "name": "__exit",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_atan",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "double",
+    "kind": "f64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "double",
+     "kind": "f64",
+     "size": 8,
+     "stack_size": 8
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_atanf",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "float",
+    "kind": "f32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "float",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_atof",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "double",
+    "kind": "f64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_atoi",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_bootstrap_port",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "data symbol of type unsigned int"
+  },
+  {
+   "name": "_ceil",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "double",
+    "kind": "f64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "double",
+     "kind": "f64",
+     "size": 8,
+     "stack_size": 8
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_ceilf",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "float",
+    "kind": "f32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "float",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_cgCreateContext",
+   "dylib": "@executable_path/../Frameworks/Cg.framework/Versions/A/Cg",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_cgCreateProgram",
+   "dylib": "@executable_path/../Frameworks/Cg.framework/Versions/A/Cg",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_cgDestroyParameter",
+   "dylib": "@executable_path/../Frameworks/Cg.framework/Versions/A/Cg",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_cgDestroyProgram",
+   "dylib": "@executable_path/../Frameworks/Cg.framework/Versions/A/Cg",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_cgGetArrayParameter",
+   "dylib": "@executable_path/../Frameworks/Cg.framework/Versions/A/Cg",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_cgGetErrorString",
+   "dylib": "@executable_path/../Frameworks/Cg.framework/Versions/A/Cg",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_cgGetFirstStructParameter",
+   "dylib": "@executable_path/../Frameworks/Cg.framework/Versions/A/Cg",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_cgGetLastListing",
+   "dylib": "@executable_path/../Frameworks/Cg.framework/Versions/A/Cg",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_cgGetNamedParameter",
+   "dylib": "@executable_path/../Frameworks/Cg.framework/Versions/A/Cg",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_cgGetParameterClass",
+   "dylib": "@executable_path/../Frameworks/Cg.framework/Versions/A/Cg",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_cgGetParameterDirection",
+   "dylib": "@executable_path/../Frameworks/Cg.framework/Versions/A/Cg",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_cgGetParameterName",
+   "dylib": "@executable_path/../Frameworks/Cg.framework/Versions/A/Cg",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_cgGetParameterResource",
+   "dylib": "@executable_path/../Frameworks/Cg.framework/Versions/A/Cg",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_cgGetParameterResourceIndex",
+   "dylib": "@executable_path/../Frameworks/Cg.framework/Versions/A/Cg",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_cgGetParameterSemantic",
+   "dylib": "@executable_path/../Frameworks/Cg.framework/Versions/A/Cg",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_cgGetProgramString",
+   "dylib": "@executable_path/../Frameworks/Cg.framework/Versions/A/Cg",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_cgGetString",
+   "dylib": "@executable_path/../Frameworks/Cg.framework/Versions/A/Cg",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_cgIsParameter",
+   "dylib": "@executable_path/../Frameworks/Cg.framework/Versions/A/Cg",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_cgIsParameterReferenced",
+   "dylib": "@executable_path/../Frameworks/Cg.framework/Versions/A/Cg",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_cgIsParameterUsed",
+   "dylib": "@executable_path/../Frameworks/Cg.framework/Versions/A/Cg",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "vendor library; signature not extracted, fill in by hand"
+  },
+  {
+   "name": "_chdir",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_clearerr",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "FILE *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_close$UNIX2003",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_closedir$UNIX2003",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "DIR *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_connect$UNIX2003",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "struct sockaddr *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "socklen_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_cos",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "double",
+    "kind": "f64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "double",
+     "kind": "f64",
+     "size": 8,
+     "stack_size": 8
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_dlopen",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_dlsym",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_exit",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_exp",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "double",
+    "kind": "f64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "double",
+     "kind": "f64",
+     "size": 8,
+     "stack_size": 8
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_expf",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "float",
+    "kind": "f32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "float",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_fclose",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "FILE *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_fcntl$UNIX2003",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": true,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_ferror",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "FILE *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_fileno",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "FILE *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_floor",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "double",
+    "kind": "f64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "double",
+     "kind": "f64",
+     "size": 8,
+     "stack_size": 8
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_fmax",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "double",
+    "kind": "f64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "double",
+     "kind": "f64",
+     "size": 8,
+     "stack_size": 8
+    },
+    {
+     "type": "double",
+     "kind": "f64",
+     "size": 8,
+     "stack_size": 8
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_fmod",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "double",
+    "kind": "f64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "double",
+     "kind": "f64",
+     "size": 8,
+     "stack_size": 8
+    },
+    {
+     "type": "double",
+     "kind": "f64",
+     "size": 8,
+     "stack_size": 8
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_fopen",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "FILE *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_fprintf",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "FILE *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": true,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_fread",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "unsigned long",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "unsigned long",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "unsigned long",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "FILE *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_free",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_fseek",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "FILE *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "long",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_ftell",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "long",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "FILE *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_fwrite$UNIX2003",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "unsigned long",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "unsigned long",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "unsigned long",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "FILE *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_getc",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "FILE *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_geteuid",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "uid_t",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_gethostbyname",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "struct hostent *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_getpwuid",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "struct passwd *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "uid_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_gettimeofday",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "struct timeval *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glAlphaFunc",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLclampf",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glBegin",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glBindTexture",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLuint",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glBlendFunc",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glClear",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLbitfield",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glClearColor",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLclampf",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLclampf",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLclampf",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLclampf",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glClearDepth",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLclampd",
+     "kind": "f64",
+     "size": 8,
+     "stack_size": 8
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glClearStencil",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLint",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glColor4f",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLfloat",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLfloat",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLfloat",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLfloat",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glColorMask",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLboolean",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "GLboolean",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "GLboolean",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    },
+    {
+     "type": "GLboolean",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glCullFace",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glDeleteTextures",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLsizei",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLuint *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glDepthFunc",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glDepthMask",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLboolean",
+     "kind": "u32",
+     "size": 1,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glDisable",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glDrawArrays",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLint",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLsizei",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glDrawBuffer",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glEnable",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glEnd",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glFinish",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glFlush",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glFrontFace",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glGenTextures",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLsizei",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLuint *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glGetFloatv",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLfloat *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glGetIntegerv",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLint *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glGetString",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "GLubyte *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glLoadIdentity",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glMatrixMode",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glPolygonOffset",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLfloat",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLfloat",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glPopAttrib",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glPushAttrib",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLbitfield",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glReadBuffer",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glScissor",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLint",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLint",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLsizei",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLsizei",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glStencilFunc",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLint",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLuint",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glStencilMask",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLuint",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glStencilOp",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glTexCoord2fv",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLfloat *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glTexEnvf",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLfloat",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glTexImage2D",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLint",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLint",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLsizei",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLsizei",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLint",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLvoid *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glTexParameterf",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLfloat",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glTexParameterfv",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLfloat *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glTexParameteri",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLenum",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLint",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glVertex3f",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLfloat",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLfloat",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLfloat",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_glViewport",
+   "dylib": "/System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "GLint",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLint",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLsizei",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "GLsizei",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_gmtime_r",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "struct tm *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "time_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "struct tm *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_inet_addr",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "in_addr_t",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_kCFAllocatorDefault",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "data symbol of type struct __CFAllocator *"
+  },
+  {
+   "name": "_kCFCopyStringDictionaryKeyCallBacks",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "data symbol of type CFDictionaryKeyCallBacks"
+  },
+  {
+   "name": "_kCFLocaleCountryCode",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "data symbol of type struct __CFString *"
+  },
+  {
+   "name": "_kCFLocaleLanguageCode",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "data symbol of type struct __CFString *"
+  },
+  {
+   "name": "_kCFRunLoopDefaultMode",
+   "dylib": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "data symbol of type struct __CFString *"
+  },
+  {
+   "name": "_kTISPropertyInputSourceLanguages",
+   "dylib": "/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "data symbol of type struct __CFString *"
+  },
+  {
+   "name": "_kTISPropertyUnicodeKeyLayoutData",
+   "dylib": "/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "data symbol of type struct __CFString *"
+  },
+  {
+   "name": "_ldexp",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "double",
+    "kind": "f64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "double",
+     "kind": "f64",
+     "size": 8,
+     "stack_size": 8
+    },
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_localtime_r",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "struct tm *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "time_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "struct tm *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_log",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "double",
+    "kind": "f64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "double",
+     "kind": "f64",
+     "size": 8,
+     "stack_size": 8
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_log10",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "double",
+    "kind": "f64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "double",
+     "kind": "f64",
+     "size": 8,
+     "stack_size": 8
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_logf",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "float",
+    "kind": "f32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "float",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_mach_absolute_time",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "uint64_t",
+    "kind": "u64",
+    "size": 8
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_mach_task_self_",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "manual",
+   "ret": null,
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": "data symbol of type unsigned int"
+  },
+  {
+   "name": "_mach_timebase_info",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "kern_return_t",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "mach_timebase_info_t",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_malloc",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "unsigned long",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_memchr",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "unsigned long",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_memcmp",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "unsigned long",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_memcpy",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "unsigned long",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_memmove",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "unsigned long",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_memset",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "unsigned long",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_memset_pattern16",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "size_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_mkdir",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "mode_t",
+     "kind": "u32",
+     "size": 2,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_objc_msgSend",
+   "dylib": "/usr/lib/libobjc.A.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": true,
+   "abi_source": "i386",
+   "note": "id objc_msgSend(id, SEL, ...); dispatch by hand"
+  },
+  {
+   "name": "_objc_msgSendSuper",
+   "dylib": "/usr/lib/libobjc.A.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": true,
+   "abi_source": "i386",
+   "note": "id objc_msgSendSuper(struct objc_super*, SEL, ...)"
+  },
+  {
+   "name": "_objc_msgSend_fpret",
+   "dylib": "/usr/lib/libobjc.A.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "double",
+    "kind": "f64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": true,
+   "abi_source": "i386",
+   "note": "returns floating point in st(0)"
+  },
+  {
+   "name": "_objc_msgSend_stret",
+   "dylib": "/usr/lib/libobjc.A.dylib",
+   "status": "manual",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": true,
+   "abi_source": "i386",
+   "note": "first arg is the struct return slot"
+  },
+  {
+   "name": "_opendir$UNIX2003",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "DIR *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pow",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "double",
+    "kind": "f64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "double",
+     "kind": "f64",
+     "size": 8,
+     "stack_size": 8
+    },
+    {
+     "type": "double",
+     "kind": "f64",
+     "size": 8,
+     "stack_size": 8
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_printf",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": true,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_attr_destroy",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_attr_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_attr_init",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_attr_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_attr_setstacksize",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_attr_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "size_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_cond_broadcast",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_cond_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_cond_destroy",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_cond_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_cond_init$UNIX2003",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_cond_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "pthread_condattr_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_cond_signal",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_cond_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_cond_wait$UNIX2003",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_cond_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "pthread_mutex_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_create",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "pthread_attr_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void * (* )(void * )",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_getspecific",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "void *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_key_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_key_create",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_key_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void (* )(void * )",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_mutex_destroy",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_mutex_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_mutex_init",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_mutex_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "pthread_mutexattr_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_mutex_lock",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_mutex_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_mutex_trylock",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_mutex_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_mutex_unlock",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_mutex_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_mutexattr_destroy$UNIX2003",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_mutexattr_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_mutexattr_init",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_mutexattr_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_mutexattr_settype",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_mutexattr_t *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_setschedparam",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_t",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "struct sched_param *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_pthread_setspecific",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "pthread_key_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_qsort",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "size_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "size_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int (* )( void *, void *)",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_rand",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_readdir",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "struct dirent *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "DIR *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_recv$UNIX2003",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "ssize_t",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "size_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_remove",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_rename",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_rint",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "double",
+    "kind": "f64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "double",
+     "kind": "f64",
+     "size": 8,
+     "stack_size": 8
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_rintf",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "float",
+    "kind": "f32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "float",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_rmdir",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_sched_get_priority_max",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_sched_yield",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_send$UNIX2003",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "ssize_t",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "size_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_setpriority",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "id_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_setsockopt",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "void *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "socklen_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_shutdown",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_sin",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "double",
+    "kind": "f64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "double",
+     "kind": "f64",
+     "size": 8,
+     "stack_size": 8
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_snprintf",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "unsigned long",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": true,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_socket",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_sprintf",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": true,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_srand",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "void",
+    "kind": "void",
+    "size": 0
+   },
+   "params": [
+    {
+     "type": "unsigned int",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_sscanf",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": true,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_stat",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "struct stat *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_strcat",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "char *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_strchr",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "char *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_strcmp",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_strcpy",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "char *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_strdup",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "char *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_strlen",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "unsigned long",
+    "kind": "u32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_strncmp",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "unsigned long",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_strncpy",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "char *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "unsigned long",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_strrchr",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "char *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "int",
+     "kind": "i32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_strstr",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "char *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_strtok",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "char *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_strtok_r",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "char *",
+    "kind": "ptr",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char **",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_tan",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "double",
+    "kind": "f64",
+    "size": 8
+   },
+   "params": [
+    {
+     "type": "double",
+     "kind": "f64",
+     "size": 8,
+     "stack_size": 8
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_tanf",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "float",
+    "kind": "f32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "float",
+     "kind": "f32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_task_policy_set",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "kern_return_t",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "task_policy_set_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "task_policy_flavor_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "task_policy_t",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "mach_msg_type_number_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_timegm",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "time_t",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "struct tm *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_usleep$UNIX2003",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "useconds_t",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_utimes",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "struct timeval *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_vsnprintf",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "unsigned long",
+     "kind": "u32",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "__builtin_va_list",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  },
+  {
+   "name": "_vsprintf",
+   "dylib": "/usr/lib/libSystem.B.dylib",
+   "status": "resolved",
+   "ret": {
+    "type": "int",
+    "kind": "i32",
+    "size": 4
+   },
+   "params": [
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "char *",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    },
+    {
+     "type": "__builtin_va_list",
+     "kind": "ptr",
+     "size": 4,
+     "stack_size": 4
+    }
+   ],
+   "variadic": false,
+   "abi_source": "i386",
+   "note": ""
+  }
+ ]
+}

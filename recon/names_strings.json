@@ -1,0 +1,147 @@
+{
+ "0x156090": {
+  "name": "MechGadgetSimplePropInstanceHelper",
+  "confidence": "class",
+  "evidence": "0x116DDFD"
+ },
+ "0x1AD230": {
+  "name": "NuFixupManager",
+  "confidence": "class",
+  "evidence": "0x1170749"
+ },
+ "0x1B3B70": {
+  "name": "EventSusbcriber",
+  "confidence": "class",
+  "evidence": "0x1170883"
+ },
+ "0x1B4150": {
+  "name": "IEventListener",
+  "confidence": "class",
+  "evidence": "0x11708AA"
+ },
+ "0x1B4FF0": {
+  "name": "EventSusbcriber",
+  "confidence": "class",
+  "evidence": "0x1170883"
+ },
+ "0x1C52D0": {
+  "name": "NuProfiler",
+  "confidence": "class",
+  "evidence": "0x117095B"
+ },
+ "0x1FFD70": {
+  "name": "NuFileBase",
+  "confidence": "class",
+  "evidence": "0x11724DC"
+ },
+ "0x30ACB0": {
+  "name": "NuShaderManagerGen::WorkerThreadFunc",
+  "confidence": "string",
+  "evidence": "0x11815BE"
+ },
+ "0x37D120": {
+  "name": "NuScene",
+  "confidence": "class",
+  "evidence": "0x1192E7D"
+ },
+ "0x3E3CB0": {
+  "name": "NuUbershaderBytecodeCache::WorkerThreadFunc",
+  "confidence": "string",
+  "evidence": "0x119AE2E"
+ },
+ "0x400360": {
+  "name": "CharInst",
+  "confidence": "class",
+  "evidence": "0x119DEC7"
+ },
+ "0x403D50": {
+  "name": "CharDef",
+  "confidence": "class",
+  "evidence": "0x119E825"
+ },
+ "0x428640": {
+  "name": "CharDef",
+  "confidence": "class",
+  "evidence": "0x119E793"
+ },
+ "0x42A1F0": {
+  "name": "CharDef",
+  "confidence": "class",
+  "evidence": "0x119E7F6"
+ },
+ "0x42B230": {
+  "name": "CharDef",
+  "confidence": "class",
+  "evidence": "0x119E7C5"
+ },
+ "0x42B390": {
+  "name": "CharDef",
+  "confidence": "class",
+  "evidence": "0x119E7DE"
+ },
+ "0x42B5A0": {
+  "name": "CharDef",
+  "confidence": "class",
+  "evidence": "0x119E811"
+ },
+ "0x612860": {
+  "name": "SoundManager::CacheSamplesToHDD",
+  "confidence": "string",
+  "evidence": "0x11A5300"
+ },
+ "0x619DC0": {
+  "name": "ConversationManager::PostClearInternal",
+  "confidence": "string",
+  "evidence": "0x11A55CC"
+ },
+ "0x6601A0": {
+  "name": "AIMemPool::Init",
+  "confidence": "string",
+  "evidence": "0x11A617A"
+ },
+ "0x70F770": {
+  "name": "StreamingLevel::Activate",
+  "confidence": "string",
+  "evidence": "0x11A9FDB"
+ },
+ "0x812F40": {
+  "name": "MechKrawliePedestrianInteractWithPedestrianContext::CheckForOtherKrawlieHook",
+  "confidence": "string",
+  "evidence": "0x11AD40F"
+ },
+ "0x9A2EF0": {
+  "name": "CamRailMovementAddOn::ProcessState_MovingCharacter",
+  "confidence": "string",
+  "evidence": "0x11B2190"
+ },
+ "0xA10970": {
+  "name": "FadeOutWhenObscuringAddOn::FadeOutRequest",
+  "confidence": "string",
+  "evidence": "0x11B1C93"
+ },
+ "0xE14CD0": {
+  "name": "LegoUsageStats",
+  "confidence": "class",
+  "evidence": "0x11C00FE"
+ },
+ "0xE8BD70": {
+  "name": "LegoCutscenes::WaitToDumpAllResources",
+  "confidence": "string",
+  "evidence": "0x11C2B21"
+ },
+ "0xF37850": {
+  "name": "CustomiserDefaultInventoryItem",
+  "confidence": "class",
+  "evidence": "0x11C739C"
+ },
+ "0x10A7620": {
+  "name": "StatusSelection::GetGameName",
+  "confidence": "string",
+  "evidence": "0x11D71A0"
+ },
+ "0x10C4820": {
+  "name": "DynoMemory",
+  "confidence": "class",
+  "evidence": "0x11D799D"
+ }
+}
