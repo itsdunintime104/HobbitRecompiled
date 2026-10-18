@@ -14,6 +14,7 @@
 #include <OpenGL/OpenGL.h>
 #include <OpenGL/gl.h>
 #include <SDL.h>
+#include <pthread.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,6 +25,7 @@
 #include "frontend_hud.h"
 #include "frontend_sdl.h"
 #include "guest_call.h"
+#include "guest_heap.h"
 #include "guest_mem.h"
 #include "recomp_types.h"
 #include "thunk_cf.h"
@@ -737,12 +739,58 @@ static const char *fe_guest_cstr(uint32_t a)
     return (const char *)guest_ptr(a);
 }
 
+/* Objects the fake pool owns until it drains: CFStrings made by
+ * +stringWithCharacters:length: and C-string buffers made by -UTF8String. */
+static struct fe_pooled { CFTypeRef obj; uint32_t buf; } *fe_pool;
+static size_t fe_pool_n, fe_pool_cap;
+static pthread_mutex_t fe_pool_lock = PTHREAD_MUTEX_INITIALIZER;
+
+static void fe_pool_add(CFTypeRef obj, uint32_t buf)
+{
+    pthread_mutex_lock(&fe_pool_lock);
+    if (fe_pool_n == fe_pool_cap) {
+        size_t cap = fe_pool_cap ? fe_pool_cap * 2 : 64;
+        struct fe_pooled *p = realloc(fe_pool, cap * sizeof *p);
+        if (p == NULL) {
+            pthread_mutex_unlock(&fe_pool_lock);
+            fprintf(stderr, "objc_msgSend: out of memory for the autorelease list\n");
+            abort();
+        }
+        fe_pool = p;
+        fe_pool_cap = cap;
+    }
+    fe_pool[fe_pool_n].obj = obj;
+    fe_pool[fe_pool_n].buf = buf;
+    fe_pool_n++;
+    pthread_mutex_unlock(&fe_pool_lock);
+}
+
+static void fe_pool_drain(void)
+{
+    static int logged;
+    pthread_mutex_lock(&fe_pool_lock);
+    if (!logged && fe_pool_n > 0) {
+        logged = 1;
+        fprintf(stderr, "objc_msgSend: first autorelease pool drain frees %zu objects\n", fe_pool_n);
+    }
+    for (size_t i = 0; i < fe_pool_n; i++) {
+        if (fe_pool[i].obj != NULL)
+            cf_release(fe_pool[i].obj);
+        if (fe_pool[i].buf != 0)
+            guest_free(fe_pool[i].buf);
+    }
+    fe_pool_n = 0;
+    pthread_mutex_unlock(&fe_pool_lock);
+}
+
 /* Unreplaced code that still sends messages. The kept keyboard-layout
- * helpers 3dc1c0, 3dc730 and 3dc8b0 only wrap their work in an
- * NSAutoreleasePool (alloc, init, drain); with no Objective-C objects in the
- * process that pool is a no-op. Any other message logs its selector and
- * aborts. Before the runtime fixes them up, class refs and selector refs
- * hold pointers to the name strings. */
+ * helpers 3dc1c0, 3dc730 and 3dc8b0 wrap their work in an NSAutoreleasePool
+ * (alloc, init, drain); with no Objective-C objects in the process that pool
+ * is a fake token. 3dc1c0 also sends +[NSString stringWithCharacters:length:]
+ * and -[NSString UTF8String]. The CFString and the C-string buffer they return
+ * live until the pool drains. Any other message logs its selector and aborts.
+ * Before the runtime fixes them up, class refs and selector refs hold
+ * pointers to the name strings. */
 void imp__objc_msgSend(void)
 {
     uint32_t self = ARG(0);
@@ -751,9 +799,35 @@ void imp__objc_msgSend(void)
         RET(FE_GL_TOKEN + 0x100u);
         return;
     }
-    if (self == FE_GL_TOKEN + 0x100u && (!strcmp(sel, "init") || !strcmp(sel, "drain"))) {
+    if (self == FE_GL_TOKEN + 0x100u && !strcmp(sel, "init")) {
         RET(self);
         return;
+    }
+    if (self == FE_GL_TOKEN + 0x100u && !strcmp(sel, "drain")) {
+        fe_pool_drain();
+        RET(self);
+        return;
+    }
+    if (!strcmp(sel, "stringWithCharacters:length:") && !strcmp(fe_guest_cstr(self), "NSString")) {
+        CFStringRef s = CFStringCreateWithCharacters(
+            NULL, ARG(3) ? (const UniChar *)guest_ptr(ARG(2)) : NULL, (CFIndex)ARG(3));
+        if (s != NULL)
+            fe_pool_add(s, 0);
+        RET(cf_to_guest(s));
+        return;
+    }
+    if (!strcmp(sel, "UTF8String")) {
+        CFTypeRef o = cf_from_guest(self);
+        if (o != NULL && CFGetTypeID(o) == CFStringGetTypeID()) {
+            CFStringRef s = (CFStringRef)o;
+            CFIndex size = CFStringGetMaximumSizeForEncoding(CFStringGetLength(s),
+                                                             kCFStringEncodingUTF8) + 1;
+            uint32_t buf = guest_malloc((uint32_t)size);
+            CFStringGetCString(s, (char *)guest_ptr(buf), size, kCFStringEncodingUTF8);
+            fe_pool_add(NULL, buf);
+            RET(buf);
+            return;
+        }
     }
     fprintf(stderr, "objc_msgSend: unreplaced message -%s to 0x%08x (\"%s\"), return 0x%08x\n",
             sel, self, fe_guest_cstr(self), MEM32(g_esp));
@@ -996,18 +1070,54 @@ void imp__CGLQueryRendererInfo(void)
     RET(0);
 }
 
+/* Value of a renderer property on the first accelerated host renderer; 0 if
+ * the host has none or lacks the property. */
+static int host_renderer_property(GLint prop, GLint *out)
+{
+    CGLRendererInfoObj info;
+    GLint n = 0;
+    int ok = 0;
+    if (CGLQueryRendererInfo(CGDisplayIDToOpenGLDisplayMask(CGMainDisplayID()), &info, &n) != kCGLNoError)
+        return 0;
+    for (GLint i = 0; i < n && !ok; i++) {
+        GLint accelerated = 0;
+        if (CGLDescribeRenderer(info, i, kCGLRPAccelerated, &accelerated) == kCGLNoError && accelerated != 0)
+            ok = CGLDescribeRenderer(info, i, prop, out) == kCGLNoError;
+    }
+    CGLDestroyRendererInfo(info);
+    return ok;
+}
+
 /* CGLDescribeRenderer(rend, index, property, GLint *value): one accelerated
- * renderer. Memory sizes are a fixed 1024 MB (the host GPU shares memory). */
+ * renderer. Memory sizes are a fixed 1024 MB (the host GPU shares memory).
+ * Each property id is logged once, handled or not. */
 void imp__CGLDescribeRenderer(void)
 {
-    uint32_t v;
-    switch (ARG(2)) {
-    case 70: v = 0x00024600u; break;      /* kCGLRPRendererID: generic */
-    case 73: case 75: case 81: v = 1; break; /* Accelerated, Online, Window */
-    case 84: v = 1; break;                /* kCGLRPDisplayMask */
-    case 120: case 121: v = 1024u << 20; break; /* Video/TextureMemory bytes */
-    case 131: case 132: v = 1024u; break; /* Video/TextureMemoryMegabytes */
-    default: v = 0; break;
+    static uint8_t logged[256];
+    uint32_t prop = ARG(2);
+    uint32_t v = 0;
+    int handled = 1;
+    switch (prop) {
+    case kCGLRPRendererID: v = 0x00024600u; break; /* generic */
+    case kCGLRPAccelerated: case kCGLRPWindow: case kCGLRPOnline: v = 1; break;
+    case kCGLRPDisplayMask: v = 1; break;
+    case kCGLRPRendererCount: v = 1; break; /* as CGLQueryRendererInfo */
+    case kCGLRPMaxSampleBuffers: case kCGLRPMaxSamples: {
+        GLint host = 0;
+        v = host_renderer_property((GLint)prop, &host) ? (uint32_t)host : 0;
+        break;
+    }
+    case kCGLRPVideoMemory: case kCGLRPTextureMemory: v = 1024u << 20; break; /* bytes */
+    case kCGLRPVideoMemoryMegabytes: case kCGLRPTextureMemoryMegabytes: v = 1024u; break;
+    default: handled = 0; break;
+    }
+    if (prop >= sizeof logged || !logged[prop]) {
+        if (prop < sizeof logged)
+            logged[prop] = 1;
+        if (handled)
+            fprintf(stderr, "frontend: CGLDescribeRenderer property %u -> %d\n", prop, (int)v);
+        else
+            fprintf(stderr, "frontend: CGLDescribeRenderer property %u not handled, returning 0\n", prop);
     }
     MEM32(ARG(3)) = v;
     RET(0);

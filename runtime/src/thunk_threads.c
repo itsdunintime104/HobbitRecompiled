@@ -217,6 +217,24 @@ static int lock_watched(uint32_t a, pthread_mutex_t *hm, unsigned secs)
     return rc;
 }
 
+/* Host mutex type that the guest word 0 (and word 1 for an initialised
+ * mutex) means, or -1 if word 0 is not a mutex signature. */
+static int mutex_sig_type(volatile uint32_t *sig)
+{
+    switch (*sig) {
+    case GT_MUTEX_SIG_INIT: return PTHREAD_MUTEX_NORMAL;
+    case GT_MUTEX_SIG: {
+        uint32_t w1 = sig[1];
+        return (w1 & 0xFFFFFF00u) == GT_MUTEX_TYPE_TAG && (w1 & 0xFFu) <= PTHREAD_MUTEX_RECURSIVE
+                   ? (int)(w1 & 0xFFu)
+                   : PTHREAD_MUTEX_NORMAL;
+    }
+    case GT_ERRORCHECK_MUTEX_SIG_INIT: return PTHREAD_MUTEX_ERRORCHECK;
+    case GT_RECURSIVE_MUTEX_SIG_INIT: return PTHREAD_MUTEX_RECURSIVE;
+    default: return -1;
+    }
+}
+
 /* Find the host mutex for guest address a. A mutex that is not in the table
  * yet is created on first use when word 0 holds a static initializer or the
  * initialised signature (a struct copy); anything else is EINVAL, as on
@@ -230,25 +248,19 @@ static pthread_mutex_t *mutex_get(uint32_t a, int *err)
     volatile uint32_t *sig = guest_ptr(a);
     pthread_mutex_lock(&g_table_lock);
     pthread_mutex_t *hm = gmap_find(&g_mutexes, a);
-    if (hm == NULL) {
-        int type;
-        switch (*sig) {
-        case GT_MUTEX_SIG_INIT: type = PTHREAD_MUTEX_NORMAL; break;
-        case GT_MUTEX_SIG: {
-            uint32_t w1 = sig[1];
-            type = (w1 & 0xFFFFFF00u) == GT_MUTEX_TYPE_TAG &&
-                           (w1 & 0xFFu) <= PTHREAD_MUTEX_RECURSIVE
-                       ? (int)(w1 & 0xFFu)
-                       : PTHREAD_MUTEX_NORMAL;
-            break;
-        }
-        case GT_ERRORCHECK_MUTEX_SIG_INIT: type = PTHREAD_MUTEX_ERRORCHECK; break;
-        case GT_RECURSIVE_MUTEX_SIG_INIT: type = PTHREAD_MUTEX_RECURSIVE; break;
-        default:
+    pthread_mutex_t *old = NULL;
+    /* A static initializer next to an entry: the guest reused the memory, so
+     * the entry is stale (a live object holds GT_MUTEX_SIG). */
+    int reinit = *sig == GT_MUTEX_SIG_INIT || *sig == GT_ERRORCHECK_MUTEX_SIG_INIT ||
+                 *sig == GT_RECURSIVE_MUTEX_SIG_INIT;
+    if (hm == NULL || reinit) {
+        int type = mutex_sig_type(sig);
+        if (type < 0) {
             pthread_mutex_unlock(&g_table_lock);
             *err = EINVAL;
             return NULL;
         }
+        old = hm;
         hm = host_mutex_new(type);
         if (hm == NULL || gmap_put(&g_mutexes, a, hm) != 0) {
             pthread_mutex_unlock(&g_table_lock);
@@ -263,6 +275,9 @@ static pthread_mutex_t *mutex_get(uint32_t a, int *err)
         *sig = GT_MUTEX_SIG;
     }
     pthread_mutex_unlock(&g_table_lock);
+    /* A busy old mutex is leaked: a host thread may still block on it. */
+    if (old != NULL && pthread_mutex_destroy(old) == 0)
+        free(old);
     return hm;
 }
 
@@ -383,12 +398,16 @@ static pthread_cond_t *cond_get(uint32_t a, int *err)
     volatile uint32_t *sig = guest_ptr(a);
     pthread_mutex_lock(&g_table_lock);
     pthread_cond_t *hc = gmap_find(&g_conds, a);
-    if (hc == NULL) {
+    pthread_cond_t *old = NULL;
+    /* A static initializer next to an entry: the guest reused the memory, so
+     * the entry is stale (a live object holds GT_COND_SIG). */
+    if (hc == NULL || *sig == GT_COND_SIG_INIT) {
         if (*sig != GT_COND_SIG_INIT && *sig != GT_COND_SIG) {
             pthread_mutex_unlock(&g_table_lock);
             *err = EINVAL;
             return NULL;
         }
+        old = hc;
         hc = host_cond_new();
         if (hc == NULL || gmap_put(&g_conds, a, hc) != 0) {
             pthread_mutex_unlock(&g_table_lock);
@@ -402,6 +421,8 @@ static pthread_cond_t *cond_get(uint32_t a, int *err)
         *sig = GT_COND_SIG;
     }
     pthread_mutex_unlock(&g_table_lock);
+    if (old != NULL && pthread_cond_destroy(old) == 0)
+        free(old);
     return hc;
 }
 

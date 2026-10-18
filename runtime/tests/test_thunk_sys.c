@@ -5,6 +5,8 @@
 #include <string.h>
 #include <sys/mman.h>
 
+#include <CoreFoundation/CoreFoundation.h>
+
 #include "guest_mem.h"
 #include "handles.h"
 #include "recomp_types.h"
@@ -18,6 +20,12 @@
 void imp__IOIteratorNext(void);
 void imp__UCKeyTranslate(void);
 void imp__socket(void);
+
+/* Host functions, from Carbon. */
+extern uint8_t LMGetKbdType(void);
+extern CFTypeRef TISCopyCurrentKeyboardLayoutInputSource(void);
+extern void *TISGetInputSourceProperty(CFTypeRef source, CFStringRef key);
+extern CFStringRef kTISPropertyUnicodeKeyLayoutData;
 
 static int g_failures;
 
@@ -68,10 +76,31 @@ static void test_socket(void)
 
 static void test_keyboard(void)
 {
+    /* A NULL layout is paramErr with length 0. */
     MEM32(SCRATCH + 0x40) = 7;
-    uint32_t args[] = {0, 0, 0, 0, 0, 0, 0, 4, SCRATCH + 0x40, SCRATCH + 0x50};
-    CHECK((int)call(imp__UCKeyTranslate, args, 10) == -1, "UCKeyTranslate != -1");
+    uint32_t null_args[] = {0, 0, 0, 0, 0, 0, SCRATCH + 0x44, 4, SCRATCH + 0x40, SCRATCH + 0x50};
+    CHECK((int)call(imp__UCKeyTranslate, null_args, 10) == -50, "UCKeyTranslate(NULL layout) != -50");
     CHECK(MEM32(SCRATCH + 0x40) == 0, "actualStringLength not zeroed");
+
+    /* A real layout from the host: the space key types ' '. */
+    CFTypeRef source = TISCopyCurrentKeyboardLayoutInputSource();
+    CFDataRef data = source ? (CFDataRef)TISGetInputSourceProperty(source, kTISPropertyUnicodeKeyLayoutData) : NULL;
+    if (data == NULL) {
+        fputs("skip: no host unicode keyboard layout\n", stderr);
+        if (source)
+            CFRelease(source);
+        return;
+    }
+    uint32_t layout = SCRATCH + 0x1000;
+    memcpy(guest_ptr(layout), CFDataGetBytePtr(data), (size_t)CFDataGetLength(data));
+    MEM32(SCRATCH + 0x40) = 7;
+    MEM32(SCRATCH + 0x44) = 0;
+    uint32_t args[] = {layout, 49, 0, 0, LMGetKbdType(), 1, SCRATCH + 0x44, 4, SCRATCH + 0x40, SCRATCH + 0x50};
+    CHECK((int)call(imp__UCKeyTranslate, args, 10) == 0, "UCKeyTranslate(space) != 0");
+    CHECK(MEM32(SCRATCH + 0x40) == 1, "UCKeyTranslate length %u, want 1", MEM32(SCRATCH + 0x40));
+    CHECK(*(uint16_t *)guest_ptr(SCRATCH + 0x50) == ' ', "UCKeyTranslate char %x, want 0x20",
+          *(uint16_t *)guest_ptr(SCRATCH + 0x50));
+    CFRelease(source);
 }
 
 /* The generated dispatch table defines this in the game build; no guest

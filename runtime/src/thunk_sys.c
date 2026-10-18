@@ -14,12 +14,17 @@
 #define RET(v) do { g_eax = (uint32_t)(v); g_esp += 4; } while (0)
 
 #define K_IO_RETURN_UNSUPPORTED 0xE00002C7u
+#define K_PARAM_ERR (-50)
 
 /* Host functions, from Carbon and IOKit. */
 extern uint8_t LMGetKbdType(void);
 extern CFMutableDictionaryRef IOServiceMatching(const char *name);
 extern CFTypeRef TISCopyCurrentKeyboardInputSource(void);
 extern void *TISGetInputSourceProperty(CFTypeRef source, CFStringRef key);
+extern int32_t UCKeyTranslate(const void *keyLayoutPtr, uint16_t virtualKeyCode, uint16_t keyAction,
+                              uint32_t modifierKeyState, uint32_t keyboardType, uint32_t keyTranslateOptions,
+                              uint32_t *deadKeyState, unsigned long maxStringLength,
+                              unsigned long *actualStringLength, uint16_t *unicodeString);
 
 /* Backing object for every fake handle; handle_put needs a non-NULL pointer. */
 static char g_fake_object;
@@ -146,10 +151,23 @@ void imp__TISGetInputSourceProperty(void)
     RET(cf_to_guest(TISGetInputSourceProperty(cf_from_guest(ARG(0)), (CFStringRef)cf_from_guest(ARG(1)))));
 }
 
+/* UCKeyTranslate(layout, keyCode, keyAction, modifiers, keyboardType, options,
+ * deadKeyState, maxLength, actualLength, string). The layout is the guest copy
+ * of the host CFData bytes; UCKeyboardLayout uses offsets only, so the copy is
+ * valid in place. UniCharCount is 4 bytes in the guest and 8 on the host. */
 void imp__UCKeyTranslate(void)
 {
-    put32(ARG(8), 0); /* *actualStringLength */
-    RET(-1);
+    if (ARG(0) == 0 || ARG(6) == 0 || ARG(8) == 0) {
+        put32(ARG(8), 0); /* *actualStringLength */
+        RET(K_PARAM_ERR);
+        return;
+    }
+    unsigned long actual = 0;
+    int32_t status = UCKeyTranslate(guest_ptr(ARG(0)), (uint16_t)ARG(1), (uint16_t)ARG(2), ARG(3), ARG(4), ARG(5),
+                                    guest_ptr(ARG(6)), ARG(7), &actual,
+                                    ARG(9) ? guest_ptr(ARG(9)) : NULL);
+    put32(ARG(8), (uint32_t)actual);
+    RET(status);
 }
 
 /* ---- Sockets: the network is down ----------------------------------------- */

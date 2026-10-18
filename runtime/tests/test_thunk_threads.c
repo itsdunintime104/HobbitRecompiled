@@ -119,6 +119,25 @@ static void test_mutex(void)
     CHECK(CALL(imp__pthread_mutex_destroy, G_M1) == 0);
     CHECK(CALL(imp__pthread_mutex_lock, G_M1) == EINVAL);
 
+    /* Memory reused: a static initializer over a live (locked) entry gives a
+     * fresh unlocked mutex, of the type the new initializer means. */
+    MEM32(G_M1) = GT_MUTEX_SIG_INIT;
+    CHECK(CALL(imp__pthread_mutex_lock, G_M1) == 0);
+    MEM32(G_M1) = GT_MUTEX_SIG_INIT;
+    CHECK(CALL(imp__pthread_mutex_trylock, G_M1) == 0);
+    CHECK(MEM32(G_M1) == GT_MUTEX_SIG);
+    CHECK(CALL(imp__pthread_mutex_unlock, G_M1) == 0);
+    CHECK(CALL(imp__pthread_mutex_destroy, G_M1) == 0);
+    MEM32(G_M1) = GT_MUTEX_SIG_INIT;
+    CHECK(CALL(imp__pthread_mutex_lock, G_M1) == 0);
+    CHECK(CALL(imp__pthread_mutex_unlock, G_M1) == 0);
+    MEM32(G_M1) = GT_RECURSIVE_MUTEX_SIG_INIT;
+    CHECK(CALL(imp__pthread_mutex_lock, G_M1) == 0);
+    CHECK(CALL(imp__pthread_mutex_trylock, G_M1) == 0);
+    CHECK(CALL(imp__pthread_mutex_unlock, G_M1) == 0);
+    CHECK(CALL(imp__pthread_mutex_unlock, G_M1) == 0);
+    CHECK(CALL(imp__pthread_mutex_destroy, G_M1) == 0);
+
     /* Type recorded by mutexattr_settype reaches the host mutex. */
     CHECK(CALL(imp__pthread_mutexattr_init, G_MATTR) == 0);
     CHECK(CALL(imp__pthread_mutexattr_settype, G_MATTR, PTHREAD_MUTEX_RECURSIVE) == 0);
@@ -179,7 +198,13 @@ static void test_cond(void)
     }
     CHECK(CALL(imp__pthread_mutex_unlock, G_M2) == 0);
     pthread_join(th, NULL);
+    /* Memory reused: a static initializer over a live entry. */
+    MEM32(G_COND) = GT_COND_SIG_INIT;
+    CHECK(CALL(imp__pthread_cond_signal, G_COND) == 0);
+    CHECK(MEM32(G_COND) == GT_COND_SIG);
+    MEM32(G_COND) = GT_COND_SIG_INIT;
     CHECK(CALL(imp__pthread_cond_broadcast, G_COND) == 0);
+    CHECK(MEM32(G_COND) == GT_COND_SIG);
     CHECK(CALL(imp__pthread_cond_destroy, G_COND) == 0);
     CHECK(CALL(imp__pthread_mutex_destroy, G_M2) == 0);
     printf("cond ok: waits=%d\n", waits);
