@@ -25,7 +25,7 @@ cp "$BUILD/hobbit" "$APP/Contents/MacOS/hobbit"
 cp "$BUILD/cghelper" "$APP/Contents/MacOS/cghelper"
 cp "$ROOT/tools/package/Info.plist.in" "$APP/Contents/Info.plist"
 
-# Bundle SDL2 so the app does not need Homebrew at run time.
+# Bundle SDL2 (and SDL3 below) so the app does not need Homebrew at run time.
 # "brew --prefix sdl2" can print an alias path without lib/, so use the path hobbit links.
 SDL_LINKED=$(otool -L "$APP/Contents/MacOS/hobbit" | awk '/libSDL2-2\.0\.0\.dylib/ {print $1; exit}')
 [ -n "$SDL_LINKED" ] || { echo "make_app: hobbit does not link libSDL2-2.0.0.dylib" >&2; exit 1; }
@@ -41,6 +41,17 @@ chmod u+w "$APP/Contents/Frameworks/libSDL2-2.0.0.dylib"
 install_name_tool -id "$SDL_NEW" "$APP/Contents/Frameworks/libSDL2-2.0.0.dylib"
 install_name_tool -change "$SDL_LINKED" "$SDL_NEW" "$APP/Contents/MacOS/hobbit"
 codesign --force -s - "$APP/Contents/Frameworks/libSDL2-2.0.0.dylib"
+
+# Homebrew's sdl2 is now sdl2-compat: SDL2 on top of SDL3, loaded at run time.
+# It looks for SDL3 first as libSDL3.dylib next to itself, so bundle SDL3 there.
+if grep -q 'Failed loading SDL3 library' "$SDL_SRC"; then
+    SDL3_SRC="$(brew --prefix)/opt/sdl3/lib/libSDL3.0.dylib"
+    [ -f "$SDL3_SRC" ] || { echo "make_app: SDL3 not found (run: brew install sdl3)" >&2; exit 1; }
+    cp "$SDL3_SRC" "$APP/Contents/Frameworks/libSDL3.dylib"
+    chmod u+w "$APP/Contents/Frameworks/libSDL3.dylib"
+    install_name_tool -id "@loader_path/libSDL3.dylib" "$APP/Contents/Frameworks/libSDL3.dylib"
+    codesign --force -s - "$APP/Contents/Frameworks/libSDL3.dylib"
+fi
 
 # Icon: copy the game's icon into the local build output (never committed).
 ICON="$STEAM_APP/Contents/Resources/GameIcon.icns"
