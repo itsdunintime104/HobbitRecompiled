@@ -30,6 +30,8 @@
 #include <CoreAudio/CoreAudio.h>
 #include <math.h>
 #include <pthread.h>
+#include <stdarg.h>
+#include <stdatomic.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -43,7 +45,43 @@
 #include "recomp_types.h"
 
 #define ARG(n) MEM32(g_esp + 4u + 4u * (n))
-#define RET(v) do { g_eax = (uint32_t)(v); g_esp += 4; } while (0)
+/* RECOMP_TRACE_AUDIO=1: log graph lifetimes, callbacks, failed calls and the
+ * first render of each callback. Read from the environment once. */
+static pthread_once_t g_trace_audio_once = PTHREAD_ONCE_INIT;
+static int g_trace_audio;
+
+static void trace_audio_init(void)
+{
+    const char *v = getenv("RECOMP_TRACE_AUDIO");
+    g_trace_audio = v != NULL && v[0] == '1';
+}
+
+static int trace_audio_on(void)
+{
+    pthread_once(&g_trace_audio_once, trace_audio_init);
+    return g_trace_audio;
+}
+
+static void trace_audio(const char *fmt, ...)
+{
+    if (!trace_audio_on())
+        return;
+    va_list ap;
+    va_start(ap, fmt);
+    fprintf(stderr, "audio trace %.3f: ", (double)clock_gettime_nsec_np(CLOCK_UPTIME_RAW) / 1e9);
+    vfprintf(stderr, fmt, ap);
+    va_end(ap);
+    fputc('\n', stderr);
+}
+
+/* Every thunk here returns an OSStatus; trace each failure with its first argument. */
+#define RET(v) do { \
+        uint32_t ret_ = (uint32_t)(v); \
+        if (ret_ != 0) \
+            trace_audio("%s(%#x) -> %d", __func__, ARG(0), (int)ret_); \
+        g_eax = ret_; \
+        g_esp += 4; \
+    } while (0)
 
 #define K_AUDIO_HARDWARE_UNKNOWN_PROPERTY_ERROR 0x77686F3Fu /* 'who?' */
 
@@ -56,7 +94,7 @@
 #define PROP_SET_RENDER_CALLBACK 23u
 #define PROP_CURRENT_DEVICE 2000u
 
-#define DEV_PROP_PREFERRED_LAYOUT 0x7372646Eu /* 'srnd' */
+#define DEV_PROP_PREFERRED_LAYOUT 0x73726E64u /* 'srnd' */
 #define DEV_PROP_NOMINAL_RATE 0x6E737274u /* 'nsrt' */
 #define DEV_PROP_BUFFER_SIZE 0x6273697Au /* 'bsiz' */
 
@@ -85,7 +123,19 @@ static void *host_ptr(uint32_t guest_addr)
 struct render_ctx {
     uint32_t proc;
     uint32_t refcon;
+    atomic_uint calls;
 };
+
+/* Render failures traced so far; only the first ones are logged. */
+static atomic_uint g_render_fail_logged;
+
+static OSStatus render_fail(const struct render_ctx *ctx, const char *why, OSStatus st)
+{
+    if (atomic_fetch_add(&g_render_fail_logged, 1) < 50)
+        trace_audio("render ctx %p proc %#x refcon %#x: %s -> %d", (const void *)ctx, ctx->proc,
+                    ctx->refcon, why, (int)st);
+    return st;
+}
 
 /* Memory owned by one host audio thread. A copy lives on the heap and in a
  * pthread key, because __thread storage can be gone when the key destructor
@@ -198,10 +248,13 @@ static OSStatus render_trampoline(void *refcon, AudioUnitRenderActionFlags *flag
                                   const AudioTimeStamp *ts, UInt32 bus, UInt32 frames,
                                   AudioBufferList *io)
 {
-    const struct render_ctx *ctx = refcon;
+    struct render_ctx *ctx = refcon;
+    if (atomic_fetch_add(&ctx->calls, 1) == 0)
+        trace_audio("first render ctx %p proc %#x refcon %#x bus %u frames %u", (void *)ctx,
+                    ctx->proc, ctx->refcon, (unsigned)bus, (unsigned)frames);
     guest_thread_attach();
     if (!thread_state_ready())
-        return kAudio_MemFullError;
+        return render_fail(ctx, "thread state", kAudio_MemFullError);
 
     uint32_t blk = t_audio.block;
     uint32_t abl = blk + BLK_ABL;
@@ -218,7 +271,7 @@ static OSStatus render_trampoline(void *refcon, AudioUnitRenderActionFlags *flag
     for (uint32_t i = 0; i < nb; i++) {
         const AudioBuffer *b = &io->mBuffers[i];
         if (!guest_buffer_reserve(i, b->mDataByteSize))
-            return kAudio_MemFullError;
+            return render_fail(ctx, "guest buffer", kAudio_MemFullError);
         if (b->mData != NULL)
             memcpy(guest_ptr(t_audio.data[i]), b->mData, b->mDataByteSize);
         else
@@ -244,13 +297,15 @@ static OSStatus render_trampoline(void *refcon, AudioUnitRenderActionFlags *flag
         if (b->mData == NULL) {
             b->mData = host_scratch_reserve(i, gsize);
             if (b->mData == NULL)
-                return kAudio_MemFullError;
+                return render_fail(ctx, "host scratch", kAudio_MemFullError);
         } else if (gsize > b->mDataByteSize) {
             gsize = b->mDataByteSize;
         }
         memcpy(b->mData, guest_ptr(gdata), gsize);
         b->mDataByteSize = gsize;
     }
+    if (result != 0)
+        render_fail(ctx, "guest callback", (OSStatus)result);
     return (OSStatus)result;
 }
 
@@ -262,6 +317,8 @@ static struct render_ctx *render_ctx_new(uint32_t proc, uint32_t refcon)
     if (c != NULL) {
         c->proc = proc;
         c->refcon = refcon;
+        atomic_init(&c->calls, 0);
+        trace_audio("callback ctx %p proc %#x refcon %#x", (void *)c, proc, refcon);
     }
     return c;
 }
@@ -358,15 +415,15 @@ static void unit_forget(AudioUnit unit)
 
 /* A host graph with a record of what it holds. When the game disposes it, the
  * graph stays open in a pool; the next NewAUGraph gets it back with "reused"
- * set. The game's AddNode and Connect calls then claim the records that match,
- * with no host call, and AUGraphOpen removes what stays unclaimed. State the
- * game changed (input callbacks, render notifies, first-seen parameter values)
- * is undone when the graph is retired. Any array overflow makes the graph not
- * poolable. Every access to a vgraph and to the pool holds g_graph_lock, but
+ * set. The game's AddNode calls then claim the nodes that match, with no host
+ * call, and AUGraphOpen removes what stays unclaimed. State the game changed
+ * is undone when the graph is retired: connections and input callbacks are
+ * cleared (an initialized graph leaves its units linked, and a linked input
+ * refuses the stream format the game sets before AUGraphInitialize), render
+ * notifies removed, first-seen parameter values restored. Any array overflow
+ * makes the graph not poolable. Every access to a vgraph and to the pool holds g_graph_lock, but
  * host calls run outside it, because the host audio thread can wait on them. */
 #define VG_NODES 8u
-#define VG_CONNS 8u
-#define VG_INPUTS 8u
 #define VG_NOTIFIES 4u
 #define VG_UNITS 8u
 #define VG_PARAMS 64u
@@ -376,19 +433,6 @@ struct vg_node {
     AudioComponentDescription desc;
     AUNode node;
     int claimed;
-};
-
-struct vg_conn {
-    AUNode src;
-    UInt32 src_bus;
-    AUNode dst;
-    UInt32 dst_bus;
-    int claimed;
-};
-
-struct vg_input {
-    AUNode node;
-    UInt32 bus;
 };
 
 struct vg_param {
@@ -406,10 +450,6 @@ struct vgraph {
     int poolable;
     struct vg_node nodes[VG_NODES];
     unsigned n_nodes;
-    struct vg_conn conns[VG_CONNS];
-    unsigned n_conns;
-    struct vg_input inputs[VG_INPUTS];
-    unsigned n_inputs;
     struct render_ctx *notifies[VG_NOTIFIES];
     unsigned n_notifies;
     AudioUnit units[VG_UNITS];
@@ -532,8 +572,6 @@ void imp__NewAUGraph(void)
         vg->reused = 1;
         for (unsigned i = 0; i < vg->n_nodes; i++)
             vg->nodes[i].claimed = 0;
-        for (unsigned i = 0; i < vg->n_conns; i++)
-            vg->conns[i].claimed = 0;
     }
     pthread_mutex_unlock(&g_graph_lock);
 
@@ -561,6 +599,7 @@ void imp__NewAUGraph(void)
         } else if (ARG(0) != 0) {
             MEM32(ARG(0)) = h;
         }
+        trace_audio("new graph %#x%s", h, vg->reused ? " (reused)" : "");
     }
     RET(err);
 }
@@ -600,7 +639,6 @@ static OSStatus vgraph_retire(struct vgraph *vg)
     if (keep) {
         snap = *vg;
         vg->n_notifies = 0;
-        vg->n_inputs = 0;
         vg->n_params = 0;
     }
     pthread_mutex_unlock(&g_graph_lock);
@@ -619,8 +657,7 @@ static OSStatus vgraph_retire(struct vgraph *vg)
         st = AUGraphRemoveRenderNotify(graph, render_trampoline, snap.notifies[i]);
         free(snap.notifies[i]);
     }
-    for (unsigned i = 0; i < snap.n_inputs; i++)
-        st = AUGraphDisconnectNodeInput(graph, snap.inputs[i].node, snap.inputs[i].bus);
+    st = AUGraphClearConnections(graph);
     for (unsigned i = 0; i < snap.n_params; i++) {
         const struct vg_param *p = &snap.params[i];
         st = AudioUnitSetParameter(p->unit, p->id, p->scope, p->el, p->first, 0);
@@ -636,6 +673,7 @@ static OSStatus vgraph_retire(struct vgraph *vg)
 
 void imp__DisposeAUGraph(void)
 {
+    trace_audio("dispose graph %#x", ARG(0));
     struct vgraph *vg = handle_release(ARG(0), HANDLE_AUDIO);
     RET(vg != NULL ? vgraph_retire(vg) : kAudio_ParamError);
 }
@@ -680,6 +718,10 @@ void imp__AUGraphAddNode(void)
     }
     if (err == noErr && ARG(2) != 0)
         MEM32(ARG(2)) = (uint32_t)node;
+    trace_audio("graph %#x add node %d type %.4s sub %.4s%s", ARG(0), (int)node,
+                (const char *)&(uint32_t){__builtin_bswap32(desc.componentType)},
+                (const char *)&(uint32_t){__builtin_bswap32(desc.componentSubType)},
+                matched ? " (kept)" : "");
     RET(err);
 }
 
@@ -721,39 +763,9 @@ void imp__AUGraphConnectNodeInput(void)
         RET(kAudio_ParamError);
         return;
     }
-    AUNode src = (AUNode)ARG(1), dst = (AUNode)ARG(3);
-    UInt32 src_bus = ARG(2), dst_bus = ARG(4);
-    int matched = 0;
-    pthread_mutex_lock(&g_graph_lock);
-    if (vg->reused) {
-        for (unsigned i = 0; i < vg->n_conns; i++) {
-            struct vg_conn *c = &vg->conns[i];
-            if (!c->claimed && c->src == src && c->src_bus == src_bus && c->dst == dst &&
-                c->dst_bus == dst_bus) {
-                c->claimed = 1;
-                matched = 1;
-                break;
-            }
-        }
-    }
-    pthread_mutex_unlock(&g_graph_lock);
-
-    OSStatus err = noErr;
-    if (!matched) {
-        err = AUGraphConnectNodeInput(vg->graph, src, src_bus, dst, dst_bus);
-        if (err == noErr) {
-            pthread_mutex_lock(&g_graph_lock);
-            struct vg_conn *c = VG_NEXT(vg, conns, n_conns);
-            if (c != NULL) {
-                c->src = src;
-                c->src_bus = src_bus;
-                c->dst = dst;
-                c->dst_bus = dst_bus;
-                c->claimed = 1;
-            }
-            pthread_mutex_unlock(&g_graph_lock);
-        }
-    }
+    OSStatus err = AUGraphConnectNodeInput(vg->graph, (AUNode)ARG(1), ARG(2), (AUNode)ARG(3), ARG(4));
+    trace_audio("graph %#x connect %d:%u -> %d:%u", ARG(0), (int)ARG(1), (unsigned)ARG(2), (int)ARG(3),
+                (unsigned)ARG(4));
     RET(err);
 }
 
@@ -764,22 +776,8 @@ void imp__AUGraphSetNodeInputCallback(void)
     OSStatus err = vg != NULL ? render_callback_from_guest(ARG(3), &cb) : kAudio_ParamError;
     if (err == noErr)
         err = AUGraphSetNodeInputCallback(vg->graph, (AUNode)ARG(1), ARG(2), &cb);
-    if (err == noErr) {
-        AUNode node = (AUNode)ARG(1);
-        UInt32 bus = ARG(2);
-        pthread_mutex_lock(&g_graph_lock);
-        unsigned i = 0;
-        while (i < vg->n_inputs && !(vg->inputs[i].node == node && vg->inputs[i].bus == bus))
-            i++;
-        if (i == vg->n_inputs) {
-            struct vg_input *in = VG_NEXT(vg, inputs, n_inputs);
-            if (in != NULL) {
-                in->node = node;
-                in->bus = bus;
-            }
-        }
-        pthread_mutex_unlock(&g_graph_lock);
-    }
+    trace_audio("graph %#x node %d bus %u input callback ctx %p", ARG(0), (int)ARG(1),
+                (unsigned)ARG(2), err == noErr ? cb.inputProcRefCon : NULL);
     RET(err);
 }
 
@@ -808,30 +806,9 @@ void imp__AUGraphAddRenderNotify(void)
     RET(err);
 }
 
-/* First open of a reused graph: remove the connections, then the nodes, that
- * the game did not claim again. */
+/* First open of a reused graph: remove the nodes the game did not claim again. */
 static void vgraph_reconcile(struct vgraph *vg)
 {
-    for (;;) {
-        struct vg_conn c;
-        int found = 0;
-        pthread_mutex_lock(&g_graph_lock);
-        for (unsigned i = 0; i < vg->n_conns; i++) {
-            if (!vg->conns[i].claimed) {
-                c = vg->conns[i];
-                memmove(&vg->conns[i], &vg->conns[i + 1], (vg->n_conns - i - 1) * sizeof c);
-                vg->n_conns--;
-                found = 1;
-                break;
-            }
-        }
-        pthread_mutex_unlock(&g_graph_lock);
-        if (!found)
-            break;
-        uint64_t t0 = now_ns();
-        AUGraphDisconnectNodeInput(vg->graph, c.dst, c.dst_bus);
-        log_slow("AUGraphDisconnectNodeInput", t0);
-    }
     for (;;) {
         struct vg_node n;
         int found = 0;
@@ -867,6 +844,7 @@ void imp__AUGraphOpen(void)
     pthread_mutex_lock(&g_graph_lock);
     int reused = vg->reused;
     pthread_mutex_unlock(&g_graph_lock);
+    trace_audio("open graph %#x%s", ARG(0), reused ? " (reused)" : "");
     if (reused)
         vgraph_reconcile(vg);
 
@@ -923,6 +901,7 @@ void imp__AUGraphClose(void)
         uint64_t t0 = now_ns(); \
         OSStatus st = call(vg->graph); \
         log_slow(#name, t0); \
+        trace_audio(#name " graph %#x", ARG(0)); \
         RET(st); \
     }
 
@@ -973,10 +952,14 @@ void imp__AudioUnitSetProperty(void)
         OSStatus err = size == 8 ? render_callback_from_guest(data, &cb) : kAudioUnitErr_InvalidPropertyValue;
         if (err == noErr)
             err = AudioUnitSetProperty(unit, id, scope, element, &cb, sizeof cb);
+        trace_audio("unit %#x scope %u element %u render callback ctx %p", ARG(0), (unsigned)scope,
+                    (unsigned)element, err == noErr ? cb.inputProcRefCon : NULL);
         RET(err);
         return;
     }
     uint32_t want = plain_property_size(id);
+    trace_audio("unit %#x set property %u scope %u element %u", ARG(0), (unsigned)id, (unsigned)scope,
+                (unsigned)element);
     if (want == 0) {
         RET(invalid_property("AudioUnitSetProperty", id, scope, element));
         return;
@@ -984,6 +967,14 @@ void imp__AudioUnitSetProperty(void)
     if (size != want || data == 0) {
         RET(kAudioUnitErr_InvalidPropertyValue);
         return;
+    }
+    if (id == PROP_STREAM_FORMAT) {
+        const AudioStreamBasicDescription *f = guest_ptr(data);
+        trace_audio("unit %#x format scope %u: %.0f Hz %.4s flags %#x %u ch %u bit", ARG(0),
+                    (unsigned)scope, f->mSampleRate,
+                    (const char *)&(uint32_t){__builtin_bswap32(f->mFormatID)},
+                    (unsigned)f->mFormatFlags, (unsigned)f->mChannelsPerFrame,
+                    (unsigned)f->mBitsPerChannel);
     }
     RET(AudioUnitSetProperty(unit, id, scope, element, guest_ptr(data), size));
 }
@@ -1049,6 +1040,36 @@ static void param_note_first(AudioUnit unit, uint32_t id, uint32_t scope, uint32
     pthread_mutex_unlock(&g_graph_lock);
 }
 
+/* Trace a parameter set only when its value changed since the last set. */
+static void trace_param(uint32_t unit, uint32_t id, uint32_t scope, uint32_t el, float value)
+{
+    static pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+    static struct {
+        uint32_t unit, id, scope, el;
+        float value;
+    } last[512];
+    static unsigned n;
+    pthread_mutex_lock(&lock);
+    unsigned i = 0;
+    while (i < n && !(last[i].unit == unit && last[i].id == id && last[i].scope == scope &&
+                      last[i].el == el))
+        i++;
+    int changed = i == n || last[i].value != value;
+    if (i == n && n < 512)
+        n++;
+    if (i < 512) {
+        last[i].unit = unit;
+        last[i].id = id;
+        last[i].scope = scope;
+        last[i].el = el;
+        last[i].value = value;
+    }
+    pthread_mutex_unlock(&lock);
+    if (changed)
+        trace_audio("unit %#x param %u scope %u element %u = %g", unit, (unsigned)id, (unsigned)scope,
+                    (unsigned)el, (double)value);
+}
+
 void imp__AudioUnitSetParameter(void)
 {
     AudioUnit unit = host_obj(ARG(0));
@@ -1060,6 +1081,8 @@ void imp__AudioUnitSetParameter(void)
     Float32 value;
     memcpy(&value, &bits, sizeof value);
     param_note_first(unit, ARG(1), ARG(2), ARG(3));
+    if (trace_audio_on())
+        trace_param(ARG(0), ARG(1), ARG(2), ARG(3), value);
     RET(AudioUnitSetParameter(unit, ARG(1), ARG(2), ARG(3), value, ARG(5)));
 }
 
@@ -1073,6 +1096,9 @@ static int device_property_ok(uint32_t id)
 void imp__AudioDeviceGetProperty(void)
 {
     uint32_t id = ARG(3), size_ptr = ARG(4);
+    trace_audio("AudioDeviceGetProperty device %u channel %u input %#x property %.4s size %u", ARG(0),
+                ARG(1), ARG(2), (const char *)&(uint32_t){__builtin_bswap32(id)},
+                size_ptr != 0 ? MEM32(size_ptr) : 0);
     if (!device_property_ok(id) || size_ptr == 0 || ARG(5) == 0) {
         RET(K_AUDIO_HARDWARE_UNKNOWN_PROPERTY_ERROR);
         return;
@@ -1087,6 +1113,8 @@ void imp__AudioDeviceGetProperty(void)
 void imp__AudioDeviceGetPropertyInfo(void)
 {
     uint32_t id = ARG(3);
+    trace_audio("AudioDeviceGetPropertyInfo device %u channel %u input %#x property %.4s", ARG(0), ARG(1),
+                ARG(2), (const char *)&(uint32_t){__builtin_bswap32(id)});
     if (!device_property_ok(id)) {
         RET(K_AUDIO_HARDWARE_UNKNOWN_PROPERTY_ERROR);
         return;
