@@ -235,18 +235,22 @@ static void test_graph(void)
 /* ---- Graph reuse ---------------------------------------------------------- */
 
 struct tgraph {
-    uint32_t graph, out_node, vari_node, out_unit, vari_unit;
+    uint32_t graph, out_node, vari_node, conv_node, out_unit, vari_unit;
 };
 
 /* Build and initialize a graph the way the game does: default output and, when
- * with_vari is set, a varispeed node feeding it. The guest render callback is
- * the input of the first node of the chain. Every thunk must return 0. */
+ * with_vari is set, a converter feeding a varispeed feeding it. The guest render
+ * callback is the input of the first node of the chain. Like the game, the
+ * stream format of the varispeed input is set between Open and Initialize.
+ * Every thunk must return 0. */
 static void build_graph(struct tgraph *g, int with_vari)
 {
     const uint32_t desc = SCRATCH + 0x300, desc_vari = SCRATCH + 0x320, graph_slot = SCRATCH + 0x340,
                    out_slot = SCRATCH + 0x344, vari_slot = SCRATCH + 0x348,
                    out_unit_slot = SCRATCH + 0x34C, vari_unit_slot = SCRATCH + 0x350,
-                   cbs = SCRATCH + 0x360;
+                   cbs = SCRATCH + 0x360, desc_conv = SCRATCH + 0x380, conv_slot = SCRATCH + 0x3A0,
+                   asbd = SCRATCH + 0x3C0, size_slot = SCRATCH + 0x3F0,
+                   conv_unit_slot = SCRATCH + 0x3F4;
     memset(g, 0, sizeof *g);
     CHECK(call(imp__NewAUGraph, (uint32_t[]){graph_slot}, 1) == 0, "NewAUGraph");
     g->graph = MEM32(graph_slot);
@@ -267,10 +271,21 @@ static void build_graph(struct tgraph *g, int with_vari)
         CHECK(call(imp__AUGraphAddNode, (uint32_t[]){g->graph, desc_vari, vari_slot}, 3) == 0,
               "AddNode varispeed");
         g->vari_node = MEM32(vari_slot);
-        first = g->vari_node;
+        MEM32(desc_conv) = 0x61756663u; /* 'aufc' */
+        MEM32(desc_conv + 4) = 0x636F6E76u; /* 'conv' */
+        MEM32(desc_conv + 8) = 0x6170706Cu;
+        MEM32(desc_conv + 12) = 0;
+        MEM32(desc_conv + 16) = 0;
+        CHECK(call(imp__AUGraphAddNode, (uint32_t[]){g->graph, desc_conv, conv_slot}, 3) == 0,
+              "AddNode converter");
+        g->conv_node = MEM32(conv_slot);
+        first = g->conv_node;
+        CHECK(call(imp__AUGraphConnectNodeInput, (uint32_t[]){g->graph, g->conv_node, 0, g->vari_node, 0},
+                   5) == 0,
+              "ConnectNodeInput converter");
         CHECK(call(imp__AUGraphConnectNodeInput, (uint32_t[]){g->graph, g->vari_node, 0, g->out_node, 0},
                    5) == 0,
-              "ConnectNodeInput");
+              "ConnectNodeInput varispeed");
     }
     CHECK(call(imp__AUGraphOpen, (uint32_t[]){g->graph}, 1) == 0, "AUGraphOpen");
     CHECK(call(imp__AUGraphNodeInfo, (uint32_t[]){g->graph, g->out_node, 0, out_unit_slot}, 4) == 0,
@@ -280,6 +295,25 @@ static void build_graph(struct tgraph *g, int with_vari)
         CHECK(call(imp__AUGraphNodeInfo, (uint32_t[]){g->graph, g->vari_node, 0, vari_unit_slot}, 4) == 0,
               "NodeInfo varispeed");
         g->vari_unit = MEM32(vari_unit_slot);
+        CHECK(call(imp__AUGraphNodeInfo, (uint32_t[]){g->graph, g->conv_node, 0, conv_unit_slot}, 4) == 0,
+              "NodeInfo converter");
+        uint32_t conv_unit = MEM32(conv_unit_slot);
+        MEM32(size_slot) = 40;
+        CHECK(call(imp__AudioUnitGetProperty, (uint32_t[]){g->vari_unit, 8, 1, 0, asbd, size_slot}, 6) == 0,
+              "get varispeed input StreamFormat");
+        /* Formats that are not the defaults, and a varispeed input rate that
+         * differs from the converter output, so AUGraphInitialize changes the
+         * varispeed input and the next graph sets it again on a used unit. */
+        double rate;
+        const uint32_t fmt_sets[][3] = {{conv_unit, 2, 0}, {g->vari_unit, 1, 0}, {g->vari_unit, 2, 0},
+                                        {g->out_unit, 1, 0}};
+        for (unsigned i = 0; i < sizeof fmt_sets / sizeof fmt_sets[0]; i++) {
+            rate = i == 1 ? 32000.0 : 22050.0;
+            memcpy(guest_ptr(asbd), &rate, sizeof rate);
+            CHECK(call(imp__AudioUnitSetProperty,
+                       (uint32_t[]){fmt_sets[i][0], 8, fmt_sets[i][1], fmt_sets[i][2], asbd, 40}, 6) == 0,
+                  "set StreamFormat %u (unit %#x scope %u)", i, fmt_sets[i][0], fmt_sets[i][1]);
+        }
     }
     MEM32(cbs) = VA_RENDER;
     MEM32(cbs + 4) = RENDER_REFCON;
