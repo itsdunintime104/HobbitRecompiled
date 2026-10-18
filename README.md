@@ -38,7 +38,7 @@ This project is not affiliated with or endorsed by TT Games, Warner Bros. Games,
 - A Mac with Apple Silicon (M1 or newer)
 - LEGO The Hobbit for Mac from Steam, build 84019 (Steam app 285160)
 - Xcode Command Line Tools
-- Homebrew with SDL2. Keep Homebrew installed: the app loads SDL from it
+- Homebrew with SDL2 (needed to build; the app carries its own copy of SDL)
 - Python 3.11 or newer
 - Rosetta 2
 - About 2 GB of free disk space
