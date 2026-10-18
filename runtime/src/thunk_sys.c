@@ -1,6 +1,8 @@
 /* First-pass system thunks: IOKit, keyboard layout and sockets. The game runs
  * without gamepads and offline. Every call returns a value the game accepts
  * and does no real work. Audio is in thunk_audio.c. */
+#include <Carbon/Carbon.h>
+#include <IOKit/IOKitLib.h>
 #include <errno.h>
 #include <stdint.h>
 #include <string.h>
@@ -12,19 +14,6 @@
 
 #define ARG(n) MEM32(g_esp + 4u + 4u * (n))
 #define RET(v) do { g_eax = (uint32_t)(v); g_esp += 4; } while (0)
-
-#define K_IO_RETURN_UNSUPPORTED 0xE00002C7u
-#define K_PARAM_ERR (-50)
-
-/* Host functions, from Carbon and IOKit. */
-extern uint8_t LMGetKbdType(void);
-extern CFMutableDictionaryRef IOServiceMatching(const char *name);
-extern CFTypeRef TISCopyCurrentKeyboardInputSource(void);
-extern void *TISGetInputSourceProperty(CFTypeRef source, CFStringRef key);
-extern int32_t UCKeyTranslate(const void *keyLayoutPtr, uint16_t virtualKeyCode, uint16_t keyAction,
-                              uint32_t modifierKeyState, uint32_t keyboardType, uint32_t keyTranslateOptions,
-                              uint32_t *deadKeyState, unsigned long maxStringLength,
-                              unsigned long *actualStringLength, uint16_t *unicodeString);
 
 /* Backing object for every fake handle; handle_put needs a non-NULL pointer. */
 static char g_fake_object;
@@ -88,7 +77,7 @@ void imp__IOCreatePlugInInterfaceForService(void)
 {
     put32(ARG(3), 0);
     put32(ARG(4), 0);
-    RET(K_IO_RETURN_UNSUPPORTED);
+    RET(kIOReturnUnsupported);
 }
 
 void imp__IODestroyPlugInInterface(void) { RET(0); }
@@ -148,7 +137,7 @@ void imp__TISCopyCurrentKeyboardInputSource(void) { RET(cf_to_guest(TISCopyCurre
  * with no NULL check, so the thunk returns the host's real property. */
 void imp__TISGetInputSourceProperty(void)
 {
-    RET(cf_to_guest(TISGetInputSourceProperty(cf_from_guest(ARG(0)), (CFStringRef)cf_from_guest(ARG(1)))));
+    RET(cf_to_guest(TISGetInputSourceProperty((TISInputSourceRef)cf_from_guest(ARG(0)), (CFStringRef)cf_from_guest(ARG(1)))));
 }
 
 /* UCKeyTranslate(layout, keyCode, keyAction, modifiers, keyboardType, options,
@@ -159,7 +148,7 @@ void imp__UCKeyTranslate(void)
 {
     if (ARG(0) == 0 || ARG(6) == 0 || ARG(8) == 0) {
         put32(ARG(8), 0); /* *actualStringLength */
-        RET(K_PARAM_ERR);
+        RET(paramErr);
         return;
     }
     unsigned long actual = 0;

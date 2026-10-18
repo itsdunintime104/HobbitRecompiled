@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <mach-o/loader.h>
 #include <sys/mman.h>
 
 #include "recomp_types.h"
@@ -25,9 +26,6 @@ void data_imports_set_image(const char *path);
 /* Return address pushed under a static constructor. Never mapped. */
 #define CTOR_RET_SENTINEL 0xFFFFF000u
 #define ENTRY_VA 0x00002720u
-
-#define LC_SEGMENT_ 0x1u
-#define S_MOD_INIT_FUNC_POINTERS_ 0x9u
 
 struct sect_info {
     uint32_t addr, size, flags, reserved1;
@@ -68,12 +66,12 @@ static int find_section(uint32_t type, struct sect_info *out)
     uint32_t ncmds = rd32(h + 16), off = 28;
     for (uint32_t i = 0; i < ncmds && off + 8 <= GUEST_HEADER_SIZE; i++) {
         uint32_t cmd = rd32(h + off), cmdsize = rd32(h + off + 4);
-        if (cmd == LC_SEGMENT_) {
+        if (cmd == LC_SEGMENT) {
             uint32_t nsects = rd32(h + off + 48);
             const uint8_t *s = h + off + 56;
             for (uint32_t k = 0; k < nsects; k++, s += 68) {
                 uint32_t flags = rd32(s + 56);
-                if ((flags & 0xFFu) == type) {
+                if ((flags & SECTION_TYPE) == type) {
                     *out = (struct sect_info){rd32(s + 32), rd32(s + 36), flags, rd32(s + 60)};
                     return 0;
                 }
@@ -139,7 +137,7 @@ static recomp_func_t lookup_or_die(uint32_t va, const char *what)
 static void run_static_ctors(uint32_t gargc, uint32_t gargv, uint32_t genvp, uint32_t gapple)
 {
     struct sect_info si;
-    if (find_section(S_MOD_INIT_FUNC_POINTERS_, &si) != 0)
+    if (find_section(S_MOD_INIT_FUNC_POINTERS, &si) != 0)
         return;
     uint32_t n = si.size / 4;
     const char *verbose = getenv("RECOMP_STARTUP_VERBOSE");

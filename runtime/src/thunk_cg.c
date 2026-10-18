@@ -321,6 +321,7 @@ void imp__cgCreateContext(void)
 
 /* ---- compile cache ---- */
 
+/* Values from NVIDIA cg.h / cgGL.h; no Cg header ships with the macOS SDK. */
 #define CG_SOURCE 0x1010u
 #define CG_OBJECT 0x1011u
 #define CG_COMPILED_PROGRAM 0x100au
@@ -464,7 +465,8 @@ void imp__cgCreateProgram(void)
     size_t keyn = 0;
     char path[4096];
     int cached = 0; /* key and path are usable */
-    if (type == CG_SOURCE && (key = cache_key(profile, strs, nstr, &keyn)) != NULL)
+    if (type == CG_SOURCE && !diag_caches_off() &&
+        (key = cache_key(profile, strs, nstr, &keyn)) != NULL)
         cached = cache_path(key, keyn, path, sizeof path) == 0;
 
     uint32_t h = 0;

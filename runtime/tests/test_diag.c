@@ -1,4 +1,4 @@
-/* Diagnostics test. Run by tests/test_diag.py as: test_diag <opens|lock|fail> [path]. */
+/* Diagnostics test. Run by tests/test_diag.py as: test_diag <opens|lock|fail|unsupported|caches> [path]. */
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -109,7 +109,9 @@ int main(int argc, char **argv)
         diag_unsupported("f", 0x1234u, "value %d", 7);
         diag_unsupported("f", 0x1234u, "value %d", 7);
         diag_unsupported("f", 0x5678u, "value %d", 8);
-    } else
+    } else if (strcmp(argv[1], "caches") == 0)
+        printf("caches_off=%d\n", diag_caches_off());
+    else
         return 2;
     return 0;
 }

@@ -16,6 +16,9 @@
  *                         "STUCK-LOCK guest_mutex=0x.. owner_thread=.." once
  *                         after N seconds, then keeps waiting.
  *   RECOMP_SLOWFRAME_MS=N  slowframe.c prints the main thread's sampled stacks for each frame over N ms.
+ *   RECOMP_NO_CACHE=1     the audio graph pool and the Cg compile cache are off:
+ *                         every graph is disposed and every program compiled.
+ *                         For an A/B when a reused object is suspected.
  *
  * Failure logs in recomp_glue.c always print a "RECOMP:" line with the guest
  * return address, g_esp and the last 8 icall targets.
@@ -48,6 +51,9 @@ void recomp_icall_tail(char *buf, size_t size, unsigned n);
  * distinct func + message. Defined in recomp_glue.c. */
 void diag_unsupported(const char *func, uint32_t guest_ret, const char *fmt, ...)
     __attribute__((format(printf, 3, 4)));
+
+/* 1 when RECOMP_NO_CACHE=1, read once. Defined in recomp_glue.c. */
+int diag_caches_off(void);
 
 /* In a thunk, before RET: reports with the guest return address. */
 #define THUNK_UNSUPPORTED(...) diag_unsupported(__func__, MEM32(g_esp), __VA_ARGS__)

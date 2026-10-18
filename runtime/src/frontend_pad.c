@@ -10,6 +10,7 @@
  * cdecl arguments at g_esp+4, return address at g_esp; it returns in g_eax and
  * pops the return address. */
 #define RECOMP_GENERATED_CODE
+#include <IOKit/hid/IOHIDUsageTables.h>
 #include <SDL.h>
 #include <pthread.h>
 #include <stdint.h>
@@ -122,8 +123,8 @@ static void pad_add(int index)
     const char *name = SDL_GameControllerName(gc);
     if (name)
         strncpy((char *)guest_ptr(r + DEV_NAME), name, 0x3F);
-    MEM32(r + DEV_USAGE) = 5;       /* generic desktop: game pad */
-    MEM32(r + DEV_USAGE_PAGE) = 1;
+    MEM32(r + DEV_USAGE) = kHIDUsage_GD_GamePad;
+    MEM32(r + DEV_USAGE_PAGE) = kHIDPage_GenericDesktop;
     MEM32(r + DEV_N_AXES) = 6;
     MEM32(r + DEV_N_BUTTONS) = (uint32_t)N_BUTTONS;
     MEM32(r + DEV_N_HATS) = 1;

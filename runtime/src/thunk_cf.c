@@ -453,15 +453,15 @@ void imp__CFDictionaryGetValueIfPresent(void)
 
 /* ---- numbers ------------------------------------------------------------- */
 
-/* The i386 sizes match the host except kCFNumberLongType (10),
- * kCFNumberCFIndexType (14) and kCFNumberNSIntegerType (15), 4 bytes in the
- * guest, and kCFNumberCGFloatType (16), a float in the guest. */
+/* The i386 sizes match the host except kCFNumberLongType,
+ * kCFNumberCFIndexType and kCFNumberNSIntegerType, 4 bytes in the guest,
+ * and kCFNumberCGFloatType, a float in the guest. */
 static CFNumberType host_number_type(uint32_t t)
 {
     switch (t) {
-    case 10: case 14: case 15:
+    case kCFNumberLongType: case kCFNumberCFIndexType: case kCFNumberNSIntegerType:
         return kCFNumberSInt32Type;
-    case 16:
+    case kCFNumberCGFloatType:
         return kCFNumberFloat32Type;
     default:
         return (CFNumberType)t;

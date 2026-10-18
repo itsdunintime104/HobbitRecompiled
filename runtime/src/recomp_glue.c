@@ -4,6 +4,7 @@
 #define RECOMP_GENERATED_CODE
 #include <pthread.h>
 #include <stdarg.h>
+#include <stdatomic.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -63,6 +64,18 @@ static void recomp_caller_log(void)
         memcpy(&ret, guest_ptr(g_esp), sizeof ret);
     recomp_icall_tail(tail, sizeof tail, 8);
     fprintf(stderr, "RECOMP: caller=0x%08X esp=0x%08X icalls=[%s]\n", ret, g_esp, tail);
+}
+
+int diag_caches_off(void)
+{
+    static atomic_int state = -1; /* -1 = unread */
+    int v = atomic_load(&state);
+    if (v < 0) {
+        const char *e = getenv("RECOMP_NO_CACHE");
+        v = e != NULL && strcmp(e, "1") == 0;
+        atomic_store(&state, v);
+    }
+    return v;
 }
 
 /* Open-addressed set of FNV-1a hashes of "func\0message"; 0 marks an empty

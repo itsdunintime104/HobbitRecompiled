@@ -90,3 +90,8 @@ def test_unsupported_prints_once(exe: Path) -> None:
         "UNSUPPORTED f: value 7 (guest return 0x00001234)",
         "UNSUPPORTED f: value 8 (guest return 0x00005678)",
     ]
+
+
+def test_no_cache_switch(exe: Path) -> None:
+    assert "caches_off=0" in run(exe, "caches").stdout
+    assert "caches_off=1" in run(exe, "caches", RECOMP_NO_CACHE="1").stdout
