@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "diag.h"
 #include "guest_heap.h"
 #include "guest_mem.h"
 #include "handles.h"
@@ -64,13 +65,16 @@ void imp__glGetString(void)
         return;
     }
     uint32_t addr = 0;
+    int table_full = 1;
     pthread_mutex_lock(&g_gl_lock);
     for (int i = 0; i < GL_STRING_SLOTS; i++) {
         if (g_gl_strings[i].name == name) {
             addr = g_gl_strings[i].addr;
+            table_full = 0;
             break;
         }
         if (g_gl_strings[i].name == 0) {
+            table_full = 0;
             uint32_t n = (uint32_t)strlen(s) + 1;
             addr = guest_malloc(n);
             if (addr != 0) {
@@ -82,6 +86,8 @@ void imp__glGetString(void)
         }
     }
     pthread_mutex_unlock(&g_gl_lock);
+    if (table_full)
+        THUNK_UNSUPPORTED("string table full (name 0x%x)", name);
     RET(addr);
 }
 

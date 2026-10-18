@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCES = [
     "runtime/src/thunk_misc.c",
     "runtime/src/thunk_printf.c",
+    "runtime/src/thunk_files.c",
     "runtime/src/handles.c",
     "runtime/src/dlmalloc.c",
     "runtime/src/guest_heap.c",

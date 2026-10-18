@@ -34,6 +34,14 @@ void *handle_get(uint32_t handle, enum handle_kind kind)
     return handle == FILE_HANDLE && kind == HANDLE_FILE ? (void *)g_test_file : NULL;
 }
 
+/* Stand-in for guest_set_errno in thunk_files.c: records the value. */
+static int g_guest_errno;
+
+void guest_set_errno(int host_errno)
+{
+    g_guest_errno = host_errno;
+}
+
 static int g_failures;
 
 #define CHECK(cond, ...) \
@@ -269,10 +277,15 @@ static void test_fcntl(void)
     uint32_t get_fd[] = {(uint32_t)fds[0], F_GETFD};
     CHECK(((int)call(imp__fcntl_UNIX2003, get_fd, 2) & FD_CLOEXEC) != 0, "FD_CLOEXEC not set");
 
-    errno = 0;
+    g_guest_errno = 0;
     uint32_t dup_fd[] = {(uint32_t)fds[0], F_DUPFD, 10};
-    CHECK((int)call(imp__fcntl_UNIX2003, dup_fd, 3) == -1 && errno == EINVAL,
-          "F_DUPFD: errno %d", errno);
+    CHECK((int)call(imp__fcntl_UNIX2003, dup_fd, 3) == -1 && g_guest_errno == EINVAL,
+          "F_DUPFD: guest errno %d", g_guest_errno);
+
+    g_guest_errno = 0;
+    uint32_t unknown[] = {(uint32_t)fds[0], 99, 0};
+    CHECK((int)call(imp__fcntl_UNIX2003, unknown, 3) == -1 && g_guest_errno == EINVAL,
+          "fcntl 99: guest errno %d", g_guest_errno);
     close(fds[0]);
     close(fds[1]);
 }

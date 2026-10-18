@@ -30,3 +30,4 @@ def test_thunk_printf(tmp_path: Path) -> None:
     run = subprocess.run([str(exe)], capture_output=True, check=False)
     assert run.returncode == 0, run.stderr.decode(errors="replace")
     assert run.stdout.strip() == b"ok"
+    assert run.stderr.decode().count("UNSUPPORTED imp__fcntl_UNIX2003: fcntl command 99") == 1

@@ -10,6 +10,7 @@ SOURCES = [
     "runtime/src/thunk_cf.c",
     "runtime/src/feral_loader.c",
     "runtime/src/thunk_printf.c",
+    "runtime/src/thunk_files.c",
     "runtime/src/guest_call.c",
     "runtime/src/handles.c",
     "runtime/src/dlmalloc.c",

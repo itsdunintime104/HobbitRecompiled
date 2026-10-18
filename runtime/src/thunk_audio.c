@@ -38,6 +38,7 @@
 #include <string.h>
 #include <time.h>
 
+#include "diag.h"
 #include "guest_call.h"
 #include "guest_heap.h"
 #include "guest_mem.h"
@@ -82,21 +83,6 @@ static void trace_audio(const char *fmt, ...)
         g_eax = ret_; \
         g_esp += 4; \
     } while (0)
-
-#define K_AUDIO_HARDWARE_UNKNOWN_PROPERTY_ERROR 0x77686F3Fu /* 'who?' */
-
-#define PROP_SAMPLE_RATE 2u
-#define PROP_CPU_LOAD 6u
-#define PROP_STREAM_FORMAT 8u
-#define PROP_ELEMENT_COUNT 11u
-#define PROP_LATENCY 12u
-#define PROP_MAX_FRAMES 14u
-#define PROP_SET_RENDER_CALLBACK 23u
-#define PROP_CURRENT_DEVICE 2000u
-
-#define DEV_PROP_PREFERRED_LAYOUT 0x73726E64u /* 'srnd' */
-#define DEV_PROP_NOMINAL_RATE 0x6E737274u /* 'nsrt' */
-#define DEV_PROP_BUFFER_SIZE 0x6273697Au /* 'bsiz' */
 
 /* Guest AudioBufferList: u32 count, then { u32 channels, u32 byteSize, u32 data }. */
 #define GUEST_BUF_STRIDE 12u
@@ -635,7 +621,7 @@ static OSStatus vgraph_retire(struct vgraph *vg)
 {
     struct vgraph snap;
     pthread_mutex_lock(&g_graph_lock);
-    int keep = vg->poolable && vg->open && g_pool_count < GRAPH_POOL_CAP;
+    int keep = !diag_caches_off() && vg->poolable && vg->open && g_pool_count < GRAPH_POOL_CAP;
     if (keep) {
         snap = *vg;
         vg->n_notifies = 0;
@@ -917,16 +903,16 @@ GRAPH_THUNK(AUGraphStop, AUGraphStop)
 static uint32_t plain_property_size(uint32_t id)
 {
     switch (id) {
-    case PROP_SAMPLE_RATE:
-    case PROP_LATENCY:
+    case kAudioUnitProperty_SampleRate:
+    case kAudioUnitProperty_Latency:
         return sizeof(Float64);
-    case PROP_CPU_LOAD:
+    case kAudioUnitProperty_CPULoad:
         return sizeof(Float32);
-    case PROP_STREAM_FORMAT:
+    case kAudioUnitProperty_StreamFormat:
         return sizeof(AudioStreamBasicDescription);
-    case PROP_ELEMENT_COUNT:
-    case PROP_MAX_FRAMES:
-    case PROP_CURRENT_DEVICE:
+    case kAudioUnitProperty_ElementCount:
+    case kAudioUnitProperty_MaximumFramesPerSlice:
+    case kAudioOutputUnitProperty_CurrentDevice:
         return sizeof(UInt32);
     default:
         return 0;
@@ -935,7 +921,7 @@ static uint32_t plain_property_size(uint32_t id)
 
 static OSStatus invalid_property(const char *fn, uint32_t id, uint32_t scope, uint32_t element)
 {
-    fprintf(stderr, "%s: unsupported property %u scope %u element %u\n", fn, id, scope, element);
+    diag_unsupported(fn, MEM32(g_esp), "property %u scope %u element %u", id, scope, element);
     return kAudioUnitErr_InvalidProperty;
 }
 
@@ -947,7 +933,7 @@ void imp__AudioUnitSetProperty(void)
         RET(kAudio_ParamError);
         return;
     }
-    if (id == PROP_SET_RENDER_CALLBACK) {
+    if (id == kAudioUnitProperty_SetRenderCallback) {
         AURenderCallbackStruct cb;
         OSStatus err = size == 8 ? render_callback_from_guest(data, &cb) : kAudioUnitErr_InvalidPropertyValue;
         if (err == noErr)
@@ -961,14 +947,14 @@ void imp__AudioUnitSetProperty(void)
     trace_audio("unit %#x set property %u scope %u element %u", ARG(0), (unsigned)id, (unsigned)scope,
                 (unsigned)element);
     if (want == 0) {
-        RET(invalid_property("AudioUnitSetProperty", id, scope, element));
+        RET(invalid_property("imp__AudioUnitSetProperty", id, scope, element));
         return;
     }
     if (size != want || data == 0) {
         RET(kAudioUnitErr_InvalidPropertyValue);
         return;
     }
-    if (id == PROP_STREAM_FORMAT) {
+    if (id == kAudioUnitProperty_StreamFormat) {
         const AudioStreamBasicDescription *f = guest_ptr(data);
         trace_audio("unit %#x format scope %u: %.0f Hz %.4s flags %#x %u ch %u bit", ARG(0),
                     (unsigned)scope, f->mSampleRate,
@@ -988,7 +974,7 @@ void imp__AudioUnitGetProperty(void)
         return;
     }
     if (plain_property_size(id) == 0) {
-        RET(invalid_property("AudioUnitGetProperty", id, scope, element));
+        RET(invalid_property("imp__AudioUnitGetProperty", id, scope, element));
         return;
     }
     UInt32 size = MEM32(size_ptr);
@@ -1090,7 +1076,8 @@ void imp__AudioUnitSetParameter(void)
 
 static int device_property_ok(uint32_t id)
 {
-    return id == DEV_PROP_PREFERRED_LAYOUT || id == DEV_PROP_NOMINAL_RATE || id == DEV_PROP_BUFFER_SIZE;
+    return id == kAudioDevicePropertyPreferredChannelLayout || id == kAudioDevicePropertyNominalSampleRate ||
+           id == kAudioDevicePropertyBufferSize;
 }
 
 void imp__AudioDeviceGetProperty(void)
@@ -1099,8 +1086,10 @@ void imp__AudioDeviceGetProperty(void)
     trace_audio("AudioDeviceGetProperty device %u channel %u input %#x property %.4s size %u", ARG(0),
                 ARG(1), ARG(2), (const char *)&(uint32_t){__builtin_bswap32(id)},
                 size_ptr != 0 ? MEM32(size_ptr) : 0);
+    if (!device_property_ok(id))
+        THUNK_UNSUPPORTED("device property '%.4s'", (const char *)&(uint32_t){__builtin_bswap32(id)});
     if (!device_property_ok(id) || size_ptr == 0 || ARG(5) == 0) {
-        RET(K_AUDIO_HARDWARE_UNKNOWN_PROPERTY_ERROR);
+        RET(kAudioHardwareUnknownPropertyError);
         return;
     }
     UInt32 size = MEM32(size_ptr);
@@ -1116,7 +1105,8 @@ void imp__AudioDeviceGetPropertyInfo(void)
     trace_audio("AudioDeviceGetPropertyInfo device %u channel %u input %#x property %.4s", ARG(0), ARG(1),
                 ARG(2), (const char *)&(uint32_t){__builtin_bswap32(id)});
     if (!device_property_ok(id)) {
-        RET(K_AUDIO_HARDWARE_UNKNOWN_PROPERTY_ERROR);
+        THUNK_UNSUPPORTED("device property '%.4s'", (const char *)&(uint32_t){__builtin_bswap32(id)});
+        RET(kAudioHardwareUnknownPropertyError);
         return;
     }
     UInt32 size = 0;

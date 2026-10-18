@@ -18,6 +18,7 @@
 #include <time.h>
 #include <unistd.h>
 
+#include "diag.h"
 #include "recomp_types.h"
 #include "guest_mem.h"
 #include "handles.h"
@@ -241,6 +242,7 @@ void imp__fopen(void)
         if (h == 0) {
             fclose(f);
             guest_set_errno(ENFILE);
+            THUNK_UNSUPPORTED("file handle table full");
         }
     }
     ret32(h);
@@ -374,6 +376,7 @@ void imp__opendir_UNIX2003(void)
         trace_open(path, "opendir", hd->dir != NULL);
     if (hd->buf == 0) {
         guest_set_errno(EMFILE);
+        THUNK_UNSUPPORTED("directory table full");
     } else if (hd->dir == NULL) {
         guest_set_errno(errno);
     } else {
@@ -576,6 +579,8 @@ static uint32_t zone_intern(const char *zone)
         }
     }
     pthread_mutex_unlock(&g_zone_lock);
+    if (result == 0)
+        THUNK_UNSUPPORTED("time zone table full");
     return result;
 }
 
