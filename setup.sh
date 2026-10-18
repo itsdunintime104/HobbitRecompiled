@@ -62,6 +62,41 @@ find_python() {
     done
 }
 
+# Run one build tool with a harmless command and report it.
+# Usage: check_tool NAME FIX COMMAND...
+# A tool that is found but fails is often another copy earlier in PATH
+# (for example MacPorts); Apple's copy is in /usr/bin.
+check_tool() {
+    name=$1; fix=$2; shift 2
+    path=$(command -v "$1" 2>/dev/null) || { missing "$name: not found" "$fix"; return; }
+    if err=$("$@" 2>&1 >/dev/null); then
+        ok "$name ($path)"
+        return
+    fi
+    case "$path" in
+        /usr/bin/*) ;;
+        *) fix="$path is not Apple's copy. Put Apple's tools first: PATH=/usr/bin:\$PATH ./setup.sh" ;;
+    esac
+    missing "$name: $path fails: $(printf '%s\n' "$err" | head -n 1 | cut -c 1-120)" "$fix"
+}
+
+check_build_tools() {
+    T=$(mktemp -d "${TMPDIR:-/tmp}/hobbit-setup.XXXXXX")
+    trap 'rm -rf "$T"' EXIT INT TERM
+    printf 'int main(void) { return 0; }\n' > "$T/t.c"
+    check_tool "C compiler (clang, arm64 and x86_64)" "xcode-select --install" \
+        clang -arch arm64 -arch x86_64 "$T/t.c" -o "$T/t"
+    check_tool "make" "xcode-select --install" make --version
+    check_tool "otool" "xcode-select --install" otool -h /usr/bin/true
+    if [ -f "$T/t" ]; then
+        check_tool "install_name_tool" "xcode-select --install" install_name_tool -add_rpath @loader_path "$T/t"
+    else
+        printf 'SKIPPED  install_name_tool (needs the C compiler)\n'
+    fi
+    rm -rf "$T"
+    trap - EXIT INT TERM
+}
+
 preflight() {
     step "1/7 Checking requirements"
 
@@ -69,7 +104,12 @@ preflight() {
 
     if [ "$(uname -m)" = arm64 ]; then ok "Apple Silicon (arm64)"; else missing "Apple Silicon (this is $(uname -m))" "use a Mac with an M-series chip"; fi
 
-    if xcode-select -p >/dev/null 2>&1; then ok "Xcode Command Line Tools"; else missing "Xcode Command Line Tools" "xcode-select --install"; fi
+    if xcode-select -p >/dev/null 2>&1; then
+        ok "Xcode Command Line Tools"
+        check_build_tools
+    else
+        missing "Xcode Command Line Tools (C compiler, make, otool)" "xcode-select --install"
+    fi
 
     # "brew --prefix sdl2" can print an alias path without lib/, so build the path from the Homebrew prefix.
     SDL_LIB=""
