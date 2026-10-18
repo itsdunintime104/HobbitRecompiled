@@ -35,6 +35,7 @@
 #include <time.h>
 #include <unistd.h>
 
+#include "diag.h"
 #include "guest_heap.h"
 #include "guest_mem.h"
 #include "recomp_types.h"
@@ -450,6 +451,8 @@ void imp__cgCreateProgram(void)
     uint32_t nargs = 0;
     while (args && nargs < CGW_MAX_STR - 2 && MEM32(args + 4u * nargs))
         nargs++;
+    if (args && nargs == CGW_MAX_STR - 2 && MEM32(args + 4u * nargs))
+        THUNK_UNSUPPORTED("more than %d compiler arguments", (int)(CGW_MAX_STR - 2));
     const char *strs[CGW_MAX_STR];
     strs[0] = gstr(ARG(2));
     strs[1] = gstr(ARG(4));

@@ -616,6 +616,8 @@ void imp__pthread_key_create(void)
         }
     }
     pthread_mutex_unlock(&g_table_lock);
+    if (k >= GT_MAX_KEYS)
+        THUNK_UNSUPPORTED("key table full");
     if (rc == 0)
         MEM32(out) = k;
     RET(rc);
@@ -720,6 +722,7 @@ void imp__pthread_create(void)
     pthread_mutex_lock(&g_table_lock);
     if (g_thread_count >= GT_MAX_THREADS || GT_STACK_END - g_next_stack < size) {
         pthread_mutex_unlock(&g_table_lock);
+        THUNK_UNSUPPORTED("thread slots exhausted");
         RET(EAGAIN);
         return;
     }

@@ -4,6 +4,7 @@
  * public set-1 table. */
 #include <SDL.h>
 
+#include "diag.h"
 #include "frontend_sdl.h"
 
 int fe_nukey_from_scancode(int scancode)
@@ -75,6 +76,8 @@ int fe_nukey_from_scancode(int scancode)
     case SDL_SCANCODE_DELETE: return 0xd3;
     case SDL_SCANCODE_LGUI: return 0xdb;
     case SDL_SCANCODE_RGUI: return 0xdc;
-    default: return -1;
+    default:
+        diag_unsupported(__func__, 0, "SDL scancode %d", (int)scancode);
+        return -1;
     }
 }

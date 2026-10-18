@@ -21,6 +21,7 @@
 #include <string.h>
 #include <sys/time.h>
 
+#include "diag.h"
 #include "data_imports.h"
 #include "frontend_hud.h"
 #include "frontend_sdl.h"
@@ -1057,7 +1058,9 @@ void imp__CGLSetFullScreen(void) { RET(0); }
 /* CGLSetParameter(ctx, pname, const GLint *params): swap interval only. */
 void imp__CGLSetParameter(void)
 {
-    if (ARG(1) == 222u /* kCGLCPSwapInterval */ && s_window)
+    if (ARG(1) != 222u /* kCGLCPSwapInterval */)
+        THUNK_UNSUPPORTED("CGL context parameter %u", ARG(1));
+    else if (s_window)
         SDL_GL_SetSwapInterval((int)MEM32(ARG(2)));
     RET(0);
 }
@@ -1117,7 +1120,7 @@ void imp__CGLDescribeRenderer(void)
         if (handled)
             fprintf(stderr, "frontend: CGLDescribeRenderer property %u -> %d\n", prop, (int)v);
         else
-            fprintf(stderr, "frontend: CGLDescribeRenderer property %u not handled, returning 0\n", prop);
+            THUNK_UNSUPPORTED("renderer property %u", prop);
     }
     MEM32(ARG(3)) = v;
     RET(0);

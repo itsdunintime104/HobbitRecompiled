@@ -38,6 +38,7 @@
 #include <string.h>
 #include <time.h>
 
+#include "diag.h"
 #include "guest_call.h"
 #include "guest_heap.h"
 #include "guest_mem.h"
@@ -935,7 +936,7 @@ static uint32_t plain_property_size(uint32_t id)
 
 static OSStatus invalid_property(const char *fn, uint32_t id, uint32_t scope, uint32_t element)
 {
-    fprintf(stderr, "%s: unsupported property %u scope %u element %u\n", fn, id, scope, element);
+    diag_unsupported(fn, MEM32(g_esp), "property %u scope %u element %u", id, scope, element);
     return kAudioUnitErr_InvalidProperty;
 }
 
@@ -961,7 +962,7 @@ void imp__AudioUnitSetProperty(void)
     trace_audio("unit %#x set property %u scope %u element %u", ARG(0), (unsigned)id, (unsigned)scope,
                 (unsigned)element);
     if (want == 0) {
-        RET(invalid_property("AudioUnitSetProperty", id, scope, element));
+        RET(invalid_property("imp__AudioUnitSetProperty", id, scope, element));
         return;
     }
     if (size != want || data == 0) {
@@ -988,7 +989,7 @@ void imp__AudioUnitGetProperty(void)
         return;
     }
     if (plain_property_size(id) == 0) {
-        RET(invalid_property("AudioUnitGetProperty", id, scope, element));
+        RET(invalid_property("imp__AudioUnitGetProperty", id, scope, element));
         return;
     }
     UInt32 size = MEM32(size_ptr);
@@ -1099,6 +1100,8 @@ void imp__AudioDeviceGetProperty(void)
     trace_audio("AudioDeviceGetProperty device %u channel %u input %#x property %.4s size %u", ARG(0),
                 ARG(1), ARG(2), (const char *)&(uint32_t){__builtin_bswap32(id)},
                 size_ptr != 0 ? MEM32(size_ptr) : 0);
+    if (!device_property_ok(id))
+        THUNK_UNSUPPORTED("device property '%.4s'", (const char *)&(uint32_t){__builtin_bswap32(id)});
     if (!device_property_ok(id) || size_ptr == 0 || ARG(5) == 0) {
         RET(K_AUDIO_HARDWARE_UNKNOWN_PROPERTY_ERROR);
         return;
@@ -1116,6 +1119,7 @@ void imp__AudioDeviceGetPropertyInfo(void)
     trace_audio("AudioDeviceGetPropertyInfo device %u channel %u input %#x property %.4s", ARG(0), ARG(1),
                 ARG(2), (const char *)&(uint32_t){__builtin_bswap32(id)});
     if (!device_property_ok(id)) {
+        THUNK_UNSUPPORTED("device property '%.4s'", (const char *)&(uint32_t){__builtin_bswap32(id)});
         RET(K_AUDIO_HARDWARE_UNKNOWN_PROPERTY_ERROR);
         return;
     }

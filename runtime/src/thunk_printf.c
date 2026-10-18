@@ -12,6 +12,7 @@
 #include <string.h>
 #include <wchar.h>
 
+#include "diag.h"
 #include "guest_mem.h"
 #include "handles.h"
 #include "recomp_types.h"
@@ -250,6 +251,7 @@ static int guest_format(const char *fmt, uint32_t argp, Buf *out)
             break;
         case 'f': case 'F': case 'e': case 'E': case 'g': case 'G': case 'a': case 'A': {
             if (lm == L_BIGL) { /* 12-byte x87 long double: not supported */
+                THUNK_UNSUPPORTED("printf conversion '%c'", conv);
                 rc = buf_append(out, start, (size_t)(p - start));
                 break;
             }
@@ -272,6 +274,8 @@ static int guest_format(const char *fmt, uint32_t argp, Buf *out)
             store_count(arg32(&cur), lm, out->len);
             break;
         default: /* unknown or truncated conversion: emit it as written */
+            if (conv != 0)
+                THUNK_UNSUPPORTED("printf conversion '%c'", conv);
             rc = buf_append(out, start, (size_t)(p - start));
             break;
         }
@@ -460,8 +464,10 @@ void imp__sscanf(void)
         /* A scanset is copied through to the closing ']'. A leading ']' or
          * '^]' belongs to the set. */
         if (conv == '[') {
-            if (lm == L_L)
-                break; /* wide scanset: not supported */
+            if (lm == L_L) { /* wide scanset: not supported */
+                THUNK_UNSUPPORTED("sscanf scanset");
+                break;
+            }
             spec[n++] = '[';
             if (*p == '^')
                 spec[n++] = *p++;
@@ -469,8 +475,10 @@ void imp__sscanf(void)
                 spec[n++] = *p++;
             while (*p && *p != ']' && n < sizeof spec - 24)
                 spec[n++] = *p++;
-            if (*p != ']')
+            if (*p != ']') {
+                THUNK_UNSUPPORTED("sscanf scanset");
                 break;
+            }
             p++;
             spec[n++] = ']';
             spec[n] = '\0';
@@ -507,6 +515,7 @@ void imp__sscanf(void)
             kind = T_STR;
             break;
         default: /* unsupported conversion: stop scanning */
+            THUNK_UNSUPPORTED("sscanf conversion '%c'", conv);
             goto done;
         }
 
@@ -567,7 +576,8 @@ void imp__fcntl_UNIX2003(void)
         rc = fcntl(fd, cmd, (int)ARG(2));
         break;
     default:
-        errno = EINVAL;
+        guest_set_errno(EINVAL);
+        THUNK_UNSUPPORTED("fcntl command %d", cmd);
         rc = -1;
         break;
     }

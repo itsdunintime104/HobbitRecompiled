@@ -15,6 +15,7 @@
 #include <stdint.h>
 #include <string.h>
 
+#include "diag.h"
 #include "guest_heap.h"
 #include "guest_mem.h"
 #include "recomp_types.h"
@@ -87,6 +88,8 @@ static int pad_event_watch(void *ud, SDL_Event *e)
         s_evq[s_evq_n].add = e->type == SDL_CONTROLLERDEVICEADDED;
         s_evq[s_evq_n].which = e->cdevice.which;
         s_evq_n++;
+    } else {
+        diag_unsupported(__func__, 0, "hot-plug queue full");
     }
     pthread_mutex_unlock(&s_lock);
     return 0;
@@ -108,6 +111,7 @@ static void pad_add(int index)
             free_slot = i; /* a gone pad keeps its slot until the game releases it */
     }
     if (free_slot < 0) {
+        diag_unsupported(__func__, 0, "pad slots full");
         SDL_GameControllerClose(gc);
         return;
     }

@@ -80,3 +80,13 @@ def test_failure_log_has_return_address(exe: Path) -> None:
     line = next(ln for ln in result.stderr.splitlines() if ln.startswith("RECOMP:"))
     assert "caller=0xCAFEBABE" in line
     assert "icalls=[0x00402000 0x00401000" in line
+
+
+def test_unsupported_prints_once(exe: Path) -> None:
+    result = run(exe, "unsupported")
+    assert result.returncode == 0, result.stderr
+    lines = [ln for ln in result.stderr.splitlines() if "UNSUPPORTED" in ln]
+    assert lines == [
+        "UNSUPPORTED f: value 7 (guest return 0x00001234)",
+        "UNSUPPORTED f: value 8 (guest return 0x00005678)",
+    ]
