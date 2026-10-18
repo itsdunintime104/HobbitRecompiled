@@ -91,9 +91,12 @@ mkdir -p "$LOGDIR"
 ls -1t "$LOGDIR"/run-*.log 2>/dev/null | tail -n +20 | while IFS= read -r old; do rm -f "$old"; done
 ls -1t "$LOGDIR"/frames-*.csv 2>/dev/null | tail -n +20 | while IFS= read -r old; do rm -f "$old"; done
 STAMP=$(date +%Y-%m-%d_%H%M%S)
-# Every frame time goes to a CSV next to the run log; set RECOMP_FRAMELOG to choose another file.
-: "${RECOMP_FRAMELOG:=$LOGDIR/frames-$STAMP.csv}"
-export RECOMP_FRAMELOG
+# Frame times go to a CSV next to the run log only when asked: HOBBITRECOMP_FRAMELOG=1,
+# or RECOMP_FRAMELOG=<file> to choose the file.
+if [ "${HOBBITRECOMP_FRAMELOG:-}" = 1 ]; then
+    : "${RECOMP_FRAMELOG:=$LOGDIR/frames-$STAMP.csv}"
+fi
+[ -n "${RECOMP_FRAMELOG:-}" ] && export RECOMP_FRAMELOG
 exec "$DIR/hobbit" "$GAME" >"$LOGDIR/run-$STAMP.log" 2>&1
 LAUNCHER
 } > "$APP/Contents/MacOS/$LAUNCHER_EXE"

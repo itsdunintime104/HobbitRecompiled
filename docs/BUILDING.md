@@ -67,7 +67,7 @@ Set these as environment variables before `build.nosync/hobbit`.
 | `HOBBIT_APP=<path>` | The game's `.app` bundle, if it is not in the default Steam folder |
 | `HOBBIT_SAVE_DIR=<path>` | The save folder |
 | `RECOMP_HUD=1` | Show the overlay at start (Cmd+F toggles it). See [The overlay](#the-overlay) |
-| `RECOMP_FRAMELOG=<file>` | Write every frame time as CSV (`t_s,frame_ms`). The app does this by default, next to its run log. Plot with `.venv/bin/python -m tools.perf.plot_frames <file>` |
+| `RECOMP_FRAMELOG=<file>` | Write every frame time as CSV (`t_s,frame_ms`). The app does this only with `HOBBITRECOMP_FRAMELOG=1`, next to its run log. Plot with `.venv/bin/python -m tools.perf.plot_frames <file>` |
 | `RECOMP_ASSUME_FOCUS=1` | Treat the window as focused. Use this for runs started by a script, which macOS does not give focus to |
 | `RECOMP_HEAP_GUARD=1` | Check every guest heap block for overruns, use after free and double free; stop at the first finding. `2` logs each finding once and continues. Costs about 8% speed |
 | `RECOMP_TRACE_OPENS=1` | Log every file open and its result (`2` adds the guest call chain) |

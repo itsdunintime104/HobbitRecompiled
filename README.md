@@ -85,7 +85,7 @@ Controllers that SDL2 supports work, including Xbox and DualShock 4 pads. Connec
 
 The game renders at your display's scaled size. To change it, use the resolution setting in the game's Options. It offers the full panel size, 75%, the desktop size and 50%.
 
-Each run writes a log to `~/Library/Logs/HobbitRecomp/`. If the game stops, the last lines of the log say why. Attach the log when you report a problem.
+Each run writes a log to `~/Library/Logs/HobbitRecomp/`. It holds startup messages, warnings and errors. It does not record what you do in the game. If the game stops, the last lines of the log say why. Attach the log when you report a problem. The log stays on your Mac, and the app keeps the newest 20.
 
 ## Saves
 
@@ -116,7 +116,13 @@ Tested on a MacBook Pro 16-inch (2021) with an M1 Max (10-core CPU, 32-core GPU,
 
 *Hobbiton at 3456 × 2169 with the overlay. Full clip: [hobbiton.mp4](docs/media/hobbiton.mp4)*
 
-The app writes every frame time to `~/Library/Logs/HobbitRecomp/frames-<date>_<time>.csv`. To turn one into a chart:
+To record every frame time, start the app with the flag `HOBBITRECOMP_FRAMELOG=1`. It then writes `~/Library/Logs/HobbitRecomp/frames-<date>_<time>.csv`:
+
+```sh
+open --env HOBBITRECOMP_FRAMELOG=1 "$HOME/Applications/Hobbit Recompiled.app"
+```
+
+To turn a CSV into a chart:
 
 ```sh
 .venv/bin/python -m tools.perf.plot_frames ~/Library/Logs/HobbitRecomp/frames-<date>_<time>.csv
