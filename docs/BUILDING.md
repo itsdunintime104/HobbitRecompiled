@@ -11,13 +11,12 @@
 - [Tests](#tests)
 - [Repository layout](#repository-layout)
 - [Design notes](#design-notes)
-- [Before a public release](#before-a-public-release)
 
 ## How it works
 
-1. `tools/hobbit/analyze.py` reads the game's Mach-O binary and records its functions, imports and switch tables in `recon/`.
-2. `tools/xrecomp/` translates every x86 function into C. It is a fork of [xboxrecomp](https://github.com/sp00nznet/xboxrecomp); local changes are listed in `tools/xrecomp/UPSTREAM.md`. The output goes to `generated.nosync/` (about 330 MB, never committed).
-3. `runtime/` replaces the game's 378 macOS imports:
+1. `engine/tools/hobbit/analyze.py` reads the game's Mach-O binary and records its functions, imports and switch tables in `recon/`.
+2. `engine/tools/xrecomp/` translates every x86 function into C. It is a fork of [xboxrecomp](https://github.com/sp00nznet/xboxrecomp); local changes are listed in `engine/tools/xrecomp/UPSTREAM.md`. The output goes to `generated.nosync/` (about 330 MB, never committed).
+3. `engine/runtime/` replaces the game's 378 macOS imports:
    - CoreFoundation and the OpenGL/CGL calls, over the host frameworks;
    - the Cocoa front end, replaced by SDL2;
    - CoreAudio, threads and files;
@@ -43,12 +42,16 @@ mkdir -p orig.nosync
 cp "$HOME/Library/Application Support/Steam/steamapps/common/LEGO - The Hobbit/LEGO The Hobbit.app/Contents/MacOS/LEGO The Hobbit" orig.nosync/hobbit_i386
 shasum -a 256 orig.nosync/hobbit_i386   # must start with 01809d9d1d50b4d1
 
-.venv/bin/python -m tools.xrecomp.run --analysis recon/analysis.json \
-    --switch recon/switch_tables.json --bin orig.nosync/hobbit_i386 \
-    --out generated.nosync --jobs 8
-make -C build -j10
-make -C build app   # "build.nosync/Hobbit Recompiled.app"
+make -C engine/build game   # derived headers and overrides in build.nosync/game/
+(cd engine && ../.venv/bin/python -m tools.xrecomp.run --analysis ../recon/analysis.json \
+    --switch ../recon/switch_tables.json --bin ../orig.nosync/hobbit_i386 \
+    --out ../generated.nosync --jobs 8 --prefix hobbit \
+    --overrides ../build.nosync/game/native_overrides.txt)
+make -C engine/build -j10
+make -C engine/build app   # "build.nosync/Hobbit Recompiled.app"
 ```
+
+The values that belong to one game live in `game.toml`. Values derived from the game binary are written to `build.nosync/game/`.
 
 Run the binary directly:
 
@@ -56,7 +59,7 @@ Run the binary directly:
 build.nosync/hobbit orig.nosync/hobbit_i386
 ```
 
-`make` tracks headers but not compiler flags. After you change a flag, delete `build.nosync/obj/*.o` before you build again. To build the heap allocator with its own checks, delete `build.nosync/obj/rt_dlmalloc.o` and run `make -C build -j10 HEAP_DEBUG=1`.
+`make` tracks headers but not compiler flags. After you change a flag, delete `build.nosync/obj/*.o` before you build again. To build the heap allocator with its own checks, delete `build.nosync/obj/rt_dlmalloc.o` and run `make -C engine/build -j10 HEAP_DEBUG=1`.
 
 ## Options
 
@@ -67,7 +70,7 @@ Set these as environment variables before `build.nosync/hobbit`.
 | `HOBBIT_APP=<path>` | The game's `.app` bundle, if it is not in the default Steam folder |
 | `HOBBIT_SAVE_DIR=<path>` | The save folder |
 | `RECOMP_HUD=1` | Show the overlay at start (Cmd+F toggles it). See [The overlay](#the-overlay) |
-| `RECOMP_FRAMELOG=<file>` | Write every frame time as CSV (`t_s,frame_ms`). The app does this only with `HOBBITRECOMP_FRAMELOG=1`, next to its run log. Plot with `.venv/bin/python -m tools.perf.plot_frames <file>` |
+| `RECOMP_FRAMELOG=<file>` | Write every frame time as CSV (`t_s,frame_ms`). The app does this only with `HOBBITRECOMP_FRAMELOG=1`, next to its run log. Plot with `../.venv/bin/python -m tools.perf.plot_frames <file>` from `engine/` |
 | `RECOMP_ASSUME_FOCUS=1` | Treat the window as focused. Use this for runs started by a script, which macOS does not give focus to |
 | `RECOMP_HEAP_GUARD=1` | Check every guest heap block for overruns, use after free and double free; stop at the first finding. `2` logs each finding once and continues. Costs about 8% speed |
 | `RECOMP_TRACE_OPENS=1` | Log every file open and its result (`2` adds the guest call chain) |
@@ -98,7 +101,7 @@ When the game stops on an error, the last log lines name the cause and the guest
 ## Tests
 
 ```sh
-.venv/bin/python -m pytest -q tests
+cd engine && ../.venv/bin/python -m pytest -q tests
 ```
 
 The suite takes about a minute. Tests that need the game binary find it at `orig.nosync/hobbit_i386`, or through `HOBBIT_BIN`.
@@ -106,7 +109,7 @@ The suite takes about a minute. Tests that need the game binary find it at `orig
 The differential fuzzer runs real game functions on Unicorn and as translated C, and compares the results. A full run takes about 6 minutes on 8 cores:
 
 ```sh
-.venv/bin/python -m tools.hobbit.fuzz_leaf --binary orig.nosync/hobbit_i386 --work /tmp/hobbit-fuzz
+cd engine && ../.venv/bin/python -m tools.hobbit.fuzz_leaf --binary ../orig.nosync/hobbit_i386 --work /tmp/hobbit-fuzz
 ```
 
 ## Repository layout
@@ -114,15 +117,15 @@ The differential fuzzer runs real game functions on Unicorn and as translated C,
 | Path | Contents |
 |---|---|
 | `setup.sh` | One-command setup: checks, translation, build, app install |
-| `tools/hobbit/` | Mach-O analysis, import signatures, code generators, the fuzzer |
-| `tools/xrecomp/` | The x86-to-C translator (forked from xboxrecomp) |
-| `tools/cghelper/` | The x86_64 helper that runs the game's Cg shader compiler |
-| `tools/glcount/` | A GL call counter, loaded with `DYLD_INSERT_LIBRARIES` |
-| `tools/package/` | The `.app` builder and the release check |
-| `runtime/` | The replacements for macOS, Steam, OpenGL and audio, plus startup and the front end |
+| `engine/tools/hobbit/` | Mach-O analysis, import signatures, code generators, the fuzzer |
+| `engine/tools/xrecomp/` | The x86-to-C translator (forked from xboxrecomp) |
+| `engine/tools/cghelper/` | The x86_64 helper that runs the game's Cg shader compiler |
+| `engine/tools/glcount/` | A GL call counter, loaded with `DYLD_INSERT_LIBRARIES` |
+| `engine/tools/package/` | The `.app` builder and the release check |
+| `engine/runtime/` | The replacements for macOS, Steam, OpenGL and audio, plus startup and the front end |
 | `recon/` | Analysis data: functions, imports, switch tables, names |
-| `build/Makefile` | Compiles `generated.nosync/` and `runtime/` into `build.nosync/` |
-| `tests/` | Conformance tests against Unicorn, runtime and thunk tests |
+| `engine/build/Makefile` | Compiles `generated.nosync/` and `engine/runtime/` into `build.nosync/` |
+| `engine/tests/` | Conformance tests against Unicorn, runtime and thunk tests |
 | `docs/` | Design and debugging notes |
 
 ## Design notes
@@ -131,7 +134,3 @@ The differential fuzzer runs real game functions on Unicorn and as translated C,
 - `docs/FRONTEND.md`: the SDL2 front end and gamepad input.
 - `docs/GL_CAPS.md`: the GL capability flags behind the Shader Model 3 alert.
 - `docs/THUNK_AUDIT.md`: thunk return values checked against the game's call sites.
-
-## Before a public release
-
-Run `tools/package/release_check.sh`. It fails when the tracked files or any commit in the history hold game files, generated code, the Ghidra pseudocode in `docs/research/pseudocode/`, or home folder paths. Do not make this repository public until it passes. The pseudocode is in the git history, so publish from a fresh repository or rewritten history, not by changing this repository's visibility.

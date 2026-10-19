@@ -1,0 +1,25 @@
+# Game profile: the values the tools cannot read from the game binary.
+# Paths are relative to this file's folder. Everything else (entry point, segments,
+# static area, front-end function and data addresses) is derived by tools/game/derive.py.
+id = "hobbit"
+title = "LEGO The Hobbit"
+window_title = "The Hobbit"
+steam_app_id = 285160
+steam_build = "84019"
+steam_app = "LEGO - The Hobbit/LEGO The Hobbit.app"
+game_exe = "LEGO The Hobbit"
+binary_sha256 = "01809d9d1d50b4d13073afda0297169dfa38d987238923659082bbef551e77d5"
+binary = "orig.nosync/hobbit_i386"
+analysis = "recon/analysis.json"
+switch_tables = "recon/switch_tables.json"
+import_sigs = "recon/import_sigs.json"
+env_prefix = "HOBBIT"
+
+[app]
+name = "Hobbit Recompiled"
+exe = "HobbitRecompiled"
+bundle_id = "local.hobbitrecomp"
+support_dir = "HobbitRecomp"
+old_name = "HobbitRecomp.app"
+
+[pins]

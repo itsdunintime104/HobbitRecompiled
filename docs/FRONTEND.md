@@ -2,7 +2,7 @@
 
 The game's front end (block 0x3db000–0x3e2000, 128 lifted functions, all in `generated.nosync/hobbit_0025.c`) builds its window, GL context and event loop from four ObjC classes. SDL2 2.32 replaces it. One SDL window and one legacy 2.1 GL context serve every game window.
 
-Code: `runtime/src/frontend_sdl.c`, `runtime/src/frontend_keymap.c`, `runtime/include/frontend_sdl.h`, `runtime/include/frontend_rename.h`.
+Code: `engine/runtime/src/frontend_sdl.c`, `engine/runtime/src/frontend_keymap.c`, `engine/runtime/include/frontend_sdl.h`. `frontend_rename.h` and `native_overrides.txt` are generated into `build.nosync/game/` by `engine/tools/game/derive.py` from `engine/tools/game/feral_frontend.toml`.
 
 ## (a) Functions the rest of the game calls
 
@@ -37,7 +37,7 @@ Not confirmed: the meaning of 3de020 arguments a6–a8 (they go to `initWithFram
 
 Direct calls in generated code are plain C calls to `sub_XXXXXXXX`, not dispatch lookups. So registering in `recomp_lookup_manual` alone would not catch them. Two parts:
 
-1. `frontend_rename.h` is force-included only when compiling `hobbit_0025.c`. It renames the 19 lifted definitions to `lifted_sub_*`. Every direct caller and `hobbit_dispatch.c` then bind to the native `sub_*` in `frontend_sdl.c`. Generated code is not edited. A plain build fails with 19 duplicate symbols, which proves the set is exact.
+1. `frontend_rename.h` is generated into `build.nosync/game/` by `engine/tools/game/derive.py` from `engine/tools/game/feral_frontend.toml`. The Makefile force-includes it only when compiling the chunk(s) that define the replaced functions. It renames the 19 lifted definitions to `lifted_sub_*`. Every direct caller and `hobbit_dispatch.c` then bind to the native `sub_*` in `frontend_sdl.c`. Generated code is not edited. A plain build fails with 19 duplicate symbols, which proves the set is exact.
 2. `recomp_lookup_manual` (frontend_sdl.c) maps the same 19 guest addresses for indirect calls. The stub in `recomp_glue.c` is removed.
 
 Guest state the native code keeps up to date: window count 0x182a37c (1 after open), window table 0x171c29c, display ID 0x182a388, retina flag 0x182a398 (0), screen size 0x161b2f0/0x161b2f4, focus byte 0x161b49c.
@@ -69,7 +69,7 @@ Not checked: the callers outside the block of `CGDisplayModeCopyPixelEncoding` a
 
 ## Gamepad
 
-Code: `runtime/src/frontend_pad.c`. Overrides: `recon/native_overrides.txt`.
+Code: `engine/runtime/src/frontend_pad.c`. Overrides: `native_overrides.txt`, generated into `build.nosync/game/` by `engine/tools/game/derive.py` from `engine/tools/game/feral_frontend.toml`.
 
 **Hook choice.** The HID Utilities library (0x1128000-0x1130216, chunk 0122) builds device and element lists through IOKit. Replacing 1130070 or 112f9f5 would mean faking those lists and the IOHIDDeviceInterface calls. The game's own pad layer is one level up, in chunk 0024, and uses the library only through device records (pRecDevice). Five functions are replaced:
 
@@ -83,7 +83,7 @@ Code: `runtime/src/frontend_pad.c`. Overrides: `recon/native_overrides.txt`.
 
 3d6e60 (dead zones, Xbox quirks, the game's output struct) and everything above it stay lifted. 3d1c00 (the HID element walk) is no longer called.
 
-Direct calls inside chunk 0024 bind to the native functions because the lifter emits the five lifted definitions as weak symbols (VAs listed in `recon/native_overrides.txt`) and `frontend_pad.c` defines them strong.
+Direct calls inside chunk 0024 bind to the native functions because the lifter emits the five lifted definitions as weak symbols (VAs listed in the generated `build.nosync/game/native_overrides.txt`) and `frontend_pad.c` defines them strong.
 
 **Device record** (guest memory, 0x470 bytes, 8 slots): +0x114 vendor, +0x118 product, +0x220 name (0x40), +0x424 usage (5), +0x428 usage page (1), +0x440 axis count (6), +0x444 button count (17), +0x448 hat count (1), +0x458 gone, +0x459 claimed. Every SDL game controller reports vendor 0x45E, product 0x28E, so the game takes its Xbox branch. Controllers are opened on SDL_CONTROLLERDEVICEADDED (an event watch queues the event; the next pad call opens it) and closed on SDL_CONTROLLERDEVICEREMOVED. Pads already present at first use are opened by a scan.
 
@@ -111,7 +111,7 @@ Not checked: the stick Y sign, the button order against the game's default bindi
 
 - CFLAGS: add `-I/opt/homebrew/Cellar/sdl2/2.32.10/include/SDL2 -D_THREAD_SAFE` (from `sdl2-config --cflags`).
 - LDFLAGS: add `-L/opt/homebrew/Cellar/sdl2/2.32.10/lib -lSDL2`.
-- For `hobbit_0025.o` only: `$(OBJ)/gen_hobbit_0025.o: CFLAGS += -include $(ROOT)/runtime/include/frontend_rename.h`.
+- The Makefile applies the generated `build.nosync/game/frontend_rename.h` (`-include`) to the chunk(s) that define the replaced functions only.
 
 ## Known gaps
 
