@@ -17,6 +17,8 @@
 
 The Mac version of LEGO The Hobbit (Feral Interactive, 2014) is a 32-bit Intel app, so it stopped working when macOS dropped 32-bit support. This project translates the game's code to C ahead of time and compiles it into a native arm64 app for Apple Silicon. You still need Rosetta 2 installed, but only for a small helper that compiles the game's shaders.
 
+The translator and runtime are [MacRecomp](https://github.com/itsdunintime104/MacRecomp), the same engine that runs [Superheros Bricks Recompiled](https://github.com/itsdunintime104/SuperheroBrickRecomp).
+
 This project is not affiliated with or endorsed by TT Games, Warner Bros. Games, Feral Interactive or the LEGO Group.
 
 ## Contents
@@ -71,8 +73,14 @@ If the game is in another Steam library, run `HOBBIT_APP="/path/to/LEGO The Hobb
 | Option | Effect |
 |---|---|
 | `--check` | Only check the requirements |
-| `--force` | Translate again. Use it after `git pull` |
+| `--force` | Translate again. Use it after an update |
 | `--no-install` | Build the app in `build.nosync/` without copying it to `~/Applications` |
+
+To update to the latest version:
+
+```sh
+git pull && git submodule update --init && ./setup.sh --force
+```
 
 ## Playing
 
@@ -96,7 +104,7 @@ The game saves through Steam Cloud. Hobbit Recompiled keeps those files in `~/Li
 
 ## Status
 
-The intro, menus, saves and level 1 work. Level 1 has been played to the end, and a 55-minute session ran without a crash.
+The intro, menus, saves and levels 1–3 work. Level 1 has been played to the end. A 55-minute session, and a 28-minute session in levels 2 and 3, ran without a crash.
 
 - Controllers show Xbox button icons, also for a DualShock 4. The Mac version of the game does this for every controller.
 - Achievements and stats are offline.
@@ -108,9 +116,10 @@ Tested on a MacBook Pro 16-inch (2021) with an M1 Max (10-core CPU, 32-core GPU,
 
 | Scene | Resolution | Frame rate | Frame time |
 |---|---|---|---|
-| Hobbiton, played by hand | 2056 × 1329 | 110-120 FPS | 8.3-9.1 ms median, 99% under 10.2 ms |
-| Hobbiton, scripted walking, jumping and actions | 2056 × 1329 | 120-126 FPS | 7.9-8.3 ms median, 99% under 11 ms |
+| Hobbiton, played by hand | 2056 × 1329 | 110–120 FPS | 8.3–9.1 ms median, 99% under 10.2 ms |
+| Hobbiton, scripted walking, jumping and actions | 2056 × 1329 | 120–126 FPS | 7.9–8.3 ms median, 99% under 11 ms |
 | Hobbiton, while screen recording | 3456 × 2169 | 84 FPS, 1% low 66 FPS | 11.9 ms average, 99% under 15.1 ms |
+| Levels 2 and 3, played by hand | 2592 × 1674 | 88–129 FPS | not recorded |
 
 <img src="docs/media/hobbiton.gif" alt="Hobbiton at the full panel size with the overlay" width="640">
 
@@ -140,11 +149,11 @@ To turn a CSV into a chart:
 
 ## Building and development
 
-[docs/BUILDING.md](docs/BUILDING.md) covers how the translation works, building by hand, debug options, tests and the repository layout.
+[docs/BUILDING.md](docs/BUILDING.md) covers how the translation works, building by hand, debug options, tests and the repository layout. The [MacRecomp README](https://github.com/itsdunintime104/MacRecomp#readme) covers the engine: the build steps, the checks and the runtime switches.
 
 ## Credits
 
-- **[xboxrecomp](https://github.com/sp00nznet/xboxrecomp)** by sp00nznet: the x86-to-C translator this project's translator is forked from (MIT license).
+- **[xboxrecomp](https://github.com/sp00nznet/xboxrecomp)** by sp00nznet: the x86-to-C translator MacRecomp's translator is forked from (MIT license).
 - **[saga](https://github.com/opensagadev/saga)**: a decompilation of LEGO Star Wars: The Complete Saga, which uses the same engine. Used only as a reference; no code was copied from it.
 - **[SDL2](https://www.libsdl.org/)**: window, input and controllers (zlib license).
 - **dlmalloc** by Doug Lea: the guest heap allocator (MIT-0).
