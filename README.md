@@ -58,7 +58,7 @@ This project is not affiliated with or endorsed by TT Games, Warner Bros. Games,
    ```
 4. Get the code and run the setup script:
    ```sh
-   git clone https://github.com/itsdunintime104/HobbitRecompiled.git
+   git clone --recurse-submodules https://github.com/itsdunintime104/HobbitRecompiled.git
    cd HobbitRecompiled
    ./setup.sh
    ```
@@ -125,7 +125,7 @@ open --env HOBBITRECOMP_FRAMELOG=1 "$HOME/Applications/Hobbit Recompiled.app"
 To turn a CSV into a chart:
 
 ```sh
-.venv/bin/python -m tools.perf.plot_frames ~/Library/Logs/HobbitRecomp/frames-<date>_<time>.csv
+(cd engine && ../.venv/bin/python -m tools.perf.plot_frames ~/Library/Logs/HobbitRecomp/frames-<date>_<time>.csv)
 ```
 
 ## Troubleshooting
@@ -162,6 +162,6 @@ To turn a CSV into a chart:
 
 ## License
 
-GPL-3.0. See [LICENSE](LICENSE). Third-party code keeps its own license: see `tools/xrecomp/LICENSE`, `tools/xrecomp/NOTICE` and the header of `runtime/src/dlmalloc.c`.
+GPL-3.0. See [LICENSE](LICENSE). Third-party code keeps its own license: see `engine/tools/xrecomp/LICENSE`, `engine/tools/xrecomp/NOTICE` and the header of `engine/runtime/src/dlmalloc.c`.
 
 The repository contains no game assets, no game binary and no code generated from the game. `recon/` holds function addresses, import names, switch tables and recovered names taken from the game binary, which the translator needs.

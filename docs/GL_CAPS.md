@@ -19,7 +19,7 @@ At the alert breakpoint the runtime bytes were 0x1805CEA = 0x00, 0x1805D9F = 0x0
 
 Cause: the only GL 2.0 name that resolved to 0 was core `glShaderSource(GLuint shader, GLsizei count, const GLchar *const *string, const GLint *length)`. It was missing from the thunk tables, so the flag was cleared and the alert fired. The flag depends on core GL 2.0 names, not on the ARB names.
 
-## Thunks (runtime/src/thunk_gl.c)
+## Thunks (engine/runtime/src/thunk_gl.c)
 
 - `glShaderSource`: reads `count` guest u32 string pointers, builds a host array with guest_ptr per entry, and passes the length array through guest_ptr (32-bit ints in both address spaces) or NULL.
 - ARB shader objects: `GLhandleARB` is `void *` on macOS (`<OpenGL/gltypes.h>`), 8 bytes on the host and 4 in the guest. A two-way table hands out a dense counter from 1; 0 is NULL. A host value keeps its guest value for the process lifetime. Covered: glDeleteObjectARB, glGetHandleARB, glDetachObjectARB, glCreateShaderObjectARB, glShaderSourceARB, glCompileShaderARB, glCreateProgramObjectARB, glAttachObjectARB, glLinkProgramARB, glUseProgramObjectARB, glValidateProgramARB, glGetObjectParameterfvARB, glGetObjectParameterivARB, glGetInfoLogARB, glGetAttachedObjectsARB (converts its output array), glGetUniformLocationARB, glGetActiveUniformARB, glGetUniformfvARB, glGetUniformivARB, glGetShaderSourceARB, glBindAttribLocationARB, glGetActiveAttribARB, glGetAttribLocationARB.

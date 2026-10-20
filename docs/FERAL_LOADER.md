@@ -3,7 +3,7 @@
 The game binary does not contain its own startup. Guest main loads Feral's
 `PlugIns/Content.loader` bundle and hands control to it. The bundle is the
 Feral app shell. It calls back into the game once. We replace it with
-`runtime/src/feral_loader.c`.
+`engine/runtime/src/feral_loader.c`.
 
 Sources: the game binary `hobbit_i386` (stripped), and the loader
 `LEGO The Hobbit.app/Contents/PlugIns/Content.loader/Contents/MacOS/Content`
@@ -94,7 +94,7 @@ Not confirmed:
 | Dependencies | the existing CF thunk | Objective-C runtime messages, AppKit, WebKit, GameKit, AVFoundation, StoreKit, Sparkle, MacDoze, a C++ runtime and exceptions |
 | Gain | none lost that the game uses | launcher UI and receipt checks that we do not want |
 
-`runtime/src/feral_loader.c` provides `feral_entry` (host function). It
+`engine/runtime/src/feral_loader.c` provides `feral_entry` (host function). It
 reads `NuMain` from the dictionary through the `CFDictionaryGetValue`
 thunk, using the game's own `"NuMain"` key, and calls `NuMain(0, NULL)` on the
 calling (main) thread. Then it returns 0, as WinMain does. Launcher defaults

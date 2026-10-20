@@ -1,6 +1,6 @@
 # Thunk audit: return values against game call sites
 
-Date: 2026-10-16. Lifted code: `generated.nosync` at commit 3c6dfb7. Scope: the thunks in `runtime/src/thunk_sys.c`, `frontend_sdl.c`, `thunk_cf.c`, `thunk_rt.c`, `thunk_misc.c`, `thunk_files.c` and `data_imports.c` that return NULL or 0 for an object, a fake handle, an error code, or zero-filled out-data.
+Date: 2026-10-16. Lifted code: `generated.nosync` at commit 3c6dfb7. Scope: the thunks in `engine/runtime/src/thunk_sys.c`, `frontend_sdl.c`, `thunk_cf.c`, `thunk_rt.c`, `thunk_misc.c`, `thunk_files.c` and `data_imports.c` that return NULL or 0 for an object, a fake handle, an error code, or zero-filled out-data.
 
 Method: every `imp_<name>` call in `generated.nosync/hobbit_0*.c`, read for about 9 lifted lines after the return. "Checked" means a `CMP_`/`TEST_` on `eax` (or the stored copy) and a branch before any use. A VA in the call-sites column is the return address of the call.
 
@@ -36,7 +36,7 @@ Code that never runs: functions in `FE_REPLACED` (`frontend_sdl.c:426`) are nati
 
 ## Weak placeholders
 
-`comm -23` of `generated.nosync/imports.h` against `grep -ho 'imp_[A-Za-z0-9_]*(void)' runtime/src/*.c` lists 18 names: AUGraphClose, AUGraphInitialize, AUGraphOpen, AUGraphStart, AUGraphStop, AUGraphUninitialize, and 12 `cg*` names. None is a placeholder: `GRAPH_THUNK` (`thunk_audio.c:320`) and `THUNK_VALUE1`/`THUNK_STRING1` (`thunk_cg.c:370`) define them through macros, which the grep does not see.
+`comm -23` of `generated.nosync/imports.h` against `grep -ho 'imp_[A-Za-z0-9_]*(void)' engine/runtime/src/*.c` lists 18 names: AUGraphClose, AUGraphInitialize, AUGraphOpen, AUGraphStart, AUGraphStop, AUGraphUninitialize, and 12 `cg*` names. None is a placeholder: `GRAPH_THUNK` (`thunk_audio.c:320`) and `THUNK_VALUE1`/`THUNK_STRING1` (`thunk_cg.c:370`) define them through macros, which the grep does not see.
 
 `nm -m build.nosync/hobbit` shows 19 weak `_imp_` symbols, all data imports. 16 of them are bound through `data_import_register`. Three stay unbound (slot 0): `___CFConstantStringClassReference` (harmless, see table), `_kTISPropertyInputSourceLanguages` and `_kTISPropertyUnicodeKeyLayoutData` (crash, row 1). The binary was built 2026-10-16 16:07; rebuild before you rely on this list.
 

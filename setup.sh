@@ -1,18 +1,19 @@
 #!/bin/sh
 # One-command setup: checks the machine, translates your own copy of the game,
-# builds the native program and installs "Hobbit Recompiled.app".
+# builds the native program and installs the app.
 # Usage: ./setup.sh [--check] [--force] [--no-install] [--help]
 set -eu
 
 ROOT=$(cd "$(dirname "$0")" && pwd)
 cd "$ROOT"
 
-GAME_SHA_PREFIX=01809d9d1d50b4d1
-DEFAULT_APP="$HOME/Library/Application Support/Steam/steamapps/common/LEGO - The Hobbit/LEGO The Hobbit.app"
-STEAM_APP="${HOBBIT_APP:-$DEFAULT_APP}"
-GAME_BIN="$STEAM_APP/Contents/MacOS/LEGO The Hobbit"
-ORIG="$ROOT/orig.nosync/hobbit_i386"
-GEN="$ROOT/generated.nosync"
+# The engine is the engine/ submodule.
+ENGINE="$ROOT/engine"
+GAME_TOML="$ROOT/game.toml"
+if [ ! -f "$ENGINE/build/Makefile" ]; then
+    echo "setup: engine/ is empty. Run: git submodule update --init" >&2
+    exit 1
+fi
 
 CHECK_ONLY=0
 FORCE=0
@@ -22,7 +23,7 @@ usage() {
     cat <<USAGE
 Usage: ./setup.sh [options]
 
-Builds "Hobbit Recompiled.app" from your own Steam copy of LEGO The Hobbit (build 84019).
+Builds the app from your own Steam copy of the game in game.toml.
 
 Options:
   --check       Check the requirements only, then stop.
@@ -30,7 +31,7 @@ Options:
   --no-install  Build the app but do not copy it to ~/Applications.
   --help        Show this text.
 
-Set HOBBIT_APP to the game's .app bundle if it is not in the default Steam folder.
+Set <PREFIX>_APP (the env_prefix in game.toml) to the game's .app bundle if it is not in the default Steam folder.
 USAGE
 }
 
@@ -81,7 +82,7 @@ check_tool() {
 }
 
 check_build_tools() {
-    T=$(mktemp -d "${TMPDIR:-/tmp}/hobbit-setup.XXXXXX")
+    T=$(mktemp -d "${TMPDIR:-/tmp}/recomp-setup.XXXXXX")
     trap 'rm -rf "$T"' EXIT INT TERM
     printf 'int main(void) { return 0; }\n' > "$T/t.c"
     check_tool "C compiler (clang, arm64 and x86_64)" "xcode-select --install" \
@@ -153,32 +154,33 @@ preflight() {
 locate_and_copy_game() {
     step "2/7 Locating the game"
     [ -f "$GAME_BIN" ] || fail "game binary not found: $GAME_BIN
-Install LEGO The Hobbit from Steam, or set HOBBIT_APP to its .app bundle."
+Install $GAME_TITLE from Steam, or set ${ENV_PREFIX}_APP to its .app bundle."
     echo "found $GAME_BIN"
 
     step "3/7 Copying and verifying the game binary"
-    mkdir -p "$ROOT/orig.nosync"
+    mkdir -p "$(dirname "$ORIG")"
     if [ -f "$ORIG" ] && cmp -s "$GAME_BIN" "$ORIG"; then
-        echo "orig.nosync/hobbit_i386 is up to date"
+        echo "$ORIG is up to date"
     else
         cp "$GAME_BIN" "$ORIG"
-        echo "copied to orig.nosync/hobbit_i386"
+        echo "copied to $ORIG"
     fi
     SHA=$(shasum -a 256 "$ORIG" | awk '{print $1}')
-    case "$SHA" in
-        "$GAME_SHA_PREFIX"*) echo "sha256 matches (build 84019)" ;;
-        *) fail "the game binary does not match (sha256 $SHA).
-Only Steam build 84019 of LEGO The Hobbit (Mac) is supported. In Steam, check that the game is up to date and not on a beta branch." ;;
-    esac
+    if [ "$SHA" = "$BINARY_SHA256" ]; then
+        echo "sha256 matches (build $STEAM_BUILD)"
+    else
+        fail "the game binary does not match (sha256 $SHA).
+Only Steam build $STEAM_BUILD of $GAME_TITLE (Mac) is supported. In Steam, check that the game is up to date and not on a beta branch."
+    fi
 }
 
 setup_venv() {
     step "4/7 Python environment"
-    if [ -x "$ROOT/.venv/bin/python" ] && "$ROOT/.venv/bin/python" -c 'import capstone, unicorn, pytest' >/dev/null 2>&1; then
+    if [ -x "$GAME_ROOT/.venv/bin/python" ] && "$GAME_ROOT/.venv/bin/python" -c 'import capstone, unicorn, pytest' >/dev/null 2>&1; then
         echo ".venv is ready"
     else
-        "$PYTHON" -m venv "$ROOT/.venv"
-        "$ROOT/.venv/bin/python" -m pip install --quiet capstone unicorn pytest
+        "$PYTHON" -m venv "$GAME_ROOT/.venv"
+        "$GAME_ROOT/.venv/bin/python" -m pip install --quiet capstone unicorn pytest
         echo ".venv created"
     fi
 }
@@ -190,24 +192,28 @@ translate() {
         return
     fi
     NCPU=$(sysctl -n hw.ncpu)
-    "$ROOT/.venv/bin/python" -m tools.xrecomp.run \
-        --analysis recon/analysis.json --switch recon/switch_tables.json \
-        --bin "$ORIG" --out "$GEN" --jobs "$NCPU"
+    make -C "$ENGINE/build" GAME="$GAME_TOML" game
+    (cd "$ENGINE" && "$GAME_ROOT/.venv/bin/python" -m tools.xrecomp.run \
+        --analysis "$ANALYSIS" --switch "$SWITCH_TABLES" \
+        --bin "$BINARY" --out "$GEN" --prefix "$GAME_ID" \
+        --overrides "$GAME_ROOT/build.nosync/game/native_overrides.txt" --jobs "$NCPU")
 }
 
 build() {
-    step "6/7 Building"
+    step "6/7 Checking the translation and building"
+    make -C "$ENGINE/build" GAME="$GAME_TOML" recomp-check \
+        || fail "the translation has gaps (listed above); the build would not run correctly"
     NCPU=$(sysctl -n hw.ncpu)
-    make -C build -j"$NCPU"
-    make -C build app
+    make -C "$ENGINE/build" GAME="$GAME_TOML" -j"$NCPU"
+    make -C "$ENGINE/build" GAME="$GAME_TOML" app
 }
 
 install_app() {
     step "7/7 Installing"
-    APP="$ROOT/build.nosync/Hobbit Recompiled.app"
+    APP="$GAME_ROOT/build.nosync/$APP_NAME.app"
     [ -d "$APP" ] || fail "build did not produce $APP"
     if [ "$INSTALL" -eq 1 ]; then
-        DEST="$HOME/Applications/Hobbit Recompiled.app"
+        DEST="$HOME/Applications/$APP_NAME.app"
         mkdir -p "$HOME/Applications"
         rm -rf "$DEST"
         # -X: leave out extended attributes. A build folder under ~/Documents
@@ -215,9 +221,9 @@ install_app() {
         cp -RX "$APP" "$DEST"
         APP="$DEST"
         echo "installed $APP"
-        # The app was called HobbitRecomp.app before. Saves and logs are outside it.
-        OLD="$HOME/Applications/HobbitRecomp.app"
-        if [ -d "$OLD" ]; then
+        # The app may have had another name before. Saves and logs are outside it.
+        OLD="$HOME/Applications/$OLD_APP_NAME"
+        if [ -n "$OLD_APP_NAME" ] && [ -d "$OLD" ]; then
             rm -rf "$OLD"
             echo "removed the old $OLD"
         fi
@@ -226,10 +232,16 @@ install_app() {
     fi
     echo
     echo "Start it by double-clicking $APP, or run: open \"$APP\""
-    echo "Logs: $HOME/Library/Logs/HobbitRecomp/"
+    echo "Logs: $HOME/Library/Logs/$SUPPORT_DIR/"
 }
 
 preflight
+eval "$("$PYTHON" "$ENGINE/tools/game/profile.py" --shell "$GAME_TOML")"
+DEFAULT_APP="$HOME/Library/Application Support/Steam/steamapps/common/$STEAM_APP"
+eval "GAME_APP=\"\${${ENV_PREFIX}_APP:-\$DEFAULT_APP}\""
+GAME_BIN="$GAME_APP/Contents/MacOS/$GAME_EXE"
+ORIG="$BINARY"
+GEN="$GAME_ROOT/generated.nosync"
 if [ "$CHECK_ONLY" -eq 1 ]; then
     echo "All requirements are met."
     exit 0
