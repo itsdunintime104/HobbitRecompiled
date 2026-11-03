@@ -216,9 +216,11 @@ install_app() {
         DEST="$HOME/Applications/$APP_NAME.app"
         mkdir -p "$HOME/Applications"
         rm -rf "$DEST"
-        # -X: leave out extended attributes. A build folder under ~/Documents
-        # carries file-sync attributes that fail codesign --strict.
-        cp -RX "$APP" "$DEST"
+        # Clone, so the game inside the app takes no extra space. cp cannot
+        # combine -c with -X, so extended attributes (file-sync attributes from
+        # ~/Documents fail codesign --strict) are cleared after.
+        cp -cR "$APP" "$DEST" || { rm -rf "$DEST"; echo "setup: cannot clone the app into ~/Applications (another disk?); copying it in full" >&2; cp -R "$APP" "$DEST"; }
+        xattr -cr "$DEST"
         APP="$DEST"
         echo "installed $APP"
         # The app may have had another name before. Saves and logs are outside it.
